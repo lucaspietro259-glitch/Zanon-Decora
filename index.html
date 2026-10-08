@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zanon Decora</title>
+<meta name="description" content="Zanon Decora — decorações personalizadas para festas, casamentos e eventos em São Bernardo do Campo e região do ABC. Feitas com carinho.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF9FD;
+    --bg-2:#F2EDF8;
+    --ink:#2A2140;
+    --ink-soft:#6B6480;
+    --line:#E3DBEE;
+    --brand:#6F409C;         /* roxo do "Z" da logo */
+    --brand-2:#3D9ED1;       /* azul dos balões */
+    --teal:#58A3B6;          /* turquesa do "n" e do "a" */
+    --pink:#E36FA4;          /* balão rosa */
+    --violet:#8A55C0;        /* balão roxo */
+    --brand-soft:#E6DAF3;
+    --grad:linear-gradient(100deg,#6F409C 0%,#5A6FC0 50%,#3D9ED1 100%);
+    --grad-dark:linear-gradient(125deg,#2E1A4D 0%,#2B2A5E 55%,#1D4A63 100%);
+    --card:#FFFFFF;
+    --radius:22px;
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --script:"Great Vibes", cursive;
+    --sans:"Manrope", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brand);font-weight:700}
+  .steps-sec .eyebrow{color:#F3A6CB}
+  .steps-sec h2 em{background:linear-gradient(100deg,#F3A6CB,#8FD3EA);-webkit-background-clip:text;background-clip:text}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.005em}
+  h2{font-size:clamp(36px,5.4vw,64px)}
+  h2 em,h1 em{font-family:var(--script);font-style:normal;font-weight:400;font-size:1.22em;line-height:.9;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .08em .12em 0}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s, background .2s, color .2s;cursor:pointer;border:0;font-family:inherit}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-dark{background:var(--grad);color:#fff;box-shadow:0 12px 26px -14px rgba(111,64,156,.8)}
+  .btn-dark:hover{filter:brightness(1.08)}
+  .btn-ghost{border:1.5px solid var(--brand);color:var(--brand);background:transparent}
+  .btn-ghost:hover{background:var(--brand);color:#fff}
+  .btn svg{width:18px;height:18px}
+
+  /* ---------- header ---------- */
+  header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s, box-shadow .3s}
+  header.scrolled{background:rgba(251,249,253,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:100px;transition:height .3s}
+  header.scrolled .nav{height:80px}
+  header.scrolled .logo img{height:66px}
+  .logo{display:flex;align-items:center}
+  .logo img{height:86px;width:auto;transition:height .3s}
+  footer .logo img{height:120px}
+  .menu{display:flex;gap:34px;font-size:14px;font-weight:500}
+  .menu a{position:relative}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--brand);transition:width .25s}
+  .menu a:hover::after{width:100%}
+  .nav .btn{padding:11px 20px;font-size:14px}
+  .burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer}
+  .burger i{display:block;width:22px;height:1.5px;background:var(--ink);margin:5px auto;transition:.3s}
+
+  /* ---------- hero ---------- */
+  .hero{min-height:100vh;padding:140px 0 70px;position:relative;display:flex;align-items:center}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+  .hero h1{font-size:clamp(48px,7vw,98px);margin:22px 0 26px}
+  .hero p.lead{font-size:18px;color:var(--ink-soft);max-width:460px;margin-bottom:36px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{display:flex;gap:36px;margin-top:54px;padding-top:28px;border-top:1px solid var(--line);max-width:480px}
+  .hero-meta b{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--brand);display:block;line-height:1}
+  .hero-meta small{font-size:13px;color:var(--ink-soft)}
+
+  /* photos arranged as a balloon cluster */
+  .cluster{position:relative;aspect-ratio:1/1.08;width:100%}
+  .bubble{position:absolute;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 30px 60px -30px rgba(42,33,64,.45)}
+  .bubble img{width:100%;height:100%;object-fit:cover}
+  .bubble.b1{width:62%;aspect-ratio:1;left:4%;top:6%}
+  .bubble.b2{width:40%;aspect-ratio:1;right:2%;top:0}
+  .bubble.b3{width:44%;aspect-ratio:1;right:6%;bottom:4%}
+  .bubble.b4{width:28%;aspect-ratio:1;left:14%;bottom:0}
+  .dot{position:absolute;border-radius:50% 50% 48% 48%;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.85),rgba(255,255,255,0) 34%),radial-gradient(circle at 70% 80%,rgba(0,0,0,.18),transparent 60%),var(--c);box-shadow:0 18px 30px -18px var(--c)}
+  .dot.d1{--c:var(--pink);width:13%;aspect-ratio:1;left:-2%;top:52%}
+  .dot.d2{--c:var(--brand-2);width:9%;aspect-ratio:1;right:44%;top:3%}
+  .dot.d3{--c:var(--violet);width:11%;aspect-ratio:1;right:-3%;top:44%}
+  .dot.d4{--c:var(--teal);width:6%;aspect-ratio:1;left:47%;bottom:10%}
+  .float{animation:float 7s ease-in-out infinite}
+  .float.slow{animation-duration:9s;animation-delay:-2s}
+  .float.slower{animation-duration:11s;animation-delay:-4s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+  /* ---------- marquee ---------- */
+  .marquee{background:var(--grad-dark);color:#fff;overflow:hidden;padding:22px 0;white-space:nowrap}
+  .marquee-track{display:inline-flex;gap:48px;animation:scroll 38s linear infinite;font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-style:italic;font-weight:300}
+  .marquee-track span{display:inline-flex;align-items:center;gap:48px}
+  .marquee-track span::after{content:"";width:14px;height:16px;border-radius:50% 50% 46% 46%;background:var(--pink)}
+  .marquee-track span:nth-child(3n+2)::after{background:var(--brand-2)}
+  .marquee-track span:nth-child(3n)::after{background:var(--violet)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  section{padding:120px 0}
+
+  /* ---------- história ---------- */
+  .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+  .story-photo{position:relative}
+  .story-photo .arch{border-radius:999px 999px var(--radius) var(--radius);overflow:hidden;aspect-ratio:3/4}
+  .story-photo .arch img,.story-photo .arch video{width:100%;height:100%;object-fit:cover;display:block}
+  .story-photo .tag{position:absolute;right:-24px;bottom:40px;background:var(--card);padding:18px 22px;border-radius:18px;box-shadow:0 20px 40px -20px rgba(42,33,64,.35);max-width:220px}
+  .story-photo .tag b{font-family:var(--serif);font-weight:400;font-size:20px;font-style:italic;display:block;line-height:1.2}
+  .story-photo .tag small{font-size:13px;color:var(--ink-soft)}
+  .story h2{margin:18px 0 30px}
+  .story p{color:var(--ink-soft);margin-bottom:18px;font-size:17px}
+  .story blockquote{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.3;border-left:2px solid var(--brand);padding-left:24px;margin:34px 0}
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+  .values div{border-top:1px solid var(--line);padding-top:16px}
+  .values b{display:block;font-size:15px;margin-bottom:4px}
+  .values small{color:var(--ink-soft);font-size:13.5px;line-height:1.5;display:block}
+
+  /* ---------- galeria ---------- */
+  .gallery{background:var(--bg-2)}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px;flex-wrap:wrap}
+  .sec-head p{max-width:380px;color:var(--ink-soft)}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+  .filters button{font-family:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:.2s}
+  .filters button:hover{border-color:var(--ink)}
+  .filters button.on{background:var(--grad);color:#fff;border-color:transparent}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:3/4.4;background:var(--line);transition:opacity .35s, transform .35s}
+  .item.wide{grid-column:span 2;aspect-ratio:6.1/4.4}
+  .grid{grid-auto-flow:dense}
+  .slides{position:absolute;inset:0}
+  .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+  .slides video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
+  .slides img.on,.slides video.on{opacity:1}
+  .item:hover .slides img.on{transform:scale(1.05)}
+  .item .count{position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,252,247,.9);color:var(--ink);font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px;display:flex;align-items:center;gap:6px}
+  .item .count svg{width:14px;height:14px}
+  .item .arr{position:absolute;top:50%;z-index:2;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,252,247,.92);color:var(--ink);font-size:17px;cursor:pointer;opacity:0;transition:opacity .25s}
+  .item:hover .arr{opacity:1}
+  .item .arr.l{left:12px}.item .arr.r{right:12px}
+  .item .dots{position:absolute;z-index:2;bottom:16px;right:18px;display:flex;gap:6px}
+  .item .dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5);transition:.3s}
+  .item .dots i.on{background:#fff;width:18px;border-radius:4px}
+  @media (hover:none){.item .arr{opacity:1;width:34px;height:34px}}
+  .item figcaption{position:absolute;z-index:1;inset:auto 0 0;padding:60px 20px 18px;background:linear-gradient(transparent,rgba(26,18,42,.75));color:#fff}
+  .item figcaption b{font-family:var(--serif);font-weight:400;font-size:22px;display:block;line-height:1.1}
+  .item figcaption small{font-size:12px;letter-spacing:.15em;text-transform:uppercase;opacity:.8}
+  .item.hide{display:none}
+  .gallery-foot{text-align:center;margin-top:50px}
+  .gallery-foot p{color:var(--ink-soft);margin-bottom:18px}
+
+  /* ---------- serviços ---------- */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .svc{background:var(--card);border-radius:var(--radius);padding:38px 32px;border:1px solid var(--line);transition:transform .3s, box-shadow .3s;position:relative;overflow:hidden}
+  .svc:hover{transform:translateY(-6px);box-shadow:0 30px 50px -35px rgba(42,33,64,.5)}
+  .svc .ico{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin-bottom:26px;background:var(--bg-2)}
+  .svc .ico svg{width:28px;height:28px;stroke:var(--brand);fill:none;stroke-width:1.4}
+  .svc h3{font-size:28px;margin-bottom:12px}
+  .svc p{color:var(--ink-soft);font-size:15px}
+  .svc ul{list-style:none;margin-top:18px;font-size:14px}
+  .svc li{padding:8px 0;border-top:1px dashed var(--line);display:flex;gap:10px}
+  .svc li::before{content:"✦";color:var(--brand);font-size:11px;padding-top:3px}
+
+
+  /* ---------- aluguel ---------- */
+  .rentals{background:var(--bg-2)}
+  .rent-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .rent{background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
+  .rent .rent-photo{border-radius:0;aspect-ratio:4/3;cursor:pointer}
+  .rent .rent-photo figcaption{display:none}
+  .rent-body{padding:30px 32px 34px;display:flex;flex-direction:column;gap:14px;flex:1}
+  .rent-body h3{font-size:34px}
+  .rent-body p{color:var(--ink-soft)}
+  .rent-body ul{list-style:none;font-size:14.5px;margin-bottom:8px}
+  .rent-body li{padding:9px 0;border-top:1px dashed var(--line);display:flex;gap:10px}
+  .rent-body li::before{content:"✦";color:var(--brand);font-size:11px;padding-top:4px}
+  .rent-body .btn{align-self:flex-start;margin-top:auto}
+  .rent .product{background:#fff}
+  .rent .product .slides img{object-fit:contain;padding:14px}
+  .rent .product:hover .slides img.on{transform:none}
+  .specs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:4px 0 6px}
+  .specs div{background:var(--bg-2);border-radius:14px;padding:12px 14px}
+  .specs dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .specs dd{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--brand);line-height:1.2;margin-top:2px}
+  @media (max-width:420px){.specs dd{font-size:18px}.specs div{padding:10px}}
+  .rent-note{margin-top:18px;font-size:12px;color:var(--ink-soft);text-align:right}
+  @media (max-width:760px){.rent-grid{grid-template-columns:1fr}.rent-body{padding:24px 22px 28px}.rent-body h3{font-size:28px}}
+
+  /* ---------- como funciona ---------- */
+  .steps-sec{background:var(--grad-dark);color:#fff}
+  .steps-sec .sec-head p{color:#C9C1DC}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+  .step{padding:34px 28px 10px 0;border-top:1px solid rgba(255,255,255,.18);position:relative}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--script);font-size:64px;background:linear-gradient(100deg,#F3A6CB,#8FD3EA);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:1;margin-bottom:22px}
+  .step b{font-size:18px;display:block;margin-bottom:8px;font-weight:600}
+  .step p{color:#C9C1DC;font-size:15px}
+
+  /* ---------- orçamento ---------- */
+  .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  .quote h2{margin:18px 0 24px}
+  .quote .info{color:var(--ink-soft);font-size:17px;margin-bottom:34px}
+  .contact-list{list-style:none;display:grid;gap:14px}
+  .contact-list a{display:flex;align-items:center;gap:16px;padding:18px 22px;background:var(--card);border:1px solid var(--line);border-radius:18px;transition:border-color .2s}
+  .contact-list a:hover{border-color:var(--brand)}
+  .contact-list svg{width:24px;height:24px;flex:none}
+  .contact-list small{display:block;font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase}
+  .contact-list b{font-weight:600}
+  form{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:40px;display:grid;gap:18px}
+  form h3{font-size:30px;margin-bottom:4px}
+  form .sub{color:var(--ink-soft);font-size:14px;margin-top:-10px}
+  label{font-size:13px;font-weight:600;display:grid;gap:7px}
+  input,select,textarea{font-family:inherit;font-size:15px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);outline:none;transition:border-color .2s;width:100%}
+  input:focus,select:focus,textarea:focus{border-color:var(--brand)}
+  textarea{resize:vertical;min-height:90px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form .btn{justify-content:center;margin-top:6px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:50px 0 40px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .foot p{color:var(--ink-soft);font-size:14px}
+  .foot .social{display:flex;gap:12px}
+  .foot .social a{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.2s}
+  .foot .social a:hover{background:var(--grad);color:#fff;border-color:transparent}
+  .foot .social svg{width:18px;height:18px}
+
+  /* ---------- whatsapp flutuante ---------- */
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.4);transition:transform .2s}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+
+  /* ---------- lightbox ---------- */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(26,18,42,.92);display:none;align-items:center;justify-content:center;padding:30px}
+  .lb.open{display:flex}
+  .lb video{max-height:78vh;max-width:min(560px,100%);border-radius:18px;margin-bottom:40px;display:none}
+  .lb img{max-height:78vh;margin-bottom:40px;max-width:min(560px,100%);border-radius:18px}
+  .lb .cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#fff;font-family:var(--serif);font-style:italic;font-size:22px}
+  .lb button{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:22px}
+  .lb .x{top:22px;right:22px}
+  .lb .prev{left:22px;top:50%;transform:translateY(-50%)}
+  .lb .next{right:22px;top:50%;transform:translateY(-50%)}
+
+  /* ---------- reveal ---------- */
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.float,.marquee-track{animation:none}}
+
+  /* ---------- responsivo ---------- */
+  @media (max-width:980px){
+    .hero-grid,.story-grid,.quote-grid{grid-template-columns:1fr;gap:50px}
+    .cluster{max-width:520px;margin-inline:auto}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .services{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr;row-gap:20px}
+    .story-photo{max-width:440px}
+    .story-photo .tag{right:-8px}
+  }
+  @media (max-width:760px){
+    .menu{position:fixed;inset:84px 0 auto;background:var(--bg);flex-direction:column;gap:0;padding:10px 16px 24px;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:transform .35s, visibility .35s;visibility:hidden;z-index:-1}
+    .menu.open{transform:none;visibility:visible}
+    .menu a{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
+    .nav .btn{display:none}
+    .nav,header.scrolled .nav{height:84px}
+    .logo img,header.scrolled .logo img{height:70px}
+    .burger{display:block}
+    section{padding:84px 0}
+    .hero{padding-top:110px}
+    .hero-meta{gap:22px}
+    .values{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .grid{gap:12px}
+    .item.wide{grid-column:span 2;aspect-ratio:4/3}
+    .item figcaption{padding:40px 14px 12px}
+    .item figcaption b{font-size:18px}
+    .row{grid-template-columns:1fr}
+    form{padding:28px 22px}
+    .lb .prev,.lb .next{top:auto;bottom:70px;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="logo"><img src="img/logo.png" alt="Zanon Decora" width="520" height="439"></a>
+    <nav class="menu" id="menu">
+      <a href="#historia">Nossa história</a>
+      <a href="#decoracoes">Decorações</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#aluguel">Aluguel</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#orcamento">Contato</a>
+    </nav>
+    <a class="btn btn-dark" href="#orcamento">Pedir orçamento</a>
+    <button class="burger" id="burger" aria-label="Abrir menu"><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow rv">Decoração de festas · São Bernardo do Campo & ABC</div>
+        <h1 class="rv">Mais do que festas, criamos <em>memórias</em></h1>
+        <p class="lead rv">Decorações personalizadas para aniversários, casamentos, chás e eventos corporativos. Cada detalhe pensado e montado com carinho.</p>
+        <div class="hero-ctas rv">
+          <a class="btn btn-dark" href="#orcamento">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            Solicitar orçamento
+          </a>
+          <a class="btn btn-ghost" href="#decoracoes">Ver decorações</a>
+        </div>
+        <div class="hero-meta rv">
+          <div><b>100%</b><small>personalizado</small></div>
+          <div><b>SBC</b><small>e região do ABC</small></div>
+          <div><b>♡</b><small>feito com carinho</small></div>
+        </div>
+      </div>
+
+      <div class="cluster rv" aria-hidden="true">
+        <div class="dot d1 float slow"></div>
+        <div class="dot d2 float"></div>
+        <div class="dot d3 float slower"></div>
+        <div class="dot d4 float slow"></div>
+        <div class="bubble b1 float slower"><img src="img/lara-1.jpg" alt=""></div>
+        <div class="bubble b2 float"><img src="img/pokemon-1.jpg" alt=""></div>
+        <div class="bubble b3 float slow"><img src="img/rose-pessego-1.jpg" alt=""></div>
+        <div class="bubble b4 float"><img src="img/margaridas-1.jpg" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Aniversários</span><span>Casamentos</span><span>Chá de bebê</span><span>Batizados</span><span>15 anos</span><span>Times de futebol</span><span>Noivados</span><span>Chá revelação</span><span>Eventos corporativos</span>
+      <span>Aniversários</span><span>Casamentos</span><span>Chá de bebê</span><span>Batizados</span><span>15 anos</span><span>Times de futebol</span><span>Noivados</span><span>Chá revelação</span><span>Eventos corporativos</span>
+    </div>
+  </div>
+
+  <!-- HISTÓRIA -->
+  <!-- TEXTO PARA REVISAR: a história abaixo foi escrita a partir do Instagram. Ajuste com os dados reais (ano de início, nome da fundadora, marcos). -->
+  <section id="historia" class="story">
+    <div class="wrap story-grid">
+      <div class="story-photo rv">
+        <div class="arch"><video src="video/nossa-historia.mp4" poster="video/nossa-historia-capa.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Bastidores de uma montagem da Zanon Decora"></video></div>
+        <div class="tag"><b>Por trás de cada festa</b><small>montagem feita à mão, peça por peça</small></div>
+      </div>
+      <div>
+        <div class="eyebrow rv">Nossa história</div>
+        <h2 class="rv">Uma paixão que virou <em>ofício</em></h2>
+        <p class="rv">A Zanon Decora nasceu do amor por celebrar. O que começou decorando as festas de amigos e da família em São Bernardo do Campo foi ganhando forma, cor e muitos balões, até se tornar um ateliê de decoração dedicado a transformar ideias em cenários.</p>
+        <p class="rv">Acreditamos que nenhuma festa é igual à outra. Por isso cada projeto começa com uma conversa: quem é o homenageado, o que ele ama, que sensação o dia precisa ter. A partir daí escolhemos a paleta, o tema e cada peça, do arco de balões ao último docinho na mesa.</p>
+        <blockquote class="rv">“Caminhos novos dão medo, mas é neles que Deus faz coisas novas acontecerem.”</blockquote>
+        <p class="rv">Hoje atendemos todo o ABC paulista e a capital, sempre com o mesmo cuidado do começo.</p>
+        <div class="values rv">
+          <div><b>Personalizado</b><small>Cada decoração é criada do zero para o seu evento.</small></div>
+          <div><b>Cuidado</b><small>Montagem e desmontagem feitas pela nossa equipe.</small></div>
+          <div><b>Carinho</b><small>Tratamos a sua festa como se fosse nossa.</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section id="decoracoes" class="gallery">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow rv">Portfólio</div>
+          <h2 class="rv">Nossas <em>decorações</em></h2>
+        </div>
+        <p class="rv">Uma seleção de festas que tivemos o prazer de montar. Passe as fotos de cada festa ou clique para ver em tela cheia.</p>
+      </div>
+
+      <div class="filters rv" id="filters">
+        <button class="on" data-f="all">Todas</button>
+        <button data-f="infantil">Infantil</button>
+        <button data-f="teen">13, 15 e 18 anos</button>
+        <button data-f="adulto">Adulto</button>
+        <button data-f="times">Times</button>
+        <button data-f="cha">Chá de bebê</button>
+        <button data-f="datas">Datas especiais</button>
+      </div>
+
+      <div class="grid" id="grid">
+        <figure class="item wide rv" data-cat="infantil"><div class="slides"><img src="img/dino-1.jpg" alt="Festa infantil tema dinossauro — foto 1" loading="lazy" class="on"><img src="img/dino-2.jpg" alt="Festa infantil tema dinossauro — foto 2" loading="lazy"><img src="img/dino-3.jpg" alt="Festa infantil tema dinossauro — foto 3" loading="lazy"><img src="img/dino-4.jpg" alt="Festa infantil tema dinossauro — foto 4" loading="lazy"><img src="img/dino-5.jpg" alt="Festa infantil tema dinossauro — foto 5" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>5 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i><i></i><i></i><i></i></div><figcaption><small>Infantil</small><b>Dino party</b></figcaption></figure>
+        <figure class="item rv" data-cat="cha"><div class="slides"><img src="img/ursinho-1.jpg" alt="Chá de bebê com urso de pelúcia e balões azul e rosa — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Ursinho</b></figcaption></figure>
+        <figure class="item rv" data-cat="infantil"><div class="slides"><img src="img/cerejinha-1.jpg" alt="Festa tema cereja com balões rosa — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil</small><b>Cerejinha</b></figcaption></figure>
+        <figure class="item wide rv" data-cat="teen"><div class="slides"><img src="img/15-anos-1.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 1" loading="lazy" class="on"><img src="img/15-anos-2.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 2" loading="lazy"><img src="img/15-anos-3.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 3" loading="lazy"><img src="img/15-anos-4.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 4" loading="lazy"><img src="img/15-anos-5.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 5" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>5 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i><i></i><i></i><i></i></div><figcaption><small>15 anos</small><b>Lilás & luzes</b></figcaption></figure>
+        <figure class="item wide rv" data-cat="infantil"><div class="slides"><img src="img/pokemon-1.jpg" alt="Festa infantil tema Pokémon — foto 1" loading="lazy" class="on"><img src="img/pokemon-2.jpg" alt="Festa infantil tema Pokémon — foto 2" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>2 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Infantil</small><b>Pokémon</b></figcaption></figure>
+        <figure class="item wide rv" data-cat="times teen"><div class="slides"><img src="img/corinthians-2.jpg" alt="Aniversário de 18 anos tema Corinthians em preto, branco e dourado" loading="lazy" class="on"><img src="img/corinthians-1.jpg" alt="Painel Corinthians com balões preto, branco e dourado e neon 18" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>2 fotos</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Times · 18 anos</small><b>Corinthians</b></figcaption></figure>
+        <figure class="item rv" data-cat="times"><div class="slides"><img src="img/sao-paulo-1.jpg" alt="Festa tema São Paulo Futebol Clube em vermelho, preto e branco — foto 1" loading="lazy" class="on"></div><figcaption><small>Times</small><b>São Paulo FC</b></figcaption></figure>
+        <figure class="item wide rv" data-cat="adulto"><div class="slides"><img src="img/60-anos-1.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 1" loading="lazy" class="on"><img src="img/60-anos-2.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 2" loading="lazy"><img src="img/60-anos-3.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 3" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>3 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i><i></i></div><figcaption><small>Adulto</small><b>60 anos</b></figcaption></figure>
+        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/70-anos-1.jpg" alt="Aniversário de 70 anos em pêssego e salmão com balões suspensos e número 70 em neon" loading="lazy" class="on"><video src="video/70-anos-video.mp4" poster="video/70-anos-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração de 70 anos"></video></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>1 foto + vídeo</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Adulto</small><b>70 anos</b></figcaption></figure>
+        <figure class="item wide rv" data-cat="infantil"><div class="slides"><img src="img/sereia-1.jpg" alt="Festa tema sereia com balões lilás, rosa e azul — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil</small><b>Sereia</b></figcaption></figure>
+        <figure class="item rv" data-cat="cha infantil"><div class="slides"><img src="img/lara-1.jpg" alt="Decoração arco-íris pastel com urso de pelúcia e blocos BABY — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Arco-íris da Lara</b></figcaption></figure>
+        <figure class="item rv" data-cat="cha"><div class="slides"><img src="img/margaridas-1.jpg" alt="Chá de bebê amarelo com margaridas de balão — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Margaridas</b></figcaption></figure>
+        <figure class="item wide rv" data-cat="infantil"><div class="slides"><img src="img/praia-1.jpg" alt="Festa infantil tema fundo do mar com baleia, polvo e balões azuis e verdes — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil</small><b>Fundo do mar</b></figcaption></figure>
+        <figure class="item rv" data-cat="teen"><div class="slides"><img src="img/13-anos-1.jpg" alt="Decoração de 13 anos em rosa e vermelho com neon — foto 1" loading="lazy" class="on"></div><figcaption><small>13 anos</small><b>Rosa & cereja</b></figcaption></figure>
+        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/rose-pessego-1.jpg" alt="Arco de balões rosé, pêssego e cobre ao ar livre — foto 1" loading="lazy" class="on"></div><figcaption><small>Adulto</small><b>Rosé & pêssego</b></figcaption></figure>
+        <figure class="item rv" data-cat="infantil cha"><div class="slides"><img src="img/arco-iris-1.jpg" alt="Arco-íris de balões pastel com nuvens — foto 1" loading="lazy" class="on"><img src="img/arco-iris-2.jpg" alt="Arco-íris de balões pastel com nuvens — foto 2" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>2 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Infantil</small><b>Arco-íris</b></figcaption></figure>
+        <figure class="item wide rv" data-cat="adulto"><div class="slides"><img src="img/azul-marinho-3.jpg" alt="Balões azul-marinho com neon Happy Birthday e mesa" loading="lazy" class="on"><video src="video/azul-marinho-video.mp4" poster="video/azul-marinho-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração azul-marinho"></video><img src="img/azul-marinho-2.jpg" alt="Balões azul-marinho com letreiro Happy Birthday" loading="lazy"><img src="img/azul-marinho-1.jpg" alt="Balões azul-marinho com letreiro Happy Birthday" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>3 fotos + vídeo</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i><i></i><i></i></div><figcaption><small>Adulto</small><b>Azul-marinho</b></figcaption></figure>
+        <figure class="item rv" data-cat="cha"><div class="slides"><img src="img/oh-baby-salvia-1.jpg" alt="Chá de bebê verde sálvia, nude e dourado — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Oh baby sálvia</b></figcaption></figure>
+        <figure class="item rv" data-cat="adulto datas"><div class="slides"><img src="img/branco-flores-1.jpg" alt="Decoração branca com flores e folhagens — foto 1" loading="lazy" class="on"></div><figcaption><small>Especial</small><b>Branco & flores</b></figcaption></figure>
+        <figure class="item rv" data-cat="infantil"><div class="slides"><img src="img/dj-baby-1.jpg" alt="Primeiro aninho tema DJ e música em preto, branco e prata — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil · 1 ano</small><b>DJ baby</b></figcaption></figure>
+        <figure class="item rv" data-cat="infantil"><div class="slides"><img src="img/candy-1.jpg" alt="Festa infantil em rosa, lilás e verde-água — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil</small><b>Candy colors</b></figcaption></figure>
+        <figure class="item wide rv" data-cat="adulto"><div class="slides"><img src="img/vermelho-2.jpg" alt="Arco de balões vermelhos com letreiro Happy Birthday e neon" loading="lazy" class="on"><video src="video/vermelho-video.mp4" poster="video/vermelho-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração Vermelho paixão"></video><img src="img/vermelho-3.jpg" alt="Balões vermelhos e mesas de acrílico com neon" loading="lazy"><img src="img/vermelho-1.jpg" alt="Balões vermelhos com topo Happy Birthday" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>3 fotos + vídeo</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i><i></i><i></i></div><figcaption><small>Adulto</small><b>Vermelho paixão</b></figcaption></figure>
+        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/lilas-1.jpg" alt="Balões lilás com letreiro Happy Birthday — foto 1" loading="lazy" class="on"></div><figcaption><small>Adulto</small><b>Lilás</b></figcaption></figure>
+        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/rosa-prata-1.jpg" alt="Aniversário adulto em rosa e prata — foto 1" loading="lazy" class="on"></div><figcaption><small>Adulto</small><b>Rosa & prata</b></figcaption></figure>
+        <figure class="item rv" data-cat="cha"><div class="slides"><img src="img/oh-baby-rose-1.jpg" alt="Chá de bebê rosé com blocos BABY e ursinho — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Oh baby rosé</b></figcaption></figure>
+        <figure class="item rv" data-cat="datas"><div class="slides"><img src="img/pascoa-1.jpg" alt="Guirlanda de balões em formato de coelho — foto 1" loading="lazy" class="on"></div><figcaption><small>Datas especiais</small><b>Páscoa</b></figcaption></figure>
+        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/preto-prata-1.jpg" alt="Arranjo de balões preto e prata cromado — foto 1" loading="lazy" class="on"></div><figcaption><small>Adulto</small><b>Preto & prata</b></figcaption></figure>
+      </div>
+
+      <div class="gallery-foot rv">
+        <p>Tem muito mais no nosso Instagram, com vídeos das montagens e festas novas toda semana.</p>
+        <a class="btn btn-ghost" href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener">Ver no Instagram @zanondecora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow rv">O que fazemos</div>
+          <h2 class="rv">Do intimista ao <em>grandioso</em></h2>
+        </div>
+        <p class="rv">Formatos para todo tipo de celebração e orçamento. Nos conte o que imagina e montamos a proposta.</p>
+      </div>
+      <div class="services">
+        <article class="svc rv">
+          <div class="ico"><svg viewBox="0 0 32 32"><circle cx="12" cy="11" r="7"/><circle cx="21" cy="14" r="6"/><path d="M12 18l-1 3h2l-1-3M21 20l-1 3h2l-1-3M12 21c0 4 3 6 5 8M21 23c0 3-2 4-4 6"/></svg></div>
+          <h3>Festas & aniversários</h3>
+          <p>Decoração completa com painel, arco de balões, mesa do bolo e todos os detalhes do tema.</p>
+          <ul><li>Infantil, 15 anos e adulto</li><li>Chá de bebê e chá revelação</li><li>Batizado e primeira comunhão</li></ul>
+        </article>
+        <article class="svc rv">
+          <div class="ico"><svg viewBox="0 0 32 32"><circle cx="12" cy="19" r="7"/><circle cx="20" cy="19" r="7"/><path d="M16 4l2 4h-4l2-4z"/></svg></div>
+          <h3>Casamentos & noivados</h3>
+          <p>Cenários elegantes para o sim, a recepção e as fotos, com flores, tecidos e iluminação.</p>
+          <ul><li>Painel de cerimônia e mesa de doces</li><li>Cascatas de balões perolados</li><li>Noivado e bodas</li></ul>
+        </article>
+        <article class="svc rv">
+          <div class="ico"><svg viewBox="0 0 32 32"><rect x="5" y="10" width="22" height="16" rx="2"/><path d="M12 10V7h8v3M5 16h22"/></svg></div>
+          <h3>Eventos corporativos</h3>
+          <p>Ambientação com as cores da sua marca para lançamentos, confraternizações e datas comemorativas.</p>
+          <ul><li>Confraternização de fim de ano</li><li>Inaugurações e lançamentos</li><li>Datas sazonais</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ALUGUEL -->
+  <section id="aluguel" class="rentals">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow rv">Aluguel de brinquedos</div>
+          <h2 class="rv">Diversão que <em>completa</em> a festa</h2>
+        </div>
+        <p class="rv">Além da decoração, alugamos brinquedos para a criançada. Dá para contratar junto com a decoração ou separado.</p>
+      </div>
+      <div class="rent-grid">
+        <article class="rent rv">
+          <figure class="item rent-photo product"><div class="slides"><img src="img/pula-pula-1.jpg?v=2" alt="Pula-pula cama elástica colorido com rede de proteção e escadinha" loading="lazy" class="on"></div><figcaption><small>Aluguel</small><b>Pula-pula</b></figcaption></figure>
+          <div class="rent-body">
+            <h3>Pula-pula</h3>
+            <p>O brinquedo que nunca sai de moda. Garante horas de pulos, risadas e crianças gastando energia enquanto os adultos aproveitam a festa.</p>
+            <dl class="specs"><div><dt>Diâmetro</dt><dd>4,30 m</dd></div><div><dt>Peso máximo</dt><dd>150 kg</dd></div><div><dt>Espaço necessário</dt><dd>5 × 5 m</dd></div></dl>
+            <ul><li>Para festas em casa, salão, condomínio ou chácara</li><li>Pode ser contratado junto com a decoração ou sozinho</li><li>Consulte datas disponíveis e valores pelo WhatsApp</li></ul>
+            <a class="btn btn-dark" href="https://wa.me/5511960801908?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20sobre%20o%20aluguel%20de%20pula-pula%20%F0%9F%8E%88" target="_blank" rel="noopener">Consultar disponibilidade</a>
+          </div>
+        </article>
+        <article class="rent rv">
+          <figure class="item rent-photo"><div class="slides"><img src="img/piscina-bolinha-1.jpg" alt="Bolinhas coloridas de piscina de bolinhas" loading="lazy" class="on"><img src="img/piscina-bolinha-2.jpg" alt="Piscina de bolinhas rosa, azul, amarela e branca" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>2 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Aluguel</small><b>Piscina de bolinhas</b></figcaption></figure>
+          <div class="rent-body">
+            <h3>Piscina de bolinhas</h3>
+            <p>Colorida, segura e irresistível para os pequenos. Perfeita para festas infantis, chás de bebê e primeiros aninhos.</p>
+            <dl class="specs"><div><dt>Área</dt><dd>2 × 2 m</dd></div><div><dt>Proteção</dt><dd>Cercada com tela</dd></div><div><dt>Bolinhas</dt><dd>2 mil</dd></div></dl>
+            <ul><li>Ideal para os pequenos, inclusive do primeiro aninho</li><li>Combina com qualquer tema de decoração</li><li>Consulte datas disponíveis e valores pelo WhatsApp</li></ul>
+            <a class="btn btn-dark" href="https://wa.me/5511960801908?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20sobre%20o%20aluguel%20de%20piscina%20de%20bolinhas%20%F0%9F%8E%88" target="_blank" rel="noopener">Consultar disponibilidade</a>
+          </div>
+        </article>
+      </div>
+      <p class="rent-note rv">Imagens ilustrativas.</p>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona" class="steps-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow rv">Como funciona</div>
+          <h2 class="rv">Você sonha, <em>a gente monta</em></h2>
+        </div>
+        <p class="rv">Um processo simples, do primeiro “oi” até a última foto da festa.</p>
+      </div>
+      <div class="steps">
+        <div class="step rv"><b>Conte sua ideia</b><p>Fale com a gente no WhatsApp: data, local, tema e número de convidados.</p></div>
+        <div class="step rv"><b>Proposta sob medida</b><p>Criamos uma sugestão de decoração com paleta, itens e valor.</p></div>
+        <div class="step rv"><b>Montagem no local</b><p>No dia, nossa equipe chega antes e monta tudo com cuidado.</p></div>
+        <div class="step rv"><b>É só celebrar</b><p>Você aproveita a festa. Depois, a desmontagem fica com a gente.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORÇAMENTO -->
+  <section id="orcamento" class="quote">
+    <div class="wrap quote-grid">
+      <div>
+        <div class="eyebrow rv">Orçamento</div>
+        <h2 class="rv">Vamos criar a sua <em>festa?</em></h2>
+        <p class="info rv">Preencha o formulário e ele abre uma conversa no nosso WhatsApp já com os detalhes do seu evento. Respondemos o quanto antes.</p>
+        <ul class="contact-list rv">
+          <li><a href="https://wa.me/5511960801908" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            <span><small>WhatsApp</small><b>(11) 96080-1908</b></span></a></li>
+          <li><a href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6F409C" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#6F409C"/></svg>
+            <span><small>Instagram</small><b>@zanondecora</b></span></a></li>
+          <li><a href="#orcamento">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6F409C" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <span><small>Atendimento</small><b>São Bernardo do Campo, ABC e São Paulo</b></span></a></li>
+        </ul>
+      </div>
+
+      <form id="quoteForm" class="rv">
+        <h3>Pedir orçamento</h3>
+        <p class="sub">Leva menos de um minuto.</p>
+        <label>Seu nome<input name="nome" required placeholder="Como podemos te chamar?"></label>
+        <div class="row">
+          <label>Tipo de evento
+            <select name="tipo">
+              <option>Aniversário infantil</option><option>Aniversário adulto</option><option>15 anos</option><option>Chá de bebê / revelação</option><option>Batizado</option><option>Casamento / noivado</option><option>Evento corporativo</option><option>Aluguel de pula-pula</option><option>Aluguel de piscina de bolinhas</option><option>Outro</option>
+            </select>
+          </label>
+          <label>Data do evento<input type="date" name="data"></label>
+        </div>
+        <div class="row">
+          <label>Cidade / bairro<input name="local" placeholder="Ex.: SBC, Santo André"></label>
+          <label>Convidados<input name="convidados" inputmode="numeric" placeholder="Aprox."></label>
+        </div>
+        <label>Tema, cores ou ideia<textarea name="ideia" placeholder="Conte o que você imagina…"></textarea></label>
+        <button class="btn btn-dark" type="submit">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          Enviar pelo WhatsApp
+        </button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#top" class="logo"><img src="img/logo-completa.png" alt="Zanon Decora — Mais do que festas, criamos memórias" loading="lazy"></a>
+    <p>Decorações personalizadas, feitas com carinho · SBC e região · © <span id="yr"></span></p>
+    <div class="social">
+      <a href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+      <a href="https://wa.me/5511960801908" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.5 12.4c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-5-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.2c0 .1.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.1-.2.7-.9.9-1.2.2-.2.4-.2.7-.1.2.1 1.7.9 2 1 .3.1.5.2.6.4 0 .1 0 .7-.2 1.4z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5511960801908?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+</a>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="x" aria-label="Fechar">✕</button>
+  <button class="prev" aria-label="Anterior">←</button>
+  <img alt="">
+  <video muted loop playsinline controls></video>
+  <button class="next" aria-label="Próxima">→</button>
+  <div class="cap"></div>
+</div>
+
+<script>
+  const WHATS = "5511960801908";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // header ao rolar
+  const header = document.querySelector('header');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30), {passive:true});
+
+  // menu mobile
+  const menu = document.getElementById('menu');
+  document.getElementById('burger').onclick = () => menu.classList.toggle('open');
+  menu.querySelectorAll('a').forEach(a => a.onclick = () => menu.classList.remove('open'));
+
+  // animação de entrada
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(el); });
+  // garante que o topo apareça mesmo se o observer atrasar
+  requestAnimationFrame(() => document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('in')));
+
+  // vídeo da história: toca só quando está na tela (economiza bateria e dados)
+  const vid = document.querySelector('.arch video');
+  if (vid) new IntersectionObserver(([e]) => e.isIntersecting ? vid.play().catch(() => {}) : vid.pause(), {threshold:.25}).observe(vid);
+
+  // filtros da galeria
+  const items = [...document.querySelectorAll('.item')];
+  document.getElementById('filters').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('#filters button').forEach(x => x.classList.toggle('on', x === b));
+    const f = b.dataset.f;
+    items.filter(it => it.dataset.cat).forEach(it => it.classList.toggle('hide', f !== 'all' && !it.dataset.cat.split(' ').includes(f)));
+  });
+
+  // carrossel dentro de cada card
+  items.forEach(it => {
+    const imgs = [...it.querySelectorAll('.slides > *')], dots = [...it.querySelectorAll('.dots i')];
+    it._i = 0;
+    it.go = n => {
+      it._i = (n + imgs.length) % imgs.length;
+      imgs.forEach((im, k) => {
+        im.classList.toggle('on', k === it._i);
+        if (im.tagName === 'VIDEO') k === it._i ? im.play().catch(() => {}) : im.pause();
+      });
+      dots.forEach((d, k) => d.classList.toggle('on', k === it._i));
+    };
+    it.go(0);
+    it.querySelector('.arr.l')?.addEventListener('click', e => { e.stopPropagation(); it.go(it._i - 1); });
+    it.querySelector('.arr.r')?.addEventListener('click', e => { e.stopPropagation(); it.go(it._i + 1); });
+    let x0 = null;
+    it.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+    it.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40 && imgs.length > 1) { it._swiped = true; it.go(it._i + (dx < 0 ? 1 : -1)); }
+    });
+  });
+
+  // lightbox: mostra todas as fotos da festa clicada
+  const lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbVid = lb.querySelector('video'), lbCap = lb.querySelector('.cap');
+  let album = null, cur = 0;
+  function show(i){
+    const imgs = [...album.querySelectorAll('.slides > *')];
+    cur = (i + imgs.length) % imgs.length;
+    const m = imgs[cur], isVid = m.tagName === 'VIDEO';
+    lbImg.style.display = isVid ? 'none' : ''; lbVid.style.display = isVid ? 'block' : 'none';
+    if (isVid) { if (lbVid.src !== m.src) lbVid.src = m.src; lbVid.play().catch(() => {}); }
+    else { lbVid.pause(); lbImg.src = m.src; lbImg.alt = m.alt; }
+    lbCap.textContent = album.querySelector('b').textContent + (imgs.length > 1 ? `  ·  ${cur + 1} / ${imgs.length}` : '');
+    lb.querySelectorAll('.prev,.next').forEach(b => b.style.display = imgs.length > 1 ? '' : 'none');
+    lb.classList.add('open');
+  }
+  items.forEach(it => it.addEventListener('click', () => {
+    if (it._swiped) { it._swiped = false; return; }
+    album = it; show(it._i);
+  }));
+  const close = () => { lb.classList.remove('open'); lbVid.pause(); album.go(cur); };
+  lb.querySelector('.x').onclick = close;
+  lb.querySelector('.prev').onclick = e => { e.stopPropagation(); show(cur - 1); };
+  lb.querySelector('.next').onclick = e => { e.stopPropagation(); show(cur + 1); };
+  lb.onclick = e => { if (e.target === lb) close(); };
+  lbVid.onclick = e => e.stopPropagation();
+  let lx = null;
+  lb.addEventListener('touchstart', e => lx = e.touches[0].clientX, {passive:true});
+  lb.addEventListener('touchend', e => {
+    if (lx === null) return;
+    const dx = e.changedTouches[0].clientX - lx; lx = null;
+    if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
+  });
+  addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+
+  // formulário -> WhatsApp
+  document.getElementById('quoteForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(e.target));
+    const data = d.data ? d.data.split('-').reverse().join('/') : 'a definir';
+    const msg = [
+      `Olá! Vim pelo site e gostaria de um orçamento ✨`,
+      ``,
+      `*Nome:* ${d.nome}`,
+      `*Evento:* ${d.tipo}`,
+      `*Data:* ${data}`,
+      d.local ? `*Local:* ${d.local}` : null,
+      d.convidados ? `*Convidados:* ${d.convidados}` : null,
+      d.ideia ? `*Ideia:* ${d.ideia}` : null
+    ].filter(x => x !== null).join('\n');
+    window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+</script>
+</body>
+</html>
