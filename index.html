@@ -651,6 +651,7 @@
             </dl>
             <button class="btn btn-dark" type="button" id="bEnviar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Enviar minha festa no WhatsApp</button>
             <button class="btn btn-ghost" type="button" id="bSalvar" style="width:100%;justify-content:center;margin-top:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>Salvar imagem do arco</button>
+            <p class="note" id="bDecoNota" hidden style="color:var(--brand);font-weight:600"></p>
             <p class="note">A prévia é ilustrativa. A gente cria o projeto completo pra você.</p>
           </div>
         </aside>
@@ -923,14 +924,16 @@
       svg.appendChild(defs);
       svg.appendChild(el('rect', { x:0, y:248, width:400, height:52, fill:'url(#floor)' }));
       svg.appendChild(el('ellipse', { cx:200, cy:262, rx:150, ry:12, fill:'#000', opacity:.06 }));
+      svg.appendChild(el('ellipse', { cx:200, cy:262, rx:118, ry:13, fill:'#FFFFFF', opacity:.55, id:'bRug' }));
       // painel redondo
       svg.appendChild(el('circle', { cx:200, cy:150, r:92, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2 }));
       const tt = el('text', { x:200, y:150, 'text-anchor':'middle', 'dominant-baseline':'middle', 'font-family':'Great Vibes, cursive', 'font-size':30, fill:'#6F409C', id:'bTemaTxt' });
       svg.appendChild(tt);
       // mesa / cilindros
       svg.appendChild(el('rect', { x:162, y:206, width:76, height:50, rx:6, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2 }));
-      svg.appendChild(el('rect', { x:124, y:222, width:30, height:34, rx:4, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2 }));
-      svg.appendChild(el('rect', { x:246, y:216, width:30, height:40, rx:4, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2 }));
+      svg.appendChild(el('rect', { x:124, y:222, width:30, height:34, rx:4, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2, id:'bCil1' }));
+      svg.appendChild(el('rect', { x:246, y:216, width:30, height:40, rx:4, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2, id:'bCil2' }));
+      svg.appendChild(el('g', { id:'bMesa' }));
       // bolo
       svg.appendChild(el('rect', { x:186, y:186, width:28, height:20, rx:3, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2, id:'bBolo' }));
       svg.appendChild(el('rect', { x:191, y:174, width:18, height:13, rx:3, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2, id:'bBolo2' }));
@@ -942,8 +945,111 @@
         g.appendChild(el('circle', { cx:b.x, cy:b.y, r:b.r, fill:'url(#shine)' }));
         svg.appendChild(g);
       });
+      svg.appendChild(el('g', { id:'bDeco' }));
     }
     drawScene();
+
+    // ---------- decoração por tema (desenhos originais, sem personagens licenciados) ----------
+    const norm = t => (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const LICENCIADOS = /pokemon|pikachu|barbie|stitch|frozen|elsa|anna|mickey|minnie|patrulha|homem.?aranha|spider|bluey|peppa|sonic|mario|hello kitty|moana|toy story|batman|super.?homem|vingadores|marvel|disney|lol|galinha pintadinha|bob esponja|naruto|minecraft|roblox|free fire|looney|baby shark|turma da monica|cocomelon|princesas disney|carros|relampago|lilo|encanto|wandinha|harry potter|star wars|ladybug|pj masks|masha|mundo bita|sonic/;
+    function temaTipo(t){
+      t = norm(t);
+      if (!t) return 'presentes';
+      if (LICENCIADOS.test(t)) return 'licenciado';
+      if (/dino|jurass|t.?rex/.test(t)) return 'dino';
+      if (/urs|teddy/.test(t)) return 'urso';
+      if (/sereia|mermaid/.test(t)) return 'sereia';
+      if (/margarid|flor|jardim|primavera|girass|borbolet/.test(t)) return 'flores';
+      if (/fundo do mar|oceano|peix|baleia|tubar|polvo|praia/.test(t)) return 'mar';
+      if (/arco.?iris|nuvem|chuva de amor/.test(t)) return 'arcoiris';
+      if (/futebol|time|corinthians|palmeiras|sao paulo|santos|flamengo|vasco|gremio|inter|cruzeiro|atletico|botafogo|fluminense|bola/.test(t)) return 'futebol';
+      if (/astronaut|espaco|foguete|planeta|galax|lua|estrela/.test(t)) return 'espaco';
+      if (/princes|rainha|realeza|coroa|castelo|rei /.test(t)) return 'realeza';
+      if (/neon|balada|disco|anos 80|glow/.test(t)) return 'neon';
+      return 'presentes';
+    }
+    function shade(hex, amt){
+      const n = parseInt(hex.slice(1), 16);
+      const f = v => Math.max(0, Math.min(255, Math.round(v + amt)));
+      return '#' + [f(n >> 16), f((n >> 8) & 255), f(n & 255)].map(v => v.toString(16).padStart(2, '0')).join('');
+    }
+    const at = (x, y, sc, inner, flip) => `<g transform="translate(${x} ${y}) scale(${flip ? -sc : sc} ${sc})">${inner}</g>`;
+    const FIG = {
+      dino: c => `<path d="M-16,-12 Q-34,-10 -42,0 Q-28,-4 -14,-4Z" fill="${c}"/>
+        <ellipse cx="0" cy="-15" rx="21" ry="14" fill="${c}"/><ellipse cx="2" cy="-10" rx="13" ry="7" fill="#fff" opacity=".35"/>
+        <path d="M9,-24 Q14,-44 25,-48 Q38,-51 39,-43 Q39,-36 29,-36 Q22,-34 20,-20Z" fill="${c}"/>
+        <path d="M-13,-28 l4,-8 l4,8Z M-4,-29 l4,-8 l4,8Z M5,-28 l4,-7 l4,7Z M14,-33 l3,-6 l3,6Z" fill="${shade(c,-45)}"/>
+        <rect x="-12" y="-6" width="7" height="8" rx="2" fill="${shade(c,-25)}"/><rect x="6" y="-6" width="7" height="8" rx="2" fill="${shade(c,-25)}"/>
+        <circle cx="31" cy="-44" r="1.8" fill="#2A2140"/><path d="M33,-39 q3,1 5,0" stroke="#2A2140" stroke-width="1" fill="none"/>`,
+      urso: c => `<ellipse cx="0" cy="-16" rx="15" ry="16" fill="#B98A64"/><ellipse cx="0" cy="-13" rx="9" ry="9" fill="#E8CDB5"/>
+        <circle cx="-10" cy="-51" r="5.5" fill="#B98A64"/><circle cx="10" cy="-51" r="5.5" fill="#B98A64"/><circle cx="-10" cy="-51" r="2.6" fill="#E8CDB5"/><circle cx="10" cy="-51" r="2.6" fill="#E8CDB5"/>
+        <circle cx="0" cy="-40" r="13" fill="#B98A64"/><ellipse cx="0" cy="-36" rx="6" ry="4.5" fill="#E8CDB5"/>
+        <circle cx="-4.5" cy="-43" r="1.6" fill="#2A2140"/><circle cx="4.5" cy="-43" r="1.6" fill="#2A2140"/><ellipse cx="0" cy="-37.5" rx="2" ry="1.4" fill="#2A2140"/>
+        <ellipse cx="-15" cy="-20" rx="5" ry="8" fill="#A87A55" transform="rotate(20 -15 -20)"/><ellipse cx="15" cy="-20" rx="5" ry="8" fill="#A87A55" transform="rotate(-20 15 -20)"/>
+        <circle cx="-8" cy="-2" r="5.5" fill="#A87A55"/><circle cx="8" cy="-2" r="5.5" fill="#A87A55"/>
+        <path d="M-7,-29 L0,-26 L7,-29 L7,-23 L0,-26 L-7,-23Z" fill="${c}"/><circle cx="0" cy="-26" r="1.8" fill="${shade(c,-30)}"/>`,
+      sereia: c => `<path d="M0,-62 C-13,-42 -11,-22 -4,-9 L-17,1 Q-5,-2 0,-7 Q5,-2 17,1 L4,-9 C11,-22 13,-42 0,-62Z" fill="${c}"/>
+        <path d="M-6,-46 q6,4 12,0 M-7,-36 q7,4 14,0 M-6,-26 q6,4 12,0" stroke="#fff" stroke-width="1.2" fill="none" opacity=".55"/>
+        <path d="M-30,0 a8,8 0 0 1 16,0Z" fill="#F3C2D4"/><path d="M-30,0 l8,-8 l8,8 M-26,0 l4,-8 l4,8" stroke="#fff" stroke-width=".8" fill="none" opacity=".7"/>
+        <path d="M18,0 a6,6 0 0 1 12,0Z" fill="#F7D9B9"/>`,
+      mar: c => `<g transform="translate(-8 -30)"><ellipse cx="0" cy="0" rx="13" ry="8" fill="${c}"/><path d="M11,0 L22,-8 L22,8Z" fill="${shade(c,-25)}"/><circle cx="-6" cy="-2" r="1.6" fill="#2A2140"/></g>
+        <g transform="translate(14 -12) scale(.7)"><ellipse cx="0" cy="0" rx="13" ry="8" fill="${shade(c,30)}"/><path d="M11,0 L22,-8 L22,8Z" fill="${c}"/><circle cx="-6" cy="-2" r="1.6" fill="#2A2140"/></g>
+        <path d="M-22,0 l3,-7 l7,-1 l-5,-5 l1,-7 l-6,4 l-6,-4 l1,7 l-5,5 l7,1Z" fill="#F28C38" transform="translate(4 0)"/>
+        <circle cx="4" cy="-50" r="3" fill="none" stroke="#8FD3EA" stroke-width="1.2"/><circle cx="-4" cy="-58" r="2" fill="none" stroke="#8FD3EA" stroke-width="1"/><circle cx="8" cy="-62" r="1.6" fill="none" stroke="#8FD3EA" stroke-width="1"/>`,
+      flores: c => { const fl = (x, y, r) => `<g transform="translate(${x} ${y})">${[0,45,90,135,180,225,270,315].map(a => `<ellipse cx="0" cy="${-r}" rx="${r*.42}" ry="${r*.8}" fill="#fff" stroke="#EDE6F3" stroke-width=".5" transform="rotate(${a})"/>`).join('')}<circle r="${r*.55}" fill="#F6C945"/></g>`;
+        return `<path d="M-2,-20 Q-6,-40 -12,-48 M0,-20 Q2,-44 4,-56 M2,-20 Q8,-36 14,-44" stroke="#6E9B5A" stroke-width="2" fill="none"/>
+        ${fl(-12,-48,6)}${fl(4,-56,7)}${fl(14,-44,5.5)}
+        <path d="M-11,-20 L11,-20 L8,0 L-8,0Z" fill="${c}"/><rect x="-12" y="-22" width="24" height="4" rx="2" fill="${shade(c,-20)}"/>`; },
+      arcoiris: () => `${['#F28C8C','#F6B26B','#F6D55C','#8EDCC2','#A9D3F2','#C9A9F0'].map((k, i) => `<path d="M${-28+i*4},-6 A${28-i*4},${28-i*4} 0 0 1 ${28-i*4},-6" stroke="${k}" stroke-width="4" fill="none"/>`).join('')}
+        <g fill="#fff"><circle cx="-26" cy="-6" r="7"/><circle cx="-19" cy="-9" r="6"/><circle cx="-14" cy="-4" r="5"/><circle cx="26" cy="-6" r="7"/><circle cx="19" cy="-9" r="6"/><circle cx="14" cy="-4" r="5"/></g>`,
+      futebol: c => `<circle cx="-12" cy="-12" r="12" fill="#fff" stroke="#2A2140" stroke-width="1"/><path d="M-12,-17 l4.8,3.5 l-1.8,5.6 h-6 l-1.8,-5.6Z" fill="#2A2140"/>
+        <path d="M-12,-17 v-7 M-7.2,-13.5 l6,-2.5 M-9,-7.9 l4,5 M-15,-7.9 l-4,5 M-16.8,-13.5 l-6,-2.5" stroke="#2A2140" stroke-width="1"/>
+        <path d="M8,-46 h20 v6 q0,12 -10,14 q-10,-2 -10,-14Z" fill="#E2B84B"/><path d="M8,-42 q-6,0 -6,6 q0,5 7,5 M28,-42 q6,0 6,6 q0,5 -7,5" stroke="#E2B84B" stroke-width="2" fill="none"/>
+        <rect x="15" y="-26" width="6" height="10" fill="#D4A63E"/><rect x="10" y="-16" width="16" height="6" rx="1" fill="${c}"/><rect x="8" y="-10" width="20" height="10" rx="1.5" fill="${shade(c,-25)}"/>`,
+      espaco: c => `<path d="M0,-62 Q10,-50 10,-30 L10,-14 L-10,-14 L-10,-30 Q-10,-50 0,-62Z" fill="#fff" stroke="#DCD3EA" stroke-width="1"/>
+        <circle cx="0" cy="-38" r="5" fill="${c}" stroke="#DCD3EA" stroke-width="1.5"/><path d="M-10,-24 L-17,-10 L-10,-14Z M10,-24 L17,-10 L10,-14Z" fill="${c}"/>
+        <path d="M-6,-14 Q0,0 6,-14Z" fill="#F6B26B"/><path d="M-3,-14 Q0,-6 3,-14Z" fill="#F6D55C"/>
+        <g transform="translate(26 -12)"><circle r="9" fill="${shade(c,25)}"/><ellipse rx="15" ry="4" fill="none" stroke="${shade(c,-25)}" stroke-width="2" transform="rotate(-18)"/></g>
+        <path d="M-26,-40 l1.5,3.5 l3.5,1.5 l-3.5,1.5 l-1.5,3.5 l-1.5,-3.5 l-3.5,-1.5 l3.5,-1.5Z" fill="#F6D55C"/>`,
+      realeza: c => `<path d="M-18,-6 L-18,-26 L-9,-16 L0,-32 L9,-16 L18,-26 L18,-6Z" fill="#E2B84B"/><rect x="-18" y="-8" width="36" height="8" rx="2" fill="#D4A63E"/>
+        <circle cx="-18" cy="-27" r="2.5" fill="${c}"/><circle cx="0" cy="-33" r="3" fill="${c}"/><circle cx="18" cy="-27" r="2.5" fill="${c}"/><circle cx="0" cy="-4" r="2.4" fill="${c}"/>`,
+      neon: c => `<line x1="0" y1="-64" x2="0" y2="-46" stroke="#BFC5CC" stroke-width="1"/><circle cx="0" cy="-32" r="14" fill="#C9CED6"/>
+        <path d="M-14,-32 h28 M-12,-39 h24 M-12,-25 h24 M0,-46 v28 M-7,-44 q-3,12 0,24 M7,-44 q3,12 0,24" stroke="#fff" stroke-width=".8" opacity=".8"/>
+        <circle cx="-5" cy="-37" r="3" fill="#fff" opacity=".8"/>
+        <text x="0" y="-2" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="11" fill="${c}" stroke="${c}" stroke-width=".3">party</text>`,
+      presentes: c => `<rect x="-20" y="-18" width="22" height="18" rx="2" fill="${c}"/><rect x="-10.5" y="-18" width="3" height="18" fill="#fff" opacity=".8"/><path d="M-9,-18 q-7,-9 -11,-2 M-9,-18 q7,-9 11,-2" stroke="#fff" stroke-width="2" fill="none"/>
+        <rect x="4" y="-12" width="16" height="12" rx="2" fill="${shade(c,30)}"/><rect x="10.5" y="-12" width="3" height="12" fill="#fff" opacity=".8"/>
+        <path d="M14,-40 l2,5 l5,2 l-5,2 l-2,5 l-2,-5 l-5,-2 l5,-2Z" fill="#F6D55C"/>`,
+      totem: c => `<rect x="-14" y="-62" width="28" height="62" rx="10" fill="#fff" stroke="${c}" stroke-width="2" stroke-dasharray="4 3"/>
+        <circle cx="0" cy="-42" r="8" fill="${shade(c,40)}"/><path d="M-11,-12 q11,-22 22,0Z" fill="${shade(c,40)}"/>
+        <path d="M0,-47 l1.6,3.4 l3.6,.5 l-2.6,2.5 l.6,3.6 l-3.2,-1.7 l-3.2,1.7 l.6,-3.6 l-2.6,-2.5 l3.6,-.5Z" fill="#fff"/>`
+    };
+    function drawDeco(pal){
+      const tipo = temaTipo(st.tema);
+      const c1 = st.cores[0] ? st.cores[0][1] : '#C9A9F0', c2 = st.cores[1] ? st.cores[1][1] : shade(c1, 30), c3 = st.cores[2] ? st.cores[2][1] : shade(c1, -25);
+      const fig = tipo === 'licenciado' ? 'totem' : tipo;
+      const f = FIG[fig];
+      let html = '';
+      // chão: um de cada lado (o da direita espelhado)
+      html += at(70, 266, 1.45, f(c1), false) + at(332, 266, fig === 'arcoiris' || fig === 'totem' ? 1.45 : 1.25, f(c2), true);
+      // terceira figura menor perto da mesa, quando o tema pede
+      if (['dino','urso','mar','totem','presentes','flores'].includes(fig)) html += at(112, 270, .8, f(c3), false);
+      svg.querySelector('#bDeco').innerHTML = html;
+      // mesa: docinhos e vasinho nas cores da festa
+      let mesa = '';
+      [170, 177, 223, 230].forEach((x, i) => { mesa += `<circle cx="${x}" cy="203" r="3.2" fill="${pal[i % pal.length]}"/><circle cx="${x}" cy="206" r="3.8" fill="#fff" stroke="#E3DBEE" stroke-width=".8"/>`; });
+      if (fig === 'flores') mesa += at(261, 216, .45, FIG.flores(c2));
+      else if (fig !== 'neon') mesa += at(139, 222, .45, f(c2));
+      svg.querySelector('#bMesa').innerHTML = mesa;
+      // cilindros e tapete nas cores
+      svg.querySelector('#bCil1').setAttribute('fill', st.cores[1] ? shade(c2, 40) : '#FFFFFF');
+      svg.querySelector('#bCil2').setAttribute('fill', st.cores[2] ? shade(c3, 40) : (st.cores[0] ? shade(c1, 55) : '#FFFFFF'));
+      svg.querySelector('#bRug').setAttribute('fill', st.cores[0] ? shade(c1, 70) : '#FFFFFF');
+      // aviso para temas com personagens de marca
+      const nota = $('bDecoNota');
+      nota.hidden = tipo !== 'licenciado';
+      if (tipo === 'licenciado') nota.textContent = `Os personagens de ${st.tema} entram na decoração real. Na prévia eles aparecem como totens.`;
+    }
 
     function render(){
       // cores
@@ -954,6 +1060,7 @@
       $('bCoresLabel').textContent = st.cores.length ? st.cores.map(c => c[0]).join(' · ') : 'Nenhuma cor escolhida ainda.';
       const pal = st.cores.length ? st.cores.map(c => c[1]) : ['#E9E3F1','#DCD3EA','#F1ECF7'];
       svg.querySelectorAll('.balloon').forEach(c => { c.setAttribute('fill', pal[c.dataset.k % pal.length]); });
+      drawDeco(pal);
       $('bMini').querySelectorAll('span').forEach((b, i) => { b.style.backgroundColor = pal[i % pal.length]; });
       const main = st.cores[0] ? st.cores[0][1] : '#FFFFFF';
       const bolo = svg.querySelector('#bBolo'), bolo2 = svg.querySelector('#bBolo2');
