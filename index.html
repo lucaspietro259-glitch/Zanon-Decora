@@ -719,7 +719,6 @@
               <label>Seu nome<input id="bNome" placeholder="Como podemos te chamar?"></label>
               <div class="row">
                 <label>Data da festa<input type="date" id="bData"></label>
-                <label>Convidados<input id="bConv" inputmode="numeric" placeholder="Aprox."></label>
               </div>
               <label>Cidade / bairro<input id="bLocal" placeholder="Ex.: SBC, Santo André"></label>
             </div>
@@ -766,7 +765,7 @@
         <p class="rv">Um processo simples, do primeiro “oi” até a última foto da festa.</p>
       </div>
       <div class="steps">
-        <div class="step rv"><b>Conte sua ideia</b><p>Fale com a gente no WhatsApp: data, local, tema e número de convidados.</p></div>
+        <div class="step rv"><b>Conte sua ideia</b><p>Fale com a gente no WhatsApp: data, local e tema.</p></div>
         <div class="step rv"><b>Proposta sob medida</b><p>Criamos uma sugestão de decoração com paleta, itens e valor.</p></div>
         <div class="step rv"><b>Montagem no local</b><p>No dia, nossa equipe chega antes e monta tudo com cuidado.</p></div>
         <div class="step rv"><b>É só celebrar</b><p>Você aproveita a festa. Depois, a desmontagem fica com a gente.</p></div>
@@ -808,7 +807,6 @@
         </div>
         <div class="row">
           <label>Cidade / bairro<input name="local" placeholder="Ex.: SBC, Santo André"></label>
-          <label>Convidados<input name="convidados" inputmode="numeric" placeholder="Aprox."></label>
         </div>
         <label>Tema, cores ou ideia<textarea name="ideia" placeholder="Conte o que você imagina…"></textarea></label>
         <button class="btn btn-dark" type="submit">
@@ -1478,7 +1476,6 @@
         st.num ? `*Números em LED:* ${[...st.num].join(' + ')}` : null,
         `*Itens:* ${st.itens.length ? st.itens.join(', ') : 'a definir'}`,
         `*Data:* ${data}`,
-        $('bConv').value.trim() ? `*Convidados:* ${$('bConv').value.trim()}` : null,
         $('bLocal').value.trim() ? `*Local:* ${$('bLocal').value.trim()}` : null,
         '',
         `*Veja a prévia do arco:* ${linkPrevia()}`,
@@ -1554,7 +1551,6 @@
       `*Evento:* ${d.tipo}`,
       `*Data:* ${data}`,
       d.local ? `*Local:* ${d.local}` : null,
-      d.convidados ? `*Convidados:* ${d.convidados}` : null,
       d.ideia ? `*Ideia:* ${d.ideia}` : null
     ].filter(x => x !== null).join('\n');
     window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank');

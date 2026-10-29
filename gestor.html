@@ -51,33 +51,63 @@
 
   /* ---------- documento do orçamento (tela e impressão) ---------- */
   #doc{display:none}
-  .folha{background:#fff;max-width:800px;margin:0 auto;padding:40px 46px;border-radius:12px;box-shadow:0 20px 50px -30px rgba(42,33,64,.5);color:var(--ink)}
-  .f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;border-bottom:2px solid transparent;border-image:var(--grad) 1;padding-bottom:18px}
-  .f-top img{height:110px}
-  .f-top .meta{text-align:right;font-size:13px;color:var(--soft);line-height:1.6}
-  .f-top .meta b{display:block;font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--ink);line-height:1.1}
-  .f-sec{margin-top:22px}
-  .f-sec h3{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
-  .f-dados{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;font-size:14px}
+  /* documento: mesma largura de uma folha A4, para a tela e o PDF ficarem iguais */
+  .folha{background:#fff;width:210mm;max-width:100%;margin:0 auto;padding:11mm 12mm;border-radius:12px;box-shadow:0 20px 50px -30px rgba(42,33,64,.5);color:var(--ink)}
+  .corpo{zoom:1}
+  .f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:2px solid transparent;border-image:var(--grad) 1;padding-bottom:10px}
+  .f-top img{height:84px}
+  .f-top .meta{text-align:right;font-size:12px;color:var(--soft);line-height:1.5}
+  .f-top .meta b{display:block;font-family:"Cormorant Garamond",serif;font-size:28px;color:var(--ink);line-height:1.05}
+  .f-sec{margin-top:13px}
+  .f-sec h3{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
+  .f-dados{display:grid;grid-template-columns:1fr 1fr;gap:3px 22px;font-size:13px}
   .f-dados span{color:var(--soft)}
-  .f-tab th{background:#F6F1FB;border:0}.f-tab td{padding:9px 6px}
-  .f-tot{margin-left:auto;max-width:300px;display:grid;gap:6px;margin-top:12px;font-size:14px}
+  .f-tab{font-size:13px}
+  .f-tab th{background:#F6F1FB;border:0;padding:6px}.f-tab td{padding:6px}
+  .f-tot{margin-left:auto;max-width:290px;display:grid;gap:4px;margin-top:8px;font-size:13px}
   .f-tot div{display:flex;justify-content:space-between}
-  .f-tot .big{font-size:20px;font-weight:800;color:var(--brand);border-top:1.5px solid var(--line);padding-top:8px}
-  .f-cond{font-size:13px;line-height:1.6;color:var(--ink);white-space:pre-line}
-  .f-ass{margin-top:30px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;font-size:13px;color:var(--soft)}
-  .f-ass .linha{border-top:1px solid var(--ink);padding-top:6px;min-width:240px;text-align:center}
-  .f-ass .slogan{font-family:"Great Vibes",cursive;font-size:26px;color:var(--brand)}
-  .doc-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 auto 18px;max-width:800px}
+  .f-tot .big{font-size:18px;font-weight:800;color:var(--brand);border-top:1.5px solid var(--line);padding-top:6px}
+  .f-cond{font-size:12px;line-height:1.5;color:var(--ink);white-space:pre-line}
+  .f-ass{margin-top:16px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;font-size:12px;color:var(--soft)}
+  .f-ass .linha{border-top:1px solid var(--ink);padding-top:5px;min-width:220px;text-align:center}
+  .f-ass .slogan{font-family:"Great Vibes",cursive;font-size:24px;color:var(--brand)}
+  .doc-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 auto 18px;max-width:210mm}
 
-  @media (max-width:880px){.grid{grid-template-columns:1fr}.folha{padding:26px 20px}.f-dados{grid-template-columns:1fr}.f-top img{height:80px}header img{height:40px}header h1{display:none}}
+  /* celular (só na tela; a impressão em PDF não muda) */
+  @media screen and (max-width:880px){
+    html,body{overflow-x:hidden}
+    .grid{grid-template-columns:1fr}
+    header{flex-wrap:wrap;padding:8px 12px;gap:8px}
+    header img{height:38px}header h1{display:none}
+    .tabs{width:100%;overflow-x:auto;flex-wrap:nowrap;gap:6px;padding-bottom:2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .tabs::-webkit-scrollbar{display:none}
+    .tabs button,.tabs a{white-space:nowrap;flex:0 0 auto;padding:8px 14px;font-size:13px}
+    main{padding:14px 12px 96px}
+    .card{padding:16px}
+    table{font-size:13px}
+    /* orçamento ocupa a tela inteira, sem cartão flutuando */
+    #doc{margin:-14px -12px 0}
+    .folha{width:100%;max-width:none;margin:0;border-radius:0;box-shadow:none;padding:18px 14px 24px}
+    .f-top{flex-direction:column;align-items:flex-start;gap:10px}
+    .f-top img{height:62px}
+    .f-top .meta{text-align:left}
+    .f-dados{grid-template-columns:1fr}
+    .f-tab{font-size:12px}.f-tab th,.f-tab td{padding:7px 4px}
+    .f-tot{max-width:none}
+    .f-ass{flex-direction:column;align-items:flex-start}
+    .f-ass .linha{min-width:0;width:100%}
+    .doc-bar{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;max-width:none;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--line);flex-wrap:nowrap;gap:8px;box-shadow:0 -10px 24px -18px rgba(42,33,64,.5)}
+    .doc-bar .btn{flex:1;padding:12px 8px;font-size:13px}
+    .toast{bottom:84px}
+  }
   @media print{
-    @page{size:A4;margin:12mm}
+    @page{size:A4;margin:0}
+    html,body{background:#fff;margin:0;padding:0}
     header,.doc-bar,.view,.toast{display:none!important}
-    body{background:#fff}
-    main{padding:0;max-width:none}
+    main{padding:0;max-width:none;margin:0}
     #doc{display:block!important}
-    .folha{box-shadow:none;padding:0;max-width:none}
+    .folha{box-shadow:none;border-radius:0;width:210mm;max-width:none;height:296mm;overflow:hidden;margin:0;padding:11mm 12mm;page-break-after:avoid;break-after:avoid}
+    .corpo{zoom:var(--z,1)}
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   }
 </style>
@@ -120,7 +150,6 @@
           <div class="row" style="margin-top:12px">
             <label>Data<input id="fData" type="date"></label>
             <label>Horário da montagem<input id="fHora" type="time"></label>
-            <label>Convidados<input id="fConv" inputmode="numeric"></label>
           </div>
           <div class="row" style="margin-top:12px">
             <label>Local / endereço<input id="fLocal"></label>
@@ -210,9 +239,9 @@
   <!-- ================= DOCUMENTO ================= -->
   <section id="doc">
     <div class="doc-bar">
-      <button class="btn" onclick="window.print()">Salvar PDF / Imprimir</button>
-      <button class="btn wa" id="docWa">Enviar no WhatsApp da cliente</button>
-      <button class="btn ghost" id="docVoltar">Voltar e editar</button>
+      <button class="btn" onclick="window.print()">Salvar PDF</button>
+      <button class="btn wa" id="docWa">Enviar no WhatsApp</button>
+      <button class="btn ghost" id="docVoltar">Editar</button>
     </div>
     <div class="folha" id="folha"></div>
   </section>
@@ -326,13 +355,13 @@
   const proximoNumero = () => { const n = LS.get('zd_seq', 0) + 1; return 'ZD-' + String(n).padStart(4, '0'); };
   function coleta(){
     return { cliente: $('cNome').value.trim(), fone: $('cFone').value.trim(), tipo: $('fTipo').value.trim(), tema: $('fTema').value.trim(),
-             data: $('fData').value, hora: $('fHora').value, conv: $('fConv').value.trim(), local: $('fLocal').value.trim(), det: $('fDet').value.trim(),
+             data: $('fData').value, hora: $('fHora').value, local: $('fLocal').value.trim(), det: $('fDet').value.trim(),
              itens: itens.map(i => ({ ...i })), desc: num($('vDesc').value), frete: num($('vFrete').value), sinal: num($('vSinal').value),
              validade: num($('vVal').value) || 7, pag: $('vPag').value, cond: $('vCond').value };
   }
   function preenche(o){
     $('cNome').value = o.cliente || ''; $('cFone').value = o.fone || ''; $('fTipo').value = o.tipo || ''; $('fTema').value = o.tema || '';
-    $('fData').value = o.data || ''; $('fHora').value = o.hora || ''; $('fConv').value = o.conv || ''; $('fLocal').value = o.local || ''; $('fDet').value = o.det || '';
+    $('fData').value = o.data || ''; $('fHora').value = o.hora || ''; $('fLocal').value = o.local || ''; $('fDet').value = o.det || '';
     itens = (o.itens || []).map(i => ({ ...i })); $('vDesc').value = String(o.desc || 0).replace('.', ','); $('vFrete').value = String(o.frete || 0).replace('.', ',');
     $('vSinal').value = o.sinal ?? 50; $('vVal').value = o.validade || 7; $('vPag').value = o.pag || 'Pix'; if (o.cond) $('vCond').value = o.cond;
     montaItens();
@@ -352,17 +381,25 @@
   };
   $('limpar').onclick = () => { if (confirm('Começar um orçamento novo? Os dados atuais não salvos serão apagados.')) limpa(); };
 
+  // garante uma única página: se o conteúdo passar da altura útil da folha A4, reduz o tamanho (só no PDF)
+  function ajustaFolha(){
+    const f = $('folha'), c = f.querySelector('.corpo'); if (!c) return;
+    f.style.setProperty('--z', 1);
+    const util = (296 - 22) / 25.4 * 96 - 6;          // altura útil: folha 296 mm menos margens (11 mm em cima e embaixo), em px
+    const z = Math.min(1, util / c.getBoundingClientRect().height);
+    f.style.setProperty('--z', z.toFixed(3));
+  }
+  addEventListener('beforeprint', ajustaFolha);
   function mostraDoc(o){
     const t = (() => { const sub = o.itens.reduce((s, it) => s + it.q * it.v, 0), tot = Math.max(0, sub - o.desc + o.frete), sinal = tot * o.sinal / 100; return { sub, tot, sinal, resto: tot - sinal }; })();
     const criado = new Date(o.criado), valido = new Date(criado.getTime() + o.validade * 864e5);
-    $('folha').innerHTML = `
+    $('folha').innerHTML = `<div class="corpo">
       <div class="f-top"><img src="img/logo-completa.png" alt="Zanon Decora">
         <div class="meta"><b>Orçamento</b>Nº ${esc(o.id)}<br>Emitido em ${criado.toLocaleDateString('pt-BR')}<br>Válido até ${valido.toLocaleDateString('pt-BR')}<br>WhatsApp (11) 96080-1908<br>@zanondecora · zanon-decora.shop</div></div>
       <div class="f-sec"><h3>Cliente e festa</h3><div class="f-dados">
         <div><span>Cliente:</span> ${esc(o.cliente)}</div><div><span>WhatsApp:</span> ${esc(o.fone)}</div>
         <div><span>Festa:</span> ${esc(o.tipo)}</div><div><span>Tema:</span> ${esc(o.tema)}</div>
-        <div><span>Data:</span> ${dataBR(o.data)}${o.hora ? ' · montagem ' + o.hora : ''}</div><div><span>Convidados:</span> ${esc(o.conv)}</div>
-        <div style="grid-column:1/-1"><span>Local:</span> ${esc(o.local)}</div></div>
+        <div><span>Data:</span> ${dataBR(o.data)}${o.hora ? ' · montagem ' + o.hora : ''}</div><div><span>Local:</span> ${esc(o.local)}</div></div>
         ${o.det ? `<p class="f-cond" style="margin-top:8px">${esc(o.det)}</p>` : ''}</div>
       <div class="f-sec"><h3>Itens</h3><table class="f-tab"><thead><tr><th>Serviço / item</th><th class="num">Qtd</th><th class="num">Valor un.</th><th class="num">Total</th></tr></thead><tbody>
         ${o.itens.map(i => `<tr><td>${esc(i.n)}</td><td class="num">${i.q}</td><td class="num">${R$(i.v)}</td><td class="num">${R$(i.q * i.v)}</td></tr>`).join('')}</tbody></table>
@@ -372,9 +409,10 @@
           <div><span>Sinal para reservar (${o.sinal}%)</span><span>${R$(t.sinal)}</span></div><div><span>Restante</span><span>${R$(t.resto)}</span></div>
           <div><span>Pagamento</span><span>${esc(o.pag)}</span></div></div></div>
       <div class="f-sec"><h3>Condições</h3><p class="f-cond">${esc(o.cond)}</p></div>
-      <div class="f-ass"><div class="slogan">Mais do que festas, criamos memórias</div><div class="linha">Sheila Zanon · Zanon Decora</div></div>`;
+      <div class="f-ass"><div class="slogan">Mais do que festas, criamos memórias</div><div class="linha">Sheila Zanon · Zanon Decora</div></div></div>`;
     $('doc').dataset.id = o.id;
     document.querySelectorAll('.view').forEach(v => v.classList.remove('on')); $('doc').style.display = 'block'; scrollTo(0, 0);
+    ajustaFolha();
     $('docWa').onclick = () => {
       const fone = (o.fone || '').replace(/\D/g, ''); const dest = fone ? (fone.length <= 11 ? '55' + fone : fone) : '';
       const msg = [`Olá, ${o.cliente}! Aqui é a Sheila, da Zanon Decora 🎈`, '', `Segue o orçamento *${o.id}* da sua festa${o.tema ? ' (' + o.tema + ')' : ''}${o.data ? ' para ' + dataBR(o.data) : ''}:`, '',
