@@ -622,9 +622,20 @@
             <h3><i>4</i>Modelo do arco</h3>
             <p class="hint">Estilos que já montamos nas nossas festas. Toque para ver na prévia.</p>
             <div class="arcos" id="bArcos"><button class="arco-opt on" type="button" data-arco="organico"><img src="img/dino-1.jpg" alt="Arco Orgânico completo da Zanon Decora (Dino party)" loading="lazy"><b>Orgânico completo</b><small>como na festa Dino party</small></button><button class="arco-opt" type="button" data-arco="desconstruido"><img src="img/azul-marinho-3.jpg" alt="Arco Desconstruído da Zanon Decora (Azul-marinho)" loading="lazy"><b>Desconstruído</b><small>como na festa Azul-marinho</small></button><button class="arco-opt" type="button" data-arco="meio"><img src="img/corinthians-2.jpg" alt="Arco Meio arco da Zanon Decora (Corinthians)" loading="lazy"><b>Meio arco</b><small>como na festa Corinthians</small></button><button class="arco-opt" type="button" data-arco="aro"><img src="img/rose-pessego-1.jpg" alt="Arco Aro redondo da Zanon Decora (Rosé & pêssego)" loading="lazy"><b>Aro redondo</b><small>como na festa Rosé & pêssego</small></button><button class="arco-opt" type="button" data-arco="arcoiris"><img src="img/lara-1.jpg" alt="Arco Arco-íris da Zanon Decora (Arco-íris da Lara)" loading="lazy"><b>Arco-íris</b><small>como na festa Arco-íris da Lara</small></button></div>
-            <div class="chips" id="bExtras" style="margin-top:14px">
+            <p class="hint" style="margin:18px 0 10px"><b style="color:var(--ink)">Acabamento dos balões</b></p>
+            <div class="chips" id="bAcab">
+              <button class="chip on" type="button" data-acab="fosco">Fosco</button>
+              <button class="chip" type="button" data-acab="cromado">Cromado</button>
+              <button class="chip" type="button" data-acab="perolado">Perolado</button>
+            </div>
+            <p class="hint" style="margin:18px 0 10px"><b style="color:var(--ink)">Detalhes no arco</b> · marque quantos quiser</p>
+            <div class="chips" id="bExtras">
               <button class="chip" type="button" data-x="luzes">Com luzinhas</button>
               <button class="chip" type="button" data-x="bubbles">Com balões transparentes</button>
+              <button class="chip" type="button" data-x="estrelas">Estrelas metalizadas</button>
+              <button class="chip" type="button" data-x="globos">Globos espelhados</button>
+              <button class="chip" type="button" data-x="margaridas">Margaridas de balão</button>
+              <button class="chip" type="button" data-x="cerejas">Cerejinhas de balão</button>
             </div>
           </div>
 
@@ -918,7 +929,14 @@
       const b = e.target.closest('.chip'); if (!b) return;
       b.classList.toggle('on'); st[b.dataset.x] = b.classList.contains('on'); drawArch(); render();
     });
-    const arcoTexto = () => NOMES_ARCO[st.arco] + [st.luzes && 'com luzinhas', st.bubbles && 'com balões transparentes'].filter(Boolean).map(x => ', ' + x).join('');
+    const EXTRAS = {"luzes": "com luzinhas", "bubbles": "com balões transparentes", "estrelas": "com estrelas metalizadas", "globos": "com globos espelhados", "margaridas": "com margaridas de balão", "cerejas": "com cerejinhas de balão"};
+    const arcoTexto = () => NOMES_ARCO[st.arco] + (st.acab && st.acab !== 'fosco' ? ', ' + st.acab : '') +
+      Object.keys(EXTRAS).filter(k => st[k]).map(k => ', ' + EXTRAS[k]).join('');
+    $('bAcab').addEventListener('click', e => {
+      const b = e.target.closest('.chip'); if (!b) return;
+      $('bAcab').querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
+      st.acab = b.dataset.acab; drawArch(); render();
+    });
     // itens
     $('bItens').addEventListener('change', () => {
       st.itens = [...$('bItens').querySelectorAll('input:checked')].map(i => i.value); render();
@@ -1009,9 +1027,27 @@
           for (let c = 0; c < 4; c++) h += `<circle class="confete" data-k="${b.k + c}" cx="${(b.x + Math.cos(c * 1.7 + i) * b.r * .5).toFixed(1)}" cy="${(b.y + Math.sin(c * 2.3 + i) * b.r * .5).toFixed(1)}" r="${Math.max(1, b.r * .1).toFixed(1)}"/>`;
           h += `<circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#shine)"/>`;
         } else {
-          h += `<g><circle class="balloon" data-k="${b.k}" cx="${b.x}" cy="${b.y}" r="${b.r}" fill="#E9E3F1"/><circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#shade)"/><circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#shine)"/></g>`;
+          const brilho = st.acab === 'cromado'
+            ? `<circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#cromo)"/><ellipse cx="${(b.x - b.r * .35).toFixed(1)}" cy="${(b.y - b.r * .38).toFixed(1)}" rx="${(b.r * .18).toFixed(1)}" ry="${(b.r * .3).toFixed(1)}" fill="#fff" opacity=".9" transform="rotate(-30 ${(b.x - b.r * .35).toFixed(1)} ${(b.y - b.r * .38).toFixed(1)})"/>`
+            : st.acab === 'perolado'
+            ? `<circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#perola)"/><circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#shine)" opacity=".7"/>`
+            : `<circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#shade)"/><circle cx="${b.x}" cy="${b.y}" r="${b.r}" fill="url(#shine)"/>`;
+          h += `<g><circle class="balloon" data-k="${b.k}" cx="${b.x}" cy="${b.y}" r="${b.r}" fill="#E9E3F1"/>${brilho}</g>`;
         }
       });
+      // detalhes espalhados ao longo do arco (posições fixas para não "pular")
+      const pontos = (n, desloc) => spine.length ? Array.from({ length: n }, (_, j) => {
+        const [x, y] = spine[Math.floor(spine.length * (j + .5) / n)];
+        return [x + Math.sin(j * 2.1 + desloc) * 9, y + Math.cos(j * 1.7 + desloc) * 9]; }) : [];
+      const estrela = (x, y, r) => { let d = ''; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * .45 : r; d += (i ? 'L' : 'M') + (x + Math.cos(a) * rr).toFixed(1) + ',' + (y + Math.sin(a) * rr).toFixed(1); } return d + 'Z'; };
+      if (st.estrelas) pontos(7, .3).forEach(([x, y], j) => { h += `<path d="${estrela(x, y, 11 + (j % 3) * 2)}" fill="url(#foil)" stroke="#fff" stroke-opacity=".6" stroke-width=".6"/>`; });
+      if (st.globos) pontos(4, 1.4).forEach(([x, y], j) => { const r = 10 + (j % 2) * 3;
+        h += `<circle cx="${x}" cy="${y}" r="${r}" fill="#C9CED6"/><g stroke="#fff" stroke-width=".5" opacity=".75"><path d="M${x - r},${y} h${2 * r} M${x - r * .87},${y - r / 2} h${1.74 * r} M${x - r * .87},${y + r / 2} h${1.74 * r}"/><ellipse cx="${x}" cy="${y}" rx="${r * .5}" ry="${r}" fill="none"/><path d="M${x},${y - r} v${2 * r}"/></g><circle cx="${x - r * .35}" cy="${y - r * .35}" r="${r * .25}" fill="#fff" opacity=".85"/>`; });
+      if (st.margaridas) pontos(7, 2.2).forEach(([x, y], j) => { const r = 9 + (j % 3) * 1.5;
+        h += [0, 45, 90, 135, 180, 225, 270, 315].map(a => `<ellipse cx="${x}" cy="${(y - r * .62).toFixed(1)}" rx="${(r * .32).toFixed(1)}" ry="${(r * .62).toFixed(1)}" fill="#fff" stroke="#D9CFE3" stroke-width=".5" transform="rotate(${a} ${x} ${y})"/>`).join('') + `<circle cx="${x}" cy="${y}" r="${(r * .38).toFixed(1)}" fill="#F6C945"/>`; });
+      if (st.cerejas) pontos(5, 3.1).forEach(([x, y]) => {
+        h += `<path d="M${x - 5},${y} q2,-12 6,-14 q3,4 4,14" stroke="#4E8A3A" stroke-width="1.1" fill="none"/><path d="M${x + 1},${y - 14} q7,-5 12,0 q-6,4 -12,0Z" fill="#6EB24F"/>` +
+             `<circle cx="${x - 5}" cy="${y + 4}" r="6" fill="#C8102E"/><circle cx="${x + 5}" cy="${y + 4}" r="6" fill="#C8102E"/><circle cx="${x - 7}" cy="${y + 2}" r="1.6" fill="#fff" opacity=".8"/><circle cx="${x + 3}" cy="${y + 2}" r="1.6" fill="#fff" opacity=".8"/>`; });
       if (st.luzes && spine.length) {
         const pts = spine.map(([x, y], i) => [x + Math.sin(i * .9) * 7, y + Math.cos(i * .7) * 7]);
         h += `<polyline points="${pts.map(p => p.map(v => v.toFixed(1)).join(',')).join(' ')}" fill="none" stroke="#E8D8A8" stroke-width=".7" opacity=".9"/>`;
@@ -1028,6 +1064,9 @@
       defs.innerHTML = '<radialGradient id="shine" cx=".33" cy=".28" r=".42"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></radialGradient>' +
                        '<radialGradient id="shade" cx=".72" cy=".82" r=".75"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>' +
                        '<linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6DDF2"/><stop offset="1" stop-color="#D8CCEA"/></linearGradient>';
+      defs.innerHTML += '<linearGradient id="cromo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".55" stop-color="#000" stop-opacity=".32"/><stop offset=".75" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>' +
+        '<radialGradient id="perola" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".6" stop-color="#F3E8FA" stop-opacity=".22"/><stop offset="1" stop-color="#B9A7D8" stop-opacity=".4"/></radialGradient>' +
+        '<linearGradient id="foil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9A7A33"/><stop offset=".35" stop-color="#E9CF86"/><stop offset=".55" stop-color="#FFF4CF"/><stop offset=".75" stop-color="#D2AE5C"/><stop offset="1" stop-color="#8E6F2C"/></linearGradient>';
       defs.innerHTML += LIB + '<filter id="luz" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
       svg.appendChild(defs);
       const luz = el('radialGradient', { id:'parede', cx:.5, cy:.42, r:.65 }); luz.innerHTML = '<stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#F6F1FB"/><stop offset="1" stop-color="#E7DEF2"/>'; defs.appendChild(luz);
@@ -1051,7 +1090,7 @@
       ass.textContent = 'projeto Zanon Decora'; svg.appendChild(ass);
     }
     drawScene();
-    st.arco = 'organico'; st.luzes = false; st.bubbles = false;
+    st.arco = 'organico'; st.acab = 'fosco';
     drawArch();
 
     // ---------- decoração por tema (desenhos originais, sem personagens licenciados) ----------
@@ -1122,9 +1161,8 @@
         <path d="M-14,-32 h28 M-12,-39 h24 M-12,-25 h24 M0,-46 v28 M-7,-44 q-3,12 0,24 M7,-44 q3,12 0,24" stroke="#fff" stroke-width=".8" opacity=".8"/>
         <circle cx="-5" cy="-37" r="3" fill="#fff" opacity=".8"/>
         <text x="0" y="-2" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="11" fill="${c}" stroke="${c}" stroke-width=".3">party</text>`,
-      presentes: c => `<rect x="-20" y="-18" width="22" height="18" rx="2" fill="${c}"/><rect x="-10.5" y="-18" width="3" height="18" fill="#fff" opacity=".8"/><path d="M-9,-18 q-7,-9 -11,-2 M-9,-18 q7,-9 11,-2" stroke="#fff" stroke-width="2" fill="none"/>
-        <rect x="4" y="-12" width="16" height="12" rx="2" fill="${shade(c,30)}"/><rect x="10.5" y="-12" width="3" height="12" fill="#fff" opacity=".8"/>
-        <path d="M14,-40 l2,5 l5,2 l-5,2 l-2,5 l-2,-5 l-5,-2 l5,-2Z" fill="#F6D55C"/>`,
+      presentes: c => [[-14, -24, 11, c], [6, -32, 13, shade(c, 35)], [18, -16, 10, '#FFFFFF'], [-2, -12, 10, shade(c, -20)], [-20, -8, 8, shade(c, 50)], [12, -2, 8, c]]
+        .map(([x, y, r, k]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${k}"/><circle cx="${x}" cy="${y}" r="${r}" fill="url(#shade)"/><circle cx="${x}" cy="${y}" r="${r}" fill="url(#shine)"/>`).join(''),
       totem: c => `<rect x="-14" y="-62" width="28" height="62" rx="10" fill="#fff" stroke="${c}" stroke-width="2" stroke-dasharray="4 3"/>
         <circle cx="0" cy="-42" r="8" fill="${shade(c,40)}"/><path d="M-11,-12 q11,-22 22,0Z" fill="${shade(c,40)}"/>
         <path d="M0,-47 l1.6,3.4 l3.6,.5 l-2.6,2.5 l.6,3.6 l-3.2,-1.7 l-3.2,1.7 l.6,-3.6 l-2.6,-2.5 l3.6,-.5Z" fill="#fff"/>`
@@ -1189,7 +1227,7 @@
       topos.forEach(([x, y, dir]) => {
         if (flores) mesa += use('vaso-margaridas', x - 12, y - 33, 24, 34, claro);
         else if (fig !== 'neon') mesa += at(x, y, .42, f(c2), dir);
-        else mesa += use('caixa-presente', x - 10, y - 19, 20, 20, c1);
+        else mesa += at(x, y, .5, FIG.presentes(c1), dir);
       });
       // topo do bolo personalizado pelo tema
       const cor = corForte(), tx = 200, ty = 160;
@@ -1257,7 +1295,8 @@
       if (st.cores.length) q.set('cores', st.cores.map(c => c[0]).join('|'));
       if (st.itens.length) q.set('itens', st.itens.join('|'));
       q.set('arco', st.arco);
-      const ex = [st.luzes && 'luzes', st.bubbles && 'bubbles'].filter(Boolean); if (ex.length) q.set('extras', ex.join('|'));
+      if (st.acab !== 'fosco') q.set('acab', st.acab);
+      const ex = Object.keys(EXTRAS).filter(k => st[k]); if (ex.length) q.set('extras', ex.join('|'));
       return SITE + '?' + q.toString() + '#monte';
     }
     (function abrirPrevia(){
@@ -1274,7 +1313,9 @@
       if (NOMES_ARCO[q.get('arco')]) st.arco = q.get('arco');
       $('bArcos').querySelectorAll('.arco-opt').forEach(x => x.classList.toggle('on', x.dataset.arco === st.arco));
       const ex = (q.get('extras') || '').split('|');
-      st.luzes = ex.includes('luzes'); st.bubbles = ex.includes('bubbles');
+      Object.keys(EXTRAS).forEach(k => { st[k] = ex.includes(k); });
+      if (['cromado', 'perolado'].includes(q.get('acab'))) st.acab = q.get('acab');
+      $('bAcab').querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.dataset.acab === st.acab));
       $('bExtras').querySelectorAll('.chip').forEach(c => c.classList.toggle('on', !!st[c.dataset.x]));
       drawArch();
       $('bShared').hidden = false;
