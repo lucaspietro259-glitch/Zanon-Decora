@@ -933,6 +933,11 @@
       seed = 7;
       const B = [], spine = [];
       const add = (x, y, r, k) => B.push({ x, y, r, k: k === undefined ? Math.floor(rnd() * 1000) : k });
+      // espelha a metade esquerda para o lado direito (arco no esquadro, igual dos dois lados)
+      const espelhar = () => {
+        B.slice().forEach(b => { if (b.x < 199) B.push({ x: 400 - b.x, y: b.y, r: b.r, k: b.k }); });
+        const meia = spine.slice(); for (let i = meia.length - 1; i >= 0; i--) spine.push([400 - meia[i][0], meia[i][1]]);
+      };
       if (modelo === 'desconstruido') {
         // sobe pela esquerda com balões gigantes na base e avança pelo topo (Azul-marinho, Rosa & cereja, Vermelho)
         const P = [[96, 258], [62, 150], [118, 34], [272, 64]];
@@ -948,25 +953,33 @@
         for (let i = 0; i < 8; i++) add(262 + (rnd() - .5) * 30, 58 + (rnd() - .5) * 26, 6 + rnd() * 8);
       } else if (modelo === 'aro') {
         // aro redondo completo em volta do painel (Rosé & pêssego)
-        for (let i = 0; i < 96; i++) { const a = (i / 96) * Math.PI * 2, x = 200 + Math.cos(a) * 100, y = 150 - Math.sin(a) * 100; spine.push([x, y]);
-          const grosso = Math.sin(a * 2 + 1) > .2 ? 1.25 : .85;
-          add(x + (rnd() - .5) * 20 * grosso, y + (rnd() - .5) * 20 * grosso, (7 + rnd() * 12) * grosso); }
-        spine.push(spine[0]);
-        for (let i = 0; i < 10; i++) add(122 + (rnd() - .5) * 36, 238 + (rnd() - .5) * 18, 10 + rnd() * 12);
+        // metade esquerda (de cima, passando pela esquerda, até embaixo) e depois espelha
+        for (let i = 0; i <= 48; i++) { const a = Math.PI / 2 + (i / 48) * Math.PI, x = 200 + Math.cos(a) * 100, y = 150 - Math.sin(a) * 100; spine.push([x, y]);
+          const grosso = (i > 6 && i < 20) || i > 36 ? 1.2 : .9;
+          add(Math.min(199, x + (rnd() - .5) * 18 * grosso), y + (rnd() - .5) * 18 * grosso, (7 + rnd() * 11) * grosso); }
+        for (let i = 0; i < 6; i++) add(150 + (rnd() - .5) * 30, 244 + (rnd() - .5) * 12, 9 + rnd() * 10);
+        espelhar();
       } else if (modelo === 'arcoiris') {
         // arco-íris de balões com nuvens nas pontas (Arco-íris da Lara)
-        for (let band = 0; band < 5; band++) { const R = 150 - band * 15, n = Math.round(Math.PI * R / 13.5);
-          for (let i = 0; i <= n; i++) { const a = Math.PI * (1 - i / n), x = 200 + Math.cos(a) * R, y = 250 - Math.sin(a) * R;
-            if (band === 0) spine.push([x, y]); add(x + (rnd() - .5) * 2, y + (rnd() - .5) * 2, 7.2, band); } }
-        [[58, 244], [342, 244]].forEach(([cx, cy]) => { for (let i = 0; i < 9; i++) add(cx + (rnd() - .5) * 52, cy + (rnd() - .5) * 18, 9 + rnd() * 9, -1); });
+        // faixas concêntricas ao painel: perna reta do chão até o centro + meia curva até o topo; depois espelha
+        for (let band = 0; band < 5; band++) { const R = 140 - band * 13;
+          for (let y = 250; y > 150; y -= 13.5) { if (band === 0) spine.push([200 - R, y]); add(200 - R, y, 6.6, band); }
+          const n = Math.round(Math.PI * R / 2 / 13.5);
+          for (let i = 0; i <= n; i++) { const a = Math.PI - (i / n) * Math.PI / 2, x = 200 + Math.cos(a) * R, y = 150 - Math.sin(a) * R;
+            if (band === 0) spine.push([x, y]); if (x < 199.5) add(x, y, 6.6, band); }
+          add(200, 150 - R, 6.6, band); }
+        for (let i = 0; i < 7; i++) add(200 - 116 + (rnd() - .5) * 60, 250 + (rnd() - .5) * 14, 9 + rnd() * 8, -1);
+        espelhar();
       } else {
         // orgânico completo envolvendo o painel (Dino party)
-        [[128, 118, 54, 26], [112, 104, 40, 18]].forEach(([rx, ry, n, jit], camada) => {
-          for (let i = 0; i < n; i++) { const t = i / (n - 1), ang = Math.PI * (1.1 - t * 1.2);
+        // metade esquerda (do chão até o topo) e depois espelha
+        [[128, 118, 28, 24], [112, 104, 21, 16]].forEach(([rx, ry, n, jit], camada) => {
+          for (let i = 0; i <= n; i++) { const t = i / n, ang = Math.PI * (1.1 - t * .6);
             const x = 200 + Math.cos(ang) * rx, y = 170 - Math.sin(ang) * ry; if (!camada) spine.push([x, y]);
-            add(x + (rnd() - .5) * jit, y + (rnd() - .5) * jit, 8 + rnd() * 14); } });
-        for (let i = 0; i < 10; i++) { const ang = Math.PI * (0.15 + rnd() * 0.7), rr = 140 + rnd() * 14;
+            add(Math.min(199, x + (rnd() - .5) * jit), y + (rnd() - .5) * jit, 8 + rnd() * 14); } });
+        for (let i = 0; i < 5; i++) { const ang = Math.PI * (0.55 + rnd() * 0.33), rr = 140 + rnd() * 14;
           add(200 + Math.cos(ang) * rr, 170 - Math.sin(ang) * rr, 5 + rnd() * 5); }
+        espelhar();
       }
       if (modelo !== 'arcoiris') B.sort((a, b) => a.r - b.r);
       return { B, spine };
@@ -974,7 +987,7 @@
     function drawArch(){
       const g = svg.querySelector('#bArco'); if (!g) return;
       // o arco-íris fica atrás do texto e da mesa; os outros arcos ficam na frente
-      if (st.arco === 'arcoiris') svg.querySelector('#bFundo').after(g); else svg.querySelector('#bDeco').before(g);
+      if (st.arco === 'arcoiris' || st.arco === 'aro') svg.querySelector('#bFundo').after(g); else svg.querySelector('#bDeco').before(g);
       const { B, spine } = genArch(st.arco);
       let h = '';
       B.forEach((b, i) => {
@@ -1130,15 +1143,17 @@
       // 3) móveis: cilindros, mesa, boleira com bolo e bandejas de docinhos
       let mesa = '';
       if (flores) mesa += use('folhagem-eucalipto', 96, 168, 30, 90, '#9DB08C') + use('folhagem-eucalipto', 276, 160, 30, 98, '#9DB08C');
-      mesa += use('cilindro', 106, 194, 36, 72, st.cores[1] ? shade(c2, 45) : '#FFFFFF');
-      mesa += use('cilindro', 258, 182, 40, 80, st.cores[2] ? shade(c3, 45) : claro);
+      mesa += use('cilindro', 104, 186, 40, 80, st.cores[1] ? shade(c2, 45) : claro);
+      mesa += use('cilindro', 256, 186, 40, 80, st.cores[1] ? shade(c2, 45) : claro);
       mesa += use('mesa-retangular', 150, 198, 100, 61, '#FFFFFF');
       mesa += use('boleira', 181, 178, 38, 32, '#FFFFFF');
       mesa += use('bolo-2-andares', 186, 156, 28, 33, st.cores[1] ? c2 : (st.cores[0] ? shade(c1, 40) : '#F6C1D3'));
       mesa += use('bandeja-docinhos', 152, 197, 28, 12, c1) + use('bandeja-docinhos', 220, 197, 28, 12, st.cores[2] ? c3 : c1);
       // em cima dos cilindros: um mimo do tema e um vaso ou presente
-      if (fig !== 'neon') mesa += at(124, 210, .42, f(c2));
-      mesa += flores ? use('vaso-margaridas', 266, 166, 24, 34, claro) : use('caixa-presente', 268, 180, 20, 20, c1);
+      // o mesmo enfeite em cima dos dois cilindros (espelhado)
+      if (flores) mesa += use('vaso-margaridas', 112, 170, 24, 34, claro) + use('vaso-margaridas', 264, 170, 24, 34, claro);
+      else if (fig !== 'neon') mesa += at(124, 204, .42, f(c2), false) + at(276, 204, .42, f(c2), true);
+      else mesa += use('caixa-presente', 114, 184, 20, 20, c1) + use('caixa-presente', 266, 184, 20, 20, c1);
       svg.querySelector('#bMesa').innerHTML = mesa;
 
       // 4) brinquedos de aluguel nos cantos, ao fundo
@@ -1148,9 +1163,8 @@
       svg.querySelector('#bBrinquedos').innerHTML = toys;
 
       // 5) personagens/figuras do tema na frente (mais para dentro quando há brinquedos)
-      const xl = brinquedos ? 84 : 70, xr = brinquedos ? 318 : 332, sc = brinquedos ? 1.25 : 1.45;
-      let html = at(xl, 268, sc, f(c1), false) + at(xr, 268, fig === 'arcoiris' || fig === 'totem' ? sc : sc * .86, f(c2), fig !== 'neon');
-      if (['dino','urso','mar','totem','presentes','flores'].includes(fig) && !brinquedos) html += at(122, 272, .7, f(c3), false);
+      const xl = brinquedos ? 84 : 70, sc = brinquedos ? 1.25 : 1.45;
+      let html = at(xl, 268, sc, f(c1), false) + at(400 - xl, 268, sc, f(c1), fig !== 'neon');
       svg.querySelector('#bDeco').innerHTML = html;
       svg.querySelector('#bRug').setAttribute('fill', st.cores[0] ? shade(c1, 70) : '#FFFFFF');
       // aviso para temas com personagens de marca
