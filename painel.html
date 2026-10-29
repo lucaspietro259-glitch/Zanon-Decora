@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Orçamentos · Zanon Decora</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Great+Vibes&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FBF9FD;--bg2:#F2EDF8;--ink:#2A2140;--soft:#6B6480;--line:#E3DBEE;--brand:#6F409C;--grad:linear-gradient(100deg,#6F409C,#5A6FC0 50%,#3D9ED1);--ok:#2E9E57;--card:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--ink);font-size:15px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  header img{height:52px}
+  header h1{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600}
+  .tabs{display:flex;gap:6px}
+  .tabs button{font:inherit;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+  .tabs button.on{background:var(--grad);color:#fff;border-color:transparent}
+  main{max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+  .view{display:none}.view.on{display:block}
+  .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:start}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin-bottom:18px}
+  .card h2{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;margin-bottom:12px}
+  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  label{display:grid;gap:5px;font-size:12.5px;font-weight:700;color:var(--soft)}
+  input,select,textarea{font:inherit;font-size:14.5px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);width:100%}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brand)}
+  textarea{min-height:70px;resize:vertical}
+  .btn{font:inherit;font-weight:800;font-size:14px;padding:11px 18px;border-radius:999px;border:0;cursor:pointer;background:var(--grad);color:#fff;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+  .btn.ghost{background:#fff;color:var(--brand);border:1.5px solid var(--brand)}
+  .btn.sm{padding:7px 12px;font-size:12.5px}
+  .btn.wa{background:#25D366}
+  table{width:100%;border-collapse:collapse}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);text-align:left;padding:8px 6px;border-bottom:1.5px solid var(--line)}
+  td{padding:6px;border-bottom:1px solid var(--line);vertical-align:middle}
+  td input{padding:8px 10px}
+  .num{text-align:right;white-space:nowrap}
+  .x{background:none;border:0;color:#C2508A;font-size:18px;cursor:pointer;padding:4px 8px}
+  .add-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .add-row select{flex:1;min-width:200px}
+  .tot{display:grid;gap:8px;font-size:15px}
+  .tot div{display:flex;justify-content:space-between}
+  .tot .big{font-size:22px;font-weight:800;color:var(--brand);border-top:1.5px solid var(--line);padding-top:10px}
+  .acts{display:grid;gap:10px;margin-top:14px}
+  .hint{font-size:12.5px;color:var(--soft);margin-top:6px}
+  .pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:800}
+  .p-aberto{background:#FFF4D6;color:#9A6B00}.p-fechado{background:#E2F5E9;color:var(--ok)}.p-perdido{background:#F6E3EA;color:#B23A6B}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;z-index:50}
+  .toast.on{opacity:1}
+
+  /* ---------- documento do orçamento (tela e impressão) ---------- */
+  #doc{display:none}
+  .folha{background:#fff;max-width:800px;margin:0 auto;padding:40px 46px;border-radius:12px;box-shadow:0 20px 50px -30px rgba(42,33,64,.5);color:var(--ink)}
+  .f-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;border-bottom:2px solid transparent;border-image:var(--grad) 1;padding-bottom:18px}
+  .f-top img{height:110px}
+  .f-top .meta{text-align:right;font-size:13px;color:var(--soft);line-height:1.6}
+  .f-top .meta b{display:block;font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--ink);line-height:1.1}
+  .f-sec{margin-top:22px}
+  .f-sec h3{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+  .f-dados{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;font-size:14px}
+  .f-dados span{color:var(--soft)}
+  .f-tab th{background:#F6F1FB;border:0}.f-tab td{padding:9px 6px}
+  .f-tot{margin-left:auto;max-width:300px;display:grid;gap:6px;margin-top:12px;font-size:14px}
+  .f-tot div{display:flex;justify-content:space-between}
+  .f-tot .big{font-size:20px;font-weight:800;color:var(--brand);border-top:1.5px solid var(--line);padding-top:8px}
+  .f-cond{font-size:13px;line-height:1.6;color:var(--ink);white-space:pre-line}
+  .f-ass{margin-top:30px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;font-size:13px;color:var(--soft)}
+  .f-ass .linha{border-top:1px solid var(--ink);padding-top:6px;min-width:240px;text-align:center}
+  .f-ass .slogan{font-family:"Great Vibes",cursive;font-size:26px;color:var(--brand)}
+  .doc-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 auto 18px;max-width:800px}
+
+  @media (max-width:880px){.grid{grid-template-columns:1fr}.folha{padding:26px 20px}.f-dados{grid-template-columns:1fr}.f-top img{height:80px}header img{height:40px}header h1{display:none}}
+  @media print{
+    @page{size:A4;margin:12mm}
+    header,.doc-bar,.view,.toast{display:none!important}
+    body{background:#fff}
+    main{padding:0;max-width:none}
+    #doc{display:block!important}
+    .folha{box-shadow:none;padding:0;max-width:none}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div style="display:flex;align-items:center;gap:12px"><img src="img/logo.png" alt="Zanon Decora"><h1>Orçamentos</h1></div>
+  <nav class="tabs">
+    <button data-v="novo" class="on">Novo orçamento</button>
+    <button data-v="hist">Histórico</button>
+    <button data-v="tabela">Tabela de preços</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ================= NOVO ORÇAMENTO ================= -->
+  <section class="view on" id="v-novo">
+    <div class="grid">
+      <div>
+        <div class="card">
+          <h2>Pedido do site</h2>
+          <label>Cole aqui o link da prévia que a cliente mandou (opcional)
+            <input id="link" placeholder="https://www.zanon-decora.shop/?festa=...#monte">
+          </label>
+          <p class="hint">Preenche festa, tema, cores, arco e itens automaticamente.</p>
+        </div>
+
+        <div class="card">
+          <h2>Cliente e festa</h2>
+          <div class="row">
+            <label>Nome da cliente<input id="cNome"></label>
+            <label>WhatsApp<input id="cFone" inputmode="tel" placeholder="(11) 9...."></label>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <label>Tipo de festa<input id="fTipo" list="tipos"></label>
+            <label>Tema<input id="fTema"></label>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <label>Data<input id="fData" type="date"></label>
+            <label>Horário da montagem<input id="fHora" type="time"></label>
+            <label>Convidados<input id="fConv" inputmode="numeric"></label>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <label>Local / endereço<input id="fLocal"></label>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <label>Detalhes (cores, arco, observações)<textarea id="fDet"></textarea></label>
+          </div>
+          <datalist id="tipos"><option>Aniversário infantil</option><option>Aniversário adulto</option><option>13, 15 ou 18 anos</option><option>Chá de bebê / revelação</option><option>Batizado</option><option>Casamento / noivado</option><option>Evento corporativo</option></datalist>
+        </div>
+
+        <div class="card">
+          <h2>Itens do orçamento</h2>
+          <table>
+            <thead><tr><th>Serviço / item</th><th style="width:70px">Qtd</th><th style="width:120px">Valor un.</th><th class="num" style="width:110px">Total</th><th style="width:36px"></th></tr></thead>
+            <tbody id="itens"></tbody>
+          </table>
+          <div class="add-row">
+            <select id="addSel"></select>
+            <button class="btn sm" id="addTab">+ Adicionar da tabela</button>
+            <button class="btn sm ghost" id="addLivre">+ Item avulso</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <h2>Valores</h2>
+          <div class="row">
+            <label>Desconto (R$)<input id="vDesc" inputmode="decimal" value="0"></label>
+            <label>Deslocamento (R$)<input id="vFrete" inputmode="decimal" value="0"></label>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <label>Sinal para reservar (%)<input id="vSinal" inputmode="numeric" value="50"></label>
+            <label>Validade (dias)<input id="vVal" inputmode="numeric" value="7"></label>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <label>Forma de pagamento<select id="vPag"><option>Pix</option><option>Pix ou cartão</option><option>Cartão (até 3x)</option><option>Dinheiro</option></select></label>
+          </div>
+          <div class="tot" style="margin-top:16px">
+            <div><span>Subtotal</span><b id="tSub">R$ 0,00</b></div>
+            <div><span>Desconto</span><b id="tDesc">− R$ 0,00</b></div>
+            <div><span>Deslocamento</span><b id="tFrete">R$ 0,00</b></div>
+            <div class="big"><span>Total</span><span id="tTot">R$ 0,00</span></div>
+            <div><span>Sinal (<span id="tSinalP">50</span>%)</span><b id="tSinal">R$ 0,00</b></div>
+            <div><span>Restante no dia</span><b id="tResto">R$ 0,00</b></div>
+          </div>
+          <div class="acts">
+            <button class="btn" id="gerar">Gerar orçamento</button>
+            <button class="btn ghost" id="limpar">Começar novo</button>
+          </div>
+          <p class="hint" id="numInfo"></p>
+        </div>
+        <div class="card">
+          <h2>Condições</h2>
+          <textarea id="vCond" style="min-height:150px"></textarea>
+          <p class="hint">Texto padrão salvo para os próximos orçamentos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HISTÓRICO ================= -->
+  <section class="view" id="v-hist">
+    <div class="card">
+      <h2>Orçamentos salvos</h2>
+      <div class="row" style="margin-bottom:12px"><input id="busca" placeholder="Buscar por cliente, tema ou número"></div>
+      <table><thead><tr><th>Nº</th><th>Cliente</th><th>Festa</th><th>Data</th><th class="num">Total</th><th>Status</th><th></th></tr></thead><tbody id="histBody"></tbody></table>
+      <p class="hint" id="histResumo"></p>
+    </div>
+    <div class="card">
+      <h2>Cópia de segurança</h2>
+      <p class="hint" style="margin:0 0 12px">Os orçamentos ficam salvos neste aparelho/navegador. Exporte de vez em quando para não perder, ou para levar para outro aparelho.</p>
+      <div class="add-row"><button class="btn sm" id="exportar">Exportar arquivo</button><label class="btn sm ghost" style="cursor:pointer">Importar arquivo<input type="file" id="importar" accept=".json" hidden></label></div>
+    </div>
+  </section>
+
+  <!-- ================= TABELA DE PREÇOS ================= -->
+  <section class="view" id="v-tabela">
+    <div class="card">
+      <h2>Tabela de serviços e preços</h2>
+      <p class="hint" style="margin:0 0 12px">Cadastre uma vez e use em todos os orçamentos. Os valores abaixo são só exemplo: ajuste para os seus preços.</p>
+      <table><thead><tr><th>Serviço / item</th><th style="width:160px">Categoria</th><th style="width:130px">Valor (R$)</th><th style="width:36px"></th></tr></thead><tbody id="tabBody"></tbody></table>
+      <div class="add-row"><button class="btn sm" id="tabNovo">+ Novo serviço</button></div>
+    </div>
+  </section>
+
+  <!-- ================= DOCUMENTO ================= -->
+  <section id="doc">
+    <div class="doc-bar">
+      <button class="btn" onclick="window.print()">Salvar PDF / Imprimir</button>
+      <button class="btn wa" id="docWa">Enviar no WhatsApp da cliente</button>
+      <button class="btn ghost" id="docVoltar">Voltar e editar</button>
+    </div>
+    <div class="folha" id="folha"></div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const R$ = v => 'R$ ' + (Math.round(v * 100) / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const num = v => parseFloat(String(v).replace(/\./g, '').replace(',', '.')) || 0;
+  const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' })[c]);
+  const dataBR = d => d ? d.split('-').reverse().join('/') : '';
+  const toast = m => { $('toast').textContent = m; $('toast').classList.add('on'); setTimeout(() => $('toast').classList.remove('on'), 2200); };
+  const LS = { get: (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+               set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+  // ---------- tabela de preços (exemplos para a Sheila ajustar) ----------
+  const TAB_PADRAO = [
+    ['Decoração completa (arco, painel, mesa e itens)', 'Decoração', 0], ['Arco de balões orgânico', 'Balões', 0], ['Arco desconstruído', 'Balões', 0],
+    ['Meio arco', 'Balões', 0], ['Aro redondo com balões', 'Balões', 0], ['Arco-íris de balões', 'Balões', 0], ['Cachos de balões avulsos', 'Balões', 0],
+    ['Painel redondo personalizado', 'Painéis', 0], ['Painel arco romano', 'Painéis', 0], ['Cortina metalizada', 'Painéis', 0],
+    ['Trio de cilindros', 'Mesas e apoios', 0], ['Mesinhas de madeira com ferro', 'Mesas e apoios', 0], ['Cubos de acrílico', 'Mesas e apoios', 0],
+    ['Letreiro neon', 'Iluminação', 0], ['Número em LED (por peça)', 'Iluminação', 0], ['Luzinhas no arco', 'Iluminação', 0],
+    ['Aluguel de pula-pula', 'Brinquedos', 0], ['Aluguel de piscina de bolinhas', 'Brinquedos', 0],
+    ['Montagem e desmontagem', 'Serviço', 0]
+  ];
+  let tabela = LS.get('zd_tabela', TAB_PADRAO.map(([n, c, v]) => ({ n, c, v })));
+  const COND_PADRAO = `• Reserva da data mediante pagamento do sinal.
+• Restante pago até o dia da festa, antes da montagem.
+• Montagem e desmontagem feitas pela equipe Zanon Decora.
+• Itens de decoração são de locação e devem ser devolvidos em perfeito estado.
+• Alterações de tema ou itens podem alterar o valor.
+• Orçamento válido pelo prazo indicado acima.`;
+  $('vCond').value = LS.get('zd_cond', COND_PADRAO);
+  $('vCond').oninput = () => LS.set('zd_cond', $('vCond').value);
+
+  function salvaTabela(){ LS.set('zd_tabela', tabela); montaSelect(); }
+  function montaTabela(){
+    $('tabBody').innerHTML = tabela.map((t, i) => `<tr>
+      <td><input data-i="${i}" data-k="n" value="${esc(t.n)}"></td>
+      <td><input data-i="${i}" data-k="c" value="${esc(t.c)}"></td>
+      <td><input data-i="${i}" data-k="v" inputmode="decimal" value="${t.v ? String(t.v).replace('.', ',') : ''}" placeholder="0,00"></td>
+      <td><button class="x" data-del="${i}" title="Remover">×</button></td></tr>`).join('');
+  }
+  $('tabBody').addEventListener('input', e => { const i = e.target.dataset.i; if (i === undefined) return; const k = e.target.dataset.k; tabela[i][k] = k === 'v' ? num(e.target.value) : e.target.value; salvaTabela(); });
+  $('tabBody').addEventListener('click', e => { const i = e.target.dataset.del; if (i === undefined) return; if (confirm('Remover este serviço da tabela?')) { tabela.splice(i, 1); salvaTabela(); montaTabela(); } });
+  $('tabNovo').onclick = () => { tabela.push({ n: 'Novo serviço', c: '', v: 0 }); salvaTabela(); montaTabela(); $('tabBody').lastElementChild.querySelector('input').select(); };
+  function montaSelect(){
+    const cats = [...new Set(tabela.map(t => t.c || 'Outros'))];
+    $('addSel').innerHTML = cats.map(c => `<optgroup label="${esc(c)}">` + tabela.map((t, i) => (t.c || 'Outros') === c ? `<option value="${i}">${esc(t.n)}${t.v ? ' · ' + R$(t.v) : ''}</option>` : '').join('') + '</optgroup>').join('');
+  }
+
+  // ---------- itens do orçamento ----------
+  let itens = [];
+  function montaItens(){
+    $('itens').innerHTML = itens.map((it, i) => `<tr>
+      <td><input data-i="${i}" data-k="n" value="${esc(it.n)}"></td>
+      <td><input data-i="${i}" data-k="q" inputmode="numeric" value="${it.q}"></td>
+      <td><input data-i="${i}" data-k="v" inputmode="decimal" value="${String(it.v).replace('.', ',')}"></td>
+      <td class="num">${R$(it.q * it.v)}</td>
+      <td><button class="x" data-del="${i}" title="Remover">×</button></td></tr>`).join('') ||
+      '<tr><td colspan="5" class="hint" style="padding:14px 6px">Nenhum item ainda. Adicione da tabela ou um item avulso.</td></tr>';
+    calc();
+  }
+  $('itens').addEventListener('input', e => { const i = e.target.dataset.i; if (i === undefined) return; const k = e.target.dataset.k;
+    itens[i][k] = k === 'n' ? e.target.value : num(e.target.value);
+    e.target.closest('tr').querySelector('.num').textContent = R$(itens[i].q * itens[i].v); calc(); });
+  $('itens').addEventListener('click', e => { const i = e.target.dataset.del; if (i === undefined) return; itens.splice(i, 1); montaItens(); });
+  $('addTab').onclick = () => { const t = tabela[$('addSel').value]; if (!t) return; itens.push({ n: t.n, q: 1, v: t.v || 0 }); montaItens(); };
+  $('addLivre').onclick = () => { itens.push({ n: '', q: 1, v: 0 }); montaItens(); $('itens').lastElementChild.querySelector('input').focus(); };
+
+  function totais(){
+    const sub = itens.reduce((s, it) => s + it.q * it.v, 0), desc = num($('vDesc').value), frete = num($('vFrete').value);
+    const tot = Math.max(0, sub - desc + frete), sp = num($('vSinal').value), sinal = tot * sp / 100;
+    return { sub, desc, frete, tot, sp, sinal, resto: tot - sinal };
+  }
+  function calc(){
+    const t = totais();
+    $('tSub').textContent = R$(t.sub); $('tDesc').textContent = '− ' + R$(t.desc); $('tFrete').textContent = R$(t.frete);
+    $('tTot').textContent = R$(t.tot); $('tSinalP').textContent = t.sp; $('tSinal').textContent = R$(t.sinal); $('tResto').textContent = R$(t.resto);
+  }
+  ['vDesc', 'vFrete', 'vSinal'].forEach(id => $(id).oninput = calc);
+
+  // ---------- link da prévia do "Monte sua festa" ----------
+  $('link').addEventListener('change', () => {
+    try {
+      const q = new URL($('link').value.trim()).searchParams;
+      if (q.get('festa')) $('fTipo').value = q.get('festa');
+      if (q.get('tema')) $('fTema').value = q.get('tema');
+      const NOMES_ARCO = { organico:'orgânico completo', desconstruido:'desconstruído', meio:'meio arco', aro:'aro redondo', arcoiris:'arco-íris' };
+      const det = [];
+      if (q.get('cores')) det.push('Cores: ' + q.get('cores').split('|').join(', '));
+      if (q.get('arco')) det.push('Arco: ' + (NOMES_ARCO[q.get('arco')] || q.get('arco')) + (q.get('acab') ? ', ' + q.get('acab') : ''));
+      if (q.get('extras')) det.push('Detalhes: ' + q.get('extras').split('|').join(', '));
+      if (q.get('apoio')) det.push('Cilindros: ' + q.get('apoio'));
+      if (q.get('num')) det.push('Números em LED: ' + q.get('num').split('').join(' + '));
+      if (q.get('itens')) det.push('Itens pedidos: ' + q.get('itens').split('|').join(', '));
+      $('fDet').value = det.join('\n');
+      // sugere itens da tabela a partir do pedido
+      const sugere = n => { const t = tabela.find(x => x.n.toLowerCase().includes(n)); if (t && !itens.some(i => i.n === t.n)) itens.push({ n: t.n, q: 1, v: t.v || 0 }); };
+      if (q.get('arco')) sugere({ organico:'orgânico', desconstruido:'desconstruído', meio:'meio arco', aro:'aro redondo', arcoiris:'arco-íris' }[q.get('arco')] || 'arco');
+      (q.get('itens') || '').split('|').forEach(i => { if (/pula/i.test(i)) sugere('pula-pula'); if (/piscina/i.test(i)) sugere('piscina'); if (/neon/i.test(i)) sugere('neon'); });
+      if (q.get('apoio') === 'madeira') sugere('madeira'); if (q.get('apoio') === 'transparente') sugere('acrílico'); if (q.get('apoio') === 'redondo') sugere('cilindros');
+      if (q.get('num')) { const t = tabela.find(x => /led/i.test(x.n)); if (t) itens.push({ n: t.n, q: q.get('num').length, v: t.v || 0 }); }
+      montaItens(); toast('Pedido importado do link');
+    } catch { toast('Link não reconhecido'); }
+  });
+
+  // ---------- numeração, salvar, documento ----------
+  let atualId = null;
+  const proximoNumero = () => { const n = LS.get('zd_seq', 0) + 1; return 'ZD-' + String(n).padStart(4, '0'); };
+  function coleta(){
+    return { cliente: $('cNome').value.trim(), fone: $('cFone').value.trim(), tipo: $('fTipo').value.trim(), tema: $('fTema').value.trim(),
+             data: $('fData').value, hora: $('fHora').value, conv: $('fConv').value.trim(), local: $('fLocal').value.trim(), det: $('fDet').value.trim(),
+             itens: itens.map(i => ({ ...i })), desc: num($('vDesc').value), frete: num($('vFrete').value), sinal: num($('vSinal').value),
+             validade: num($('vVal').value) || 7, pag: $('vPag').value, cond: $('vCond').value };
+  }
+  function preenche(o){
+    $('cNome').value = o.cliente || ''; $('cFone').value = o.fone || ''; $('fTipo').value = o.tipo || ''; $('fTema').value = o.tema || '';
+    $('fData').value = o.data || ''; $('fHora').value = o.hora || ''; $('fConv').value = o.conv || ''; $('fLocal').value = o.local || ''; $('fDet').value = o.det || '';
+    itens = (o.itens || []).map(i => ({ ...i })); $('vDesc').value = String(o.desc || 0).replace('.', ','); $('vFrete').value = String(o.frete || 0).replace('.', ',');
+    $('vSinal').value = o.sinal ?? 50; $('vVal').value = o.validade || 7; $('vPag').value = o.pag || 'Pix'; if (o.cond) $('vCond').value = o.cond;
+    montaItens();
+  }
+  function limpa(){ atualId = null; preenche({}); $('link').value = ''; $('vCond').value = LS.get('zd_cond', COND_PADRAO); $('numInfo').textContent = 'Novo orçamento: ' + proximoNumero(); }
+
+  $('gerar').onclick = () => {
+    const o = coleta();
+    if (!o.cliente) { toast('Preencha o nome da cliente'); $('cNome').focus(); return; }
+    if (!o.itens.length) { toast('Adicione pelo menos um item'); return; }
+    const hist = LS.get('zd_hist', []);
+    if (atualId) { const h = hist.find(x => x.id === atualId); Object.assign(h, o, { atualizado: new Date().toISOString() }); }
+    else { const seq = LS.get('zd_seq', 0) + 1; LS.set('zd_seq', seq); atualId = 'ZD-' + String(seq).padStart(4, '0');
+           hist.unshift({ id: atualId, criado: new Date().toISOString(), status: 'aberto', ...o }); }
+    LS.set('zd_hist', hist);
+    mostraDoc(hist.find(x => x.id === atualId));
+  };
+  $('limpar').onclick = () => { if (confirm('Começar um orçamento novo? Os dados atuais não salvos serão apagados.')) limpa(); };
+
+  function mostraDoc(o){
+    const t = (() => { const sub = o.itens.reduce((s, it) => s + it.q * it.v, 0), tot = Math.max(0, sub - o.desc + o.frete), sinal = tot * o.sinal / 100; return { sub, tot, sinal, resto: tot - sinal }; })();
+    const criado = new Date(o.criado), valido = new Date(criado.getTime() + o.validade * 864e5);
+    $('folha').innerHTML = `
+      <div class="f-top"><img src="img/logo-completa.png" alt="Zanon Decora">
+        <div class="meta"><b>Orçamento</b>Nº ${esc(o.id)}<br>Emitido em ${criado.toLocaleDateString('pt-BR')}<br>Válido até ${valido.toLocaleDateString('pt-BR')}<br>WhatsApp (11) 96080-1908<br>@zanondecora · zanon-decora.shop</div></div>
+      <div class="f-sec"><h3>Cliente e festa</h3><div class="f-dados">
+        <div><span>Cliente:</span> ${esc(o.cliente)}</div><div><span>WhatsApp:</span> ${esc(o.fone)}</div>
+        <div><span>Festa:</span> ${esc(o.tipo)}</div><div><span>Tema:</span> ${esc(o.tema)}</div>
+        <div><span>Data:</span> ${dataBR(o.data)}${o.hora ? ' · montagem ' + o.hora : ''}</div><div><span>Convidados:</span> ${esc(o.conv)}</div>
+        <div style="grid-column:1/-1"><span>Local:</span> ${esc(o.local)}</div></div>
+        ${o.det ? `<p class="f-cond" style="margin-top:8px">${esc(o.det)}</p>` : ''}</div>
+      <div class="f-sec"><h3>Itens</h3><table class="f-tab"><thead><tr><th>Serviço / item</th><th class="num">Qtd</th><th class="num">Valor un.</th><th class="num">Total</th></tr></thead><tbody>
+        ${o.itens.map(i => `<tr><td>${esc(i.n)}</td><td class="num">${i.q}</td><td class="num">${R$(i.v)}</td><td class="num">${R$(i.q * i.v)}</td></tr>`).join('')}</tbody></table>
+        <div class="f-tot"><div><span>Subtotal</span><span>${R$(t.sub)}</span></div>
+          ${o.desc ? `<div><span>Desconto</span><span>− ${R$(o.desc)}</span></div>` : ''}${o.frete ? `<div><span>Deslocamento</span><span>${R$(o.frete)}</span></div>` : ''}
+          <div class="big"><span>Total</span><span>${R$(t.tot)}</span></div>
+          <div><span>Sinal para reservar (${o.sinal}%)</span><span>${R$(t.sinal)}</span></div><div><span>Restante</span><span>${R$(t.resto)}</span></div>
+          <div><span>Pagamento</span><span>${esc(o.pag)}</span></div></div></div>
+      <div class="f-sec"><h3>Condições</h3><p class="f-cond">${esc(o.cond)}</p></div>
+      <div class="f-ass"><div class="slogan">Mais do que festas, criamos memórias</div><div class="linha">Sheila Zanon · Zanon Decora</div></div>`;
+    $('doc').dataset.id = o.id;
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('on')); $('doc').style.display = 'block'; scrollTo(0, 0);
+    $('docWa').onclick = () => {
+      const fone = (o.fone || '').replace(/\D/g, ''); const dest = fone ? (fone.length <= 11 ? '55' + fone : fone) : '';
+      const msg = [`Olá, ${o.cliente}! Aqui é a Sheila, da Zanon Decora 🎈`, '', `Segue o orçamento *${o.id}* da sua festa${o.tema ? ' (' + o.tema + ')' : ''}${o.data ? ' para ' + dataBR(o.data) : ''}:`, '',
+        ...o.itens.map(i => `• ${i.q > 1 ? i.q + 'x ' : ''}${i.n}: ${R$(i.q * i.v)}`), '',
+        o.desc ? `Desconto: − ${R$(o.desc)}` : null, o.frete ? `Deslocamento: ${R$(o.frete)}` : null,
+        `*Total: ${R$(t.tot)}*`, `Sinal para reservar a data (${o.sinal}%): ${R$(t.sinal)}`, `Pagamento: ${o.pag}`, `Válido até ${valido.toLocaleDateString('pt-BR')}.`, '',
+        'Envio também o PDF com todos os detalhes. Qualquer dúvida, estou à disposição! 💜'].filter(x => x !== null).join('\n');
+      window.open(`https://wa.me/${dest}?text=${encodeURIComponent(msg)}`, '_blank');
+    };
+  }
+  $('docVoltar').onclick = () => { $('doc').style.display = 'none'; abrir('novo'); };
+
+  // ---------- histórico ----------
+  function montaHist(){
+    const hist = LS.get('zd_hist', []), b = $('busca').value.toLowerCase();
+    const lista = hist.filter(h => !b || [h.id, h.cliente, h.tema, h.tipo].join(' ').toLowerCase().includes(b));
+    const tot = h => Math.max(0, h.itens.reduce((s, it) => s + it.q * it.v, 0) - h.desc + h.frete);
+    $('histBody').innerHTML = lista.map(h => `<tr>
+      <td><b>${esc(h.id)}</b></td><td>${esc(h.cliente)}</td><td>${esc(h.tema || h.tipo)}</td><td>${dataBR(h.data)}</td><td class="num">${R$(tot(h))}</td>
+      <td><select data-st="${h.id}" style="padding:5px 8px;width:auto"><option value="aberto"${h.status === 'aberto' ? ' selected' : ''}>Em aberto</option><option value="fechado"${h.status === 'fechado' ? ' selected' : ''}>Fechado ✓</option><option value="perdido"${h.status === 'perdido' ? ' selected' : ''}>Não fechou</option></select></td>
+      <td style="white-space:nowrap"><button class="btn sm ghost" data-ver="${h.id}">Ver</button> <button class="btn sm ghost" data-edit="${h.id}">Editar</button> <button class="btn sm ghost" data-dup="${h.id}">Duplicar</button></td></tr>`).join('') ||
+      '<tr><td colspan="7" class="hint" style="padding:14px 6px">Nenhum orçamento salvo ainda.</td></tr>';
+    const fech = hist.filter(h => h.status === 'fechado');
+    $('histResumo').textContent = `${hist.length} orçamento(s) · ${fech.length} fechado(s) · ${R$(fech.reduce((s, h) => s + tot(h), 0))} em festas fechadas`;
+  }
+  $('busca').oninput = montaHist;
+  $('histBody').addEventListener('change', e => { const id = e.target.dataset.st; if (!id) return; const hist = LS.get('zd_hist', []); hist.find(h => h.id === id).status = e.target.value; LS.set('zd_hist', hist); montaHist(); });
+  $('histBody').addEventListener('click', e => {
+    const hist = LS.get('zd_hist', []), d = e.target.dataset;
+    if (d.ver) mostraDoc(hist.find(h => h.id === d.ver));
+    if (d.edit) { const h = hist.find(x => x.id === d.edit); atualId = h.id; preenche(h); $('numInfo').textContent = 'Editando ' + h.id; abrir('novo'); }
+    if (d.dup) { const h = hist.find(x => x.id === d.dup); atualId = null; preenche({ ...h, data: '', cliente: '', fone: '' }); $('numInfo').textContent = 'Cópia de ' + h.id + ' (novo número ao gerar)'; abrir('novo'); }
+  });
+  $('exportar').onclick = () => {
+    const blob = new Blob([JSON.stringify({ hist: LS.get('zd_hist', []), seq: LS.get('zd_seq', 0), tabela, cond: $('vCond').value }, null, 1)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'orcamentos-zanon-' + new Date().toISOString().slice(0, 10) + '.json'; a.click();
+  };
+  $('importar').onchange = async e => {
+    try { const d = JSON.parse(await e.target.files[0].text());
+      if (!confirm('Importar este arquivo? Os orçamentos deste aparelho serão substituídos pelos do arquivo.')) return;
+      LS.set('zd_hist', d.hist || []); LS.set('zd_seq', d.seq || 0); if (d.tabela) { tabela = d.tabela; salvaTabela(); } if (d.cond) { $('vCond').value = d.cond; LS.set('zd_cond', d.cond); }
+      montaHist(); montaTabela(); toast('Arquivo importado');
+    } catch { toast('Arquivo inválido'); }
+  };
+
+  // ---------- abas do painel ----------
+  function abrir(v){
+    $('doc').style.display = 'none';
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+    document.querySelectorAll('.view').forEach(s => s.classList.toggle('on', s.id === 'v-' + v));
+    if (v === 'hist') montaHist(); if (v === 'tabela') montaTabela();
+    scrollTo(0, 0);
+  }
+  document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => abrir(b.dataset.v));
+  montaSelect(); montaTabela(); limpa();
+</script>
+</body>
+</html>
