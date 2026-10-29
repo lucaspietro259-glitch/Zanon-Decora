@@ -234,6 +234,7 @@
   .b-preview .btn{width:100%;justify-content:center}
   .b-preview .note{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:10px}
   .balloon{transition:fill .35s ease}
+  .shared-note{background:var(--grad);color:#fff;text-align:center;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px}
   .mini{display:none;justify-content:center;gap:4px;margin-top:16px;padding:14px;border-radius:18px;background:radial-gradient(120% 90% at 50% 0%,#FFFFFF 0%,#F4EFFA 100%)}
   .mini span{width:30px;height:35px;border-radius:50% 50% 47% 47%;position:relative;transition:background .3s;
              background-image:radial-gradient(circle at 32% 26%,rgba(255,255,255,.75),rgba(255,255,255,0) 40%),radial-gradient(circle at 72% 82%,rgba(0,0,0,.18),transparent 60%)}
@@ -638,6 +639,7 @@
         </div>
 
         <aside class="b-preview rv" aria-live="polite">
+          <div class="shared-note" id="bShared" hidden>Prévia enviada pela cliente</div>
           <div class="stage"><svg id="bSvg" viewBox="0 0 400 300" role="img" aria-label="Prévia da decoração com as cores escolhidas"></svg></div>
           <div class="sum">
             <h4>Sua festa</h4>
@@ -648,6 +650,7 @@
               <dt>Itens</dt><dd id="rItens">—</dd>
             </dl>
             <button class="btn btn-dark" type="button" id="bEnviar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Enviar minha festa no WhatsApp</button>
+            <button class="btn btn-ghost" type="button" id="bSalvar" style="width:100%;justify-content:center;margin-top:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>Salvar imagem do arco</button>
             <p class="note">A prévia é ilustrativa. A gente cria o projeto completo pra você.</p>
           </div>
         </aside>
@@ -968,10 +971,65 @@
     }
     render();
 
+    // ---- link da prévia: o site reabre a festa exatamente como a cliente montou ----
+    const SITE = 'https://www.zanon-decora.shop/';
+    function linkPrevia(){
+      const q = new URLSearchParams();
+      if (st.tipo) q.set('festa', st.tipo);
+      if (st.tema) q.set('tema', st.tema);
+      if (st.cores.length) q.set('cores', st.cores.map(c => c[0]).join('|'));
+      if (st.itens.length) q.set('itens', st.itens.join('|'));
+      return SITE + '?' + q.toString() + '#monte';
+    }
+    (function abrirPrevia(){
+      const q = new URLSearchParams(location.search);
+      if (!q.has('festa') && !q.has('cores') && !q.has('tema')) return;
+      const tipo = q.get('festa') || '';
+      $('bTipo').querySelectorAll('.chip').forEach(c => { if (c.textContent === tipo) { c.classList.add('on'); st.tipo = tipo; } });
+      st.tema = (q.get('tema') || '').slice(0, 60); $('bTema').value = st.tema;
+      $('bTemaSug').querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.textContent === st.tema));
+      st.cores = (q.get('cores') || '').split('|').map(n => CORES.find(c => c[0] === n)).filter(Boolean).slice(0, 3);
+      const itens = (q.get('itens') || '').split('|');
+      $('bItens').querySelectorAll('input').forEach(i => { i.checked = itens.includes(i.value); });
+      st.itens = [...$('bItens').querySelectorAll('input:checked')].map(i => i.value);
+      $('bShared').hidden = false;
+      render();
+      setTimeout(() => document.getElementById('monte').scrollIntoView(), 300);
+    })();
+
+    // ---- salvar a prévia como imagem (no celular abre o compartilhar) ----
+    $('bSalvar').addEventListener('click', async () => {
+      const clone = svg.cloneNode(true);
+      clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      clone.setAttribute('width', 1200); clone.setAttribute('height', 900);
+      const bg = document.createElementNS(NS, 'rect');
+      bg.setAttribute('width', 400); bg.setAttribute('height', 300); bg.setAttribute('fill', '#F6F1FB');
+      clone.insertBefore(bg, clone.firstChild.nextSibling);
+      const t = clone.querySelector('#bTemaTxt'); if (t) t.setAttribute('font-family', 'Georgia, serif');
+      const img = new Image();
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(clone));
+      await img.decode();
+      const cv = document.createElement('canvas'); cv.width = 1200; cv.height = 1020;
+      const ctx = cv.getContext('2d');
+      ctx.fillStyle = '#F6F1FB'; ctx.fillRect(0, 0, 1200, 1020);
+      ctx.drawImage(img, 0, 0, 1200, 900);
+      ctx.fillStyle = '#6F409C'; ctx.font = '600 34px Georgia, serif'; ctx.textAlign = 'center';
+      ctx.fillText('Zanon Decora · prévia da minha festa', 600, 960);
+      ctx.fillStyle = '#6B6480'; ctx.font = '24px sans-serif';
+      ctx.fillText([st.tema, st.cores.map(c => c[0]).join(', ')].filter(Boolean).join(' · '), 600, 1000);
+      const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
+      const file = new File([blob], 'minha-festa-zanon.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try { await navigator.share({ files: [file], title: 'Minha festa · Zanon Decora' }); return; } catch (e) { if (e.name === 'AbortError') return; }
+      }
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'minha-festa-zanon.png'; a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    });
+
     $('bEnviar').addEventListener('click', () => {
       const data = $('bData').value ? $('bData').value.split('-').reverse().join('/') : 'a definir';
       const msg = [
-        'Olá! Montei minha festa no site da Zanon Decora 🎈',
+        'Olá! Montei minha festa no site da Zanon Decora!',
         '',
         $('bNome').value.trim() ? `*Nome:* ${$('bNome').value.trim()}` : null,
         `*Festa:* ${st.tipo || 'a definir'}`,
@@ -981,6 +1039,8 @@
         `*Data:* ${data}`,
         $('bConv').value.trim() ? `*Convidados:* ${$('bConv').value.trim()}` : null,
         $('bLocal').value.trim() ? `*Local:* ${$('bLocal').value.trim()}` : null,
+        '',
+        `*Veja a prévia do arco:* ${linkPrevia()}`,
         '',
         'Pode me passar um orçamento?'
       ].filter(x => x !== null).join('\n');
@@ -994,7 +1054,7 @@
     const d = Object.fromEntries(new FormData(e.target));
     const data = d.data ? d.data.split('-').reverse().join('/') : 'a definir';
     const msg = [
-      `Olá! Vim pelo site e gostaria de um orçamento ✨`,
+      `Olá! Vim pelo site e gostaria de um orçamento!`,
       ``,
       `*Nome:* ${d.nome}`,
       `*Evento:* ${d.tipo}`,
