@@ -243,6 +243,9 @@
   .arco-opt.on{border-color:transparent;box-shadow:0 0 0 2.5px var(--brand);background:#FBF8FE}
   @media (max-width:760px){.arcos{grid-template-columns:repeat(3,1fr)}}
   .cta-hint{font-size:14px;line-height:1.5;color:var(--ink);background:linear-gradient(100deg,rgba(111,64,156,.08),rgba(61,158,209,.08));border-radius:14px;padding:12px 14px;margin-bottom:14px}
+  .led-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .led-row input{max-width:200px}
+  .led-aviso{font-size:13px;color:#C2508A;font-weight:600}
   .shared-note{background:var(--grad);color:#fff;text-align:center;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px}
   .mini{display:none;justify-content:center;gap:4px;margin-top:16px;padding:14px;border-radius:18px;background:radial-gradient(120% 90% at 50% 0%,#FFFFFF 0%,#F4EFFA 100%)}
   .mini span{width:30px;height:35px;border-radius:50% 50% 47% 47%;position:relative;transition:background .3s;
@@ -647,6 +650,10 @@
               <button class="chip" type="button" data-apoio="redondo">Redondos</button>
               <button class="chip" type="button" data-apoio="madeira">Madeira com ferro</button>
             </div>
+            <p class="hint"><b style="color:var(--ink)">Números em LED</b> · temos peças do 0 ao 9 (cada número é uma peça)</p>
+            <div class="led-row">
+              <input id="bNum" inputmode="numeric" maxlength="3" placeholder="Ex.: 7, 15 ou 45" aria-label="Números em LED">
+            </div>
             <p class="hint">Marque quantos quiser.</p>
             <div class="items" id="bItens">
               <label class="item-opt"><input type="checkbox" value="Arco de balões">Arco de balões</label>
@@ -685,6 +692,7 @@
               <dt>Cores</dt><dd id="rCores">—</dd>
               <dt>Arco</dt><dd id="rArco">—</dd>
               <dt>Cilindros</dt><dd id="rApoio">Sugestão da Zanon</dd>
+              <dt>Números LED</dt><dd id="rNum">—</dd>
               <dt>Itens</dt><dd id="rItens">—</dd>
             </dl>
             <p class="cta-hint">Gostou? Envie pra gente: transformamos essa prévia no projeto completo da sua festa, com orçamento sem compromisso.</p>
@@ -939,6 +947,11 @@
     const EXTRAS = {"luzes": "com luzinhas", "bubbles": "com balões transparentes", "estrelas": "com estrelas metalizadas", "globos": "com globos espelhados", "margaridas": "com margaridas de balão", "cerejas": "com cerejinhas de balão"};
     const arcoTexto = () => NOMES_ARCO[st.arco] + (st.acab && st.acab !== 'fosco' ? ', ' + st.acab : '') +
       Object.keys(EXTRAS).filter(k => st[k]).map(k => ', ' + EXTRAS[k]).join('');
+    // números em LED: dígitos de 0 a 9, até 3 peças
+    $('bNum').addEventListener('input', e => {
+      st.num = e.target.value.replace(/[^0-9]/g, '').slice(0, 3); if (e.target.value !== st.num) e.target.value = st.num;
+      render();
+    });
     const NOMES_APOIO = { transparente:'Transparentes (acrílico)', redondo:'Redondos', madeira:'Madeira com ferro' };
     $('bApoio').addEventListener('click', e => {
       const b = e.target.closest('.chip'); if (!b) return;
@@ -1081,6 +1094,7 @@
       defs.innerHTML += '<linearGradient id="cromo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset=".55" stop-color="#000" stop-opacity=".32"/><stop offset=".75" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>' +
         '<radialGradient id="perola" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".6" stop-color="#F3E8FA" stop-opacity=".22"/><stop offset="1" stop-color="#B9A7D8" stop-opacity=".4"/></radialGradient>' +
         '<linearGradient id="foil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9A7A33"/><stop offset=".35" stop-color="#E9CF86"/><stop offset=".55" stop-color="#FFF4CF"/><stop offset=".75" stop-color="#D2AE5C"/><stop offset="1" stop-color="#8E6F2C"/></linearGradient>';
+      defs.innerHTML += '<filter id="led" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
       defs.innerHTML += LIB + '<filter id="luz" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
       svg.appendChild(defs);
       const luz = el('radialGradient', { id:'parede', cx:.5, cy:.42, r:.65 }); luz.innerHTML = '<stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#F6F1FB"/><stop offset="1" stop-color="#E7DEF2"/>'; defs.appendChild(luz);
@@ -1277,6 +1291,18 @@
       // 5) personagens/figuras do tema na frente (mais para dentro quando há brinquedos)
       const xl = brinquedos ? 84 : 70, sc = brinquedos ? 1.25 : 1.45;
       let html = at(xl, 268, sc, f(c1), false) + at(400 - xl, 268, sc, f(c1), fig !== 'neon');
+      if (st.num) {
+        // cada número é uma peça separada, em pé no chão, na frente da mesa
+        const n = st.num.length, larg = 30, gap = 12, x0 = 200 - (n * larg + (n - 1) * gap) / 2, base = 290;
+        const txt = (d, cx, extra) => `<text x="${cx}" y="${base}" text-anchor="middle" font-family="Manrope, Arial Black, sans-serif" font-weight="800" font-size="46" fill="none" stroke-linejoin="round" ${extra}>${d}</text>`;
+        [...st.num].forEach((d, i) => {
+          const cx = x0 + i * (larg + gap) + larg / 2;
+          html += `<g><ellipse cx="${cx}" cy="${base + 3}" rx="16" ry="3" fill="#000" opacity=".18"/><rect x="${cx - 13}" y="${base}" width="26" height="4" rx="1.5" fill="#2A2A33"/>` +
+            txt(d, cx, 'stroke="#2A2A33" stroke-width="8" opacity=".55"') +
+            txt(d, cx, 'stroke="#FFFFFF" stroke-width="4.2" filter="url(#led)"') +
+            txt(d, cx, 'stroke="#CFC8DC" stroke-width="1.3"') + `</g>`;
+        });
+      }
       svg.querySelector('#bDeco').innerHTML = html;
       svg.querySelector('#bRug').setAttribute('fill', st.cores[0] ? shade(c1, 70) : '#FFFFFF');
       // aviso para temas com personagens de marca
@@ -1309,6 +1335,7 @@
       $('rTema').textContent = st.tema || '—';
       $('rCores').innerHTML = st.cores.length ? '<span class="dots">' + st.cores.map(c => `<span style="background:${c[1]}" title="${c[0]}"></span>`).join('') + '</span> ' + st.cores.map(c => c[0]).join(', ') : '—';
       $('rItens').textContent = st.itens.length ? st.itens.join(', ') : '—';
+      if ($('rNum')) $('rNum').textContent = st.num ? [...st.num].join(' + ') + ` (${st.num.length} peça${st.num.length > 1 ? 's' : ''})` : '—';
       if ($('rApoio')) $('rApoio').textContent = st.apoio ? NOMES_APOIO[st.apoio] : 'Sugestão da Zanon';
       if ($('rArco')) $('rArco').textContent = NOMES_ARCO ? arcoTexto() : '—';
     }
@@ -1324,6 +1351,7 @@
       if (st.itens.length) q.set('itens', st.itens.join('|'));
       q.set('arco', st.arco);
       if (st.apoio) q.set('apoio', st.apoio);
+      if (st.num) q.set('num', st.num);
       if (st.acab !== 'fosco') q.set('acab', st.acab);
       const ex = Object.keys(EXTRAS).filter(k => st[k]); if (ex.length) q.set('extras', ex.join('|'));
       return SITE + '?' + q.toString() + '#monte';
@@ -1341,6 +1369,7 @@
       st.itens = [...$('bItens').querySelectorAll('input:checked')].map(i => i.value);
       if (NOMES_ARCO[q.get('arco')]) st.arco = q.get('arco');
       st.apoio = NOMES_APOIO[q.get('apoio')] ? q.get('apoio') : '';
+      st.num = (q.get('num') || '').replace(/[^0-9]/g, '').slice(0, 3); $('bNum').value = st.num;
       $('bApoio').querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.dataset.apoio === st.apoio));
       $('bArcos').querySelectorAll('.arco-opt').forEach(x => x.classList.toggle('on', x.dataset.arco === st.arco));
       const ex = (q.get('extras') || '').split('|');
@@ -1394,6 +1423,7 @@
         `*Cores:* ${st.cores.length ? st.cores.map(c => c[0]).join(', ') : 'a definir'}`,
         `*Arco:* ${arcoTexto()}`,
         st.apoio ? `*Cilindros:* ${NOMES_APOIO[st.apoio]}` : null,
+        st.num ? `*Números em LED:* ${[...st.num].join(' + ')}` : null,
         `*Itens:* ${st.itens.length ? st.itens.join(', ') : 'a definir'}`,
         `*Data:* ${data}`,
         $('bConv').value.trim() ? `*Convidados:* ${$('bConv').value.trim()}` : null,
