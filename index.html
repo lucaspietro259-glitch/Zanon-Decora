@@ -301,6 +301,11 @@
   .foot .social a:hover{background:var(--grad);color:#fff;border-color:transparent}
   .foot .social svg{width:18px;height:18px}
 
+  /* ---------- botão da área do gestor ---------- */
+  .nav-acoes{display:flex;align-items:center;gap:10px}
+  .gestor-btn{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:var(--brand);border:1.5px solid var(--brand-soft);background:#fff;padding:9px 14px;border-radius:999px;transition:.2s}
+  .gestor-btn:hover{border-color:var(--brand);background:#FBF8FE}
+  .gestor-btn svg{width:16px;height:16px}
   /* ---------- abas ---------- */
   .tab-hidden{display:none!important}
   .menu a.on{color:var(--brand)}
@@ -357,6 +362,8 @@
     .nav,header.scrolled .nav{height:84px}
     .logo img,header.scrolled .logo img{height:70px}
     .burger{display:none}
+    .nav-acoes .btn{display:none}
+    .gestor-btn{padding:9px 12px;font-size:12.5px}
     .menu{display:none!important}
     body{padding-bottom:78px}
     .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;height:68px;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);box-shadow:0 -8px 24px -18px rgba(42,33,64,.5)}
@@ -403,7 +410,10 @@
       <a href="#servicos" data-tab="servicos">Serviços e aluguel</a>
       <a href="#orcamento" data-tab="contato">Contato</a>
     </nav>
-    <a class="btn btn-dark" href="#orcamento">Pedir orçamento</a>
+    <div class="nav-acoes">
+      <a class="gestor-btn" href="/gestor.html" rel="nofollow" title="Área do gestor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Gestor</span></a>
+      <a class="btn btn-dark" href="#orcamento">Pedir orçamento</a>
+    </div>
     <button class="burger" id="burger" aria-label="Abrir menu"><i></i><i></i></button>
   </div>
 </header>
