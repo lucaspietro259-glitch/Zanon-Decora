@@ -1,8 +1,8 @@
-// Protege o painel de orçamentos com usuário e senha (conferidos no servidor da Vercel).
+// Protege a Área do gestor (orçamentos) com usuário e senha (conferidos no servidor da Vercel).
 // O usuário e a senha NÃO ficam no código: são cadastrados na Vercel em
 // Settings → Environment Variables, com os nomes PAINEL_USUARIO e PAINEL_SENHA.
 
-export const config = { matcher: ['/painel', '/painel.html'] };
+export const config = { matcher: ['/gestor', '/gestor.html', '/painel', '/painel.html'] };
 
 export default function middleware(request) {
   const usuario = process.env.PAINEL_USUARIO;
