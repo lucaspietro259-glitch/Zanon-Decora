@@ -192,6 +192,64 @@
   .rent-note{margin-top:18px;font-size:12px;color:var(--ink-soft);text-align:right}
   @media (max-width:760px){.rent-grid{grid-template-columns:1fr}.rent-body{padding:24px 22px 28px}.rent-body h3{font-size:28px}}
 
+
+  /* ---------- monte sua festa ---------- */
+  .builder{background:var(--bg-2)}
+  .b-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
+  .b-steps{display:grid;gap:22px}
+  .b-step{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:28px 30px}
+  .b-step h3{font-size:30px;display:flex;align-items:center;gap:14px;margin-bottom:6px}
+  .b-step h3 i{font-style:normal;font-family:var(--sans);font-size:14px;font-weight:800;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#fff;flex:none}
+  .b-step .hint{color:var(--ink-soft);font-size:14px;margin-bottom:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-family:inherit;font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:.18s}
+  .chip:hover{border-color:var(--brand)}
+  .chip.on{background:var(--grad);color:#fff;border-color:transparent}
+  .theme-input{margin-top:14px}
+  .swatches{display:grid;grid-template-columns:repeat(9,1fr);gap:10px}
+  .sw{aspect-ratio:1;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer;position:relative;transition:transform .15s;padding:0}
+  .sw:hover{transform:scale(1.08)}
+  .sw.on{box-shadow:0 0 0 3px var(--brand)}
+  .sw.on::after{content:attr(data-n);position:absolute;inset:0;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  .sw-label{margin-top:12px;font-size:14px;color:var(--ink-soft);min-height:20px}
+  .items{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .item-opt{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--line);border-radius:16px;cursor:pointer;font-size:14.5px;font-weight:600;background:#fff;transition:.18s;user-select:none}
+  .item-opt input{appearance:none;width:22px;height:22px;border-radius:7px;border:1.5px solid var(--line);flex:none;display:grid;place-items:center;margin:0;padding:0;background:#fff;cursor:pointer}
+  .item-opt input:checked{background:var(--grad);border-color:transparent}
+  .item-opt input:checked::after{content:"✓";color:#fff;font-size:14px;font-weight:800}
+  .item-opt:has(input:checked){border-color:var(--brand);background:#FBF8FE}
+  .item-opt small{display:block;font-weight:500;color:var(--ink-soft);font-size:12.5px}
+  .b-details{display:grid;gap:14px}
+
+  .b-preview{position:sticky;top:110px;background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(42,33,64,.5)}
+  .b-preview .stage{background:radial-gradient(120% 90% at 50% 0%,#FFFFFF 0%,#F4EFFA 70%,#EAE2F5 100%)}
+  .b-preview .stage svg{display:block;width:100%;height:auto}
+  .b-preview .sum{padding:24px 28px 28px}
+  .b-preview .sum h4{font-family:var(--serif);font-size:28px;font-weight:600;margin-bottom:12px}
+  .b-preview dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin-bottom:20px}
+  .b-preview dt{color:var(--ink-soft);font-weight:600}
+  .b-preview dd{font-weight:600}
+  .b-preview .dots{display:inline-flex;gap:5px;vertical-align:middle}
+  .b-preview .dots span{width:14px;height:14px;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
+  .b-preview .btn{width:100%;justify-content:center}
+  .b-preview .note{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:10px}
+  .balloon{transition:fill .35s ease}
+  .mini{display:none;justify-content:center;gap:4px;margin-top:16px;padding:14px;border-radius:18px;background:radial-gradient(120% 90% at 50% 0%,#FFFFFF 0%,#F4EFFA 100%)}
+  .mini span{width:30px;height:35px;border-radius:50% 50% 47% 47%;position:relative;transition:background .3s;
+             background-image:radial-gradient(circle at 32% 26%,rgba(255,255,255,.75),rgba(255,255,255,0) 40%),radial-gradient(circle at 72% 82%,rgba(0,0,0,.18),transparent 60%)}
+  .mini span:nth-child(even){transform:translateY(8px) scale(.85)}
+
+  @media (max-width:980px){
+    .b-grid{grid-template-columns:1fr}
+    .b-preview{position:static}
+    .mini{display:flex}
+  }
+  @media (max-width:760px){
+    .b-step{padding:22px 18px}
+    .swatches{grid-template-columns:repeat(6,1fr)}
+    .items{grid-template-columns:1fr}
+  }
+
   /* ---------- como funciona ---------- */
   .steps-sec{background:var(--grad-dark);color:#fff}
   .steps-sec .sec-head p{color:#C9C1DC}
@@ -294,6 +352,7 @@
       <a href="#decoracoes">Decorações</a>
       <a href="#servicos">Serviços</a>
       <a href="#aluguel">Aluguel</a>
+      <a href="#monte">Monte sua festa</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#orcamento">Contato</a>
     </nav>
@@ -496,6 +555,106 @@
     </div>
   </section>
 
+
+  <!-- MONTE SUA FESTA -->
+  <section id="monte" class="builder">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow rv">Monte sua festa</div>
+          <h2 class="rv">Imagine. Escolha. <em>Celebre.</em></h2>
+        </div>
+        <p class="rv">Monte a ideia da sua festa em 1 minuto. Veja as cores ganhando vida no arco de balões e envie tudo pronto pro nosso WhatsApp.</p>
+      </div>
+
+      <div class="b-grid">
+        <div class="b-steps">
+          <div class="b-step rv">
+            <h3><i>1</i>Qual é a festa?</h3>
+            <p class="hint">Escolha uma opção.</p>
+            <div class="chips" id="bTipo">
+              <button class="chip" type="button">Aniversário infantil</button>
+              <button class="chip" type="button">Aniversário adulto</button>
+              <button class="chip" type="button">13, 15 ou 18 anos</button>
+              <button class="chip" type="button">Chá de bebê / revelação</button>
+              <button class="chip" type="button">Batizado</button>
+              <button class="chip" type="button">Casamento / noivado</button>
+              <button class="chip" type="button">Evento corporativo</button>
+            </div>
+          </div>
+
+          <div class="b-step rv">
+            <h3><i>2</i>Qual o tema?</h3>
+            <p class="hint">Escreva o tema ou toque numa sugestão.</p>
+            <div class="chips" id="bTemaSug">
+              <button class="chip" type="button">Dinossauro</button>
+              <button class="chip" type="button">Pokémon</button>
+              <button class="chip" type="button">Sereia</button>
+              <button class="chip" type="button">Fundo do mar</button>
+              <button class="chip" type="button">Margaridas</button>
+              <button class="chip" type="button">Arco-íris</button>
+              <button class="chip" type="button">Ursinho</button>
+              <button class="chip" type="button">Time de futebol</button>
+              <button class="chip" type="button">Neon / balada</button>
+            </div>
+            <input class="theme-input" id="bTema" placeholder="Ex.: Stitch, jardim encantado, Barbie, Corinthians…" maxlength="60">
+          </div>
+
+          <div class="b-step rv">
+            <h3><i>3</i>Escolha até 3 cores</h3>
+            <p class="hint">A prévia ao lado muda na hora.</p>
+            <div class="swatches" id="bCores"></div>
+            <div class="sw-label" id="bCoresLabel">Nenhuma cor escolhida ainda.</div>
+            <div class="mini" id="bMini" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+
+          <div class="b-step rv">
+            <h3><i>4</i>O que não pode faltar?</h3>
+            <p class="hint">Marque quantos quiser.</p>
+            <div class="items" id="bItens">
+              <label class="item-opt"><input type="checkbox" value="Arco de balões">Arco de balões</label>
+              <label class="item-opt"><input type="checkbox" value="Painel personalizado">Painel personalizado</label>
+              <label class="item-opt"><input type="checkbox" value="Mesa do bolo e doces">Mesa do bolo e doces</label>
+              <label class="item-opt"><input type="checkbox" value="Letreiro neon">Letreiro neon</label>
+              <label class="item-opt"><input type="checkbox" value="Flores e folhagens">Flores e folhagens</label>
+              <label class="item-opt"><input type="checkbox" value="Personagens / bonecos">Personagens / bonecos</label>
+              <label class="item-opt"><input type="checkbox" value="Pula-pula"><span>Pula-pula<small>4,30 m · espaço 5 × 5 m</small></span></label>
+              <label class="item-opt"><input type="checkbox" value="Piscina de bolinhas"><span>Piscina de bolinhas<small>2 × 2 m · com tela</small></span></label>
+            </div>
+          </div>
+
+          <div class="b-step rv">
+            <h3><i>5</i>Últimos detalhes</h3>
+            <p class="hint">Assim já conseguimos ver a disponibilidade.</p>
+            <div class="b-details">
+              <label>Seu nome<input id="bNome" placeholder="Como podemos te chamar?"></label>
+              <div class="row">
+                <label>Data da festa<input type="date" id="bData"></label>
+                <label>Convidados<input id="bConv" inputmode="numeric" placeholder="Aprox."></label>
+              </div>
+              <label>Cidade / bairro<input id="bLocal" placeholder="Ex.: SBC, Santo André"></label>
+            </div>
+          </div>
+        </div>
+
+        <aside class="b-preview rv" aria-live="polite">
+          <div class="stage"><svg id="bSvg" viewBox="0 0 400 300" role="img" aria-label="Prévia da decoração com as cores escolhidas"></svg></div>
+          <div class="sum">
+            <h4>Sua festa</h4>
+            <dl>
+              <dt>Festa</dt><dd id="rTipo">—</dd>
+              <dt>Tema</dt><dd id="rTema">—</dd>
+              <dt>Cores</dt><dd id="rCores">—</dd>
+              <dt>Itens</dt><dd id="rItens">—</dd>
+            </dl>
+            <button class="btn btn-dark" type="button" id="bEnviar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>Enviar minha festa no WhatsApp</button>
+            <p class="note">A prévia é ilustrativa. A gente cria o projeto completo pra você.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
   <!-- COMO FUNCIONA -->
   <section id="como-funciona" class="steps-sec">
     <div class="wrap">
@@ -680,6 +839,154 @@
     if (e.key === 'ArrowLeft') show(cur - 1);
     if (e.key === 'ArrowRight') show(cur + 1);
   });
+
+
+  // ---------- monte sua festa ----------
+  (() => {
+    const CORES = [
+      ['Branco','#F7F7F5'],['Rosa bebê','#F6C1D3'],['Rosa pink','#E3559A'],['Rosé','#D9A3A0'],['Vermelho','#C8102E'],['Laranja','#F28C38'],
+      ['Amarelo','#F6D55C'],['Pêssego','#F7B58E'],['Verde menta','#8EDCC2'],['Verde sálvia','#9DB08C'],['Verde bandeira','#2E9E57'],['Azul bebê','#A9D3F2'],
+      ['Azul royal','#2F5BD3'],['Azul-marinho','#1F2B5C'],['Lilás','#C9A9F0'],['Roxo','#7B4BB5'],['Nude','#E8CDB5'],['Dourado','#C9A44C'],
+      ['Prata','#BFC5CC'],['Preto','#222222']
+    ];
+    const st = { tipo:'', tema:'', cores:[], itens:[] };
+    const $ = id => document.getElementById(id);
+
+    // tipo
+    $('bTipo').addEventListener('click', e => {
+      const b = e.target.closest('.chip'); if (!b) return;
+      $('bTipo').querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
+      st.tipo = b.textContent; render();
+    });
+    // tema
+    $('bTemaSug').addEventListener('click', e => {
+      const b = e.target.closest('.chip'); if (!b) return;
+      $('bTemaSug').querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
+      $('bTema').value = b.textContent; st.tema = b.textContent; render();
+    });
+    $('bTema').addEventListener('input', e => {
+      st.tema = e.target.value.trim();
+      $('bTemaSug').querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.textContent === st.tema));
+      render();
+    });
+    // cores
+    const box = $('bCores');
+    CORES.forEach(([n, h]) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'sw'; b.style.background = h; b.title = n; b.setAttribute('aria-label', n);
+      b.onclick = () => {
+        const i = st.cores.findIndex(c => c[0] === n);
+        if (i >= 0) st.cores.splice(i, 1);
+        else { if (st.cores.length === 3) st.cores.shift(); st.cores.push([n, h]); }
+        render();
+      };
+      box.appendChild(b);
+    });
+    // itens
+    $('bItens').addEventListener('change', () => {
+      st.itens = [...$('bItens').querySelectorAll('input:checked')].map(i => i.value); render();
+    });
+
+    // prévia: arco orgânico de balões
+    const svg = $('bSvg');
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; };
+    // posições fixas para o arco não "pular" a cada clique
+    let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    const balloons = [];
+    // duas camadas (externa e interna) para o arco ficar cheio, como um arco orgânico
+    [[128, 118, 54, 26], [112, 104, 40, 18]].forEach(([rx, ry, n, jit]) => {
+      for (let i = 0; i < n; i++) {
+        const t = i / (n - 1);                            // 0 → 1 ao longo do arco
+        const ang = Math.PI * (1.1 - t * 1.2);            // de baixo-esquerda, por cima, até baixo-direita
+        const x = 200 + Math.cos(ang) * rx + (rnd() - .5) * jit;
+        const y = 170 - Math.sin(ang) * ry + (rnd() - .5) * jit;
+        const r = 8 + rnd() * 14;
+        balloons.push({ x, y, r, k: Math.floor(rnd() * 1000) });
+      }
+    });
+    // cachos menores saindo do arco, para dar movimento
+    for (let i = 0; i < 10; i++) {
+      const ang = Math.PI * (0.15 + rnd() * 0.7), rr = 140 + rnd() * 14;
+      balloons.push({ x: 200 + Math.cos(ang) * rr, y: 170 - Math.sin(ang) * rr, r: 5 + rnd() * 5, k: Math.floor(rnd() * 1000) });
+    }
+    balloons.sort((a, b) => a.r - b.r);
+    function drawScene(){
+      svg.innerHTML = '';
+      const defs = el('defs', {});
+      defs.innerHTML = '<radialGradient id="shine" cx=".33" cy=".28" r=".42"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></radialGradient>' +
+                       '<radialGradient id="shade" cx=".72" cy=".82" r=".75"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>' +
+                       '<linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6DDF2"/><stop offset="1" stop-color="#D8CCEA"/></linearGradient>';
+      svg.appendChild(defs);
+      svg.appendChild(el('rect', { x:0, y:248, width:400, height:52, fill:'url(#floor)' }));
+      svg.appendChild(el('ellipse', { cx:200, cy:262, rx:150, ry:12, fill:'#000', opacity:.06 }));
+      // painel redondo
+      svg.appendChild(el('circle', { cx:200, cy:150, r:92, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2 }));
+      const tt = el('text', { x:200, y:150, 'text-anchor':'middle', 'dominant-baseline':'middle', 'font-family':'Great Vibes, cursive', 'font-size':30, fill:'#6F409C', id:'bTemaTxt' });
+      svg.appendChild(tt);
+      // mesa / cilindros
+      svg.appendChild(el('rect', { x:162, y:206, width:76, height:50, rx:6, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2 }));
+      svg.appendChild(el('rect', { x:124, y:222, width:30, height:34, rx:4, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2 }));
+      svg.appendChild(el('rect', { x:246, y:216, width:30, height:40, rx:4, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2 }));
+      // bolo
+      svg.appendChild(el('rect', { x:186, y:186, width:28, height:20, rx:3, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2, id:'bBolo' }));
+      svg.appendChild(el('rect', { x:191, y:174, width:18, height:13, rx:3, fill:'#FFFFFF', stroke:'#E3DBEE', 'stroke-width':2, id:'bBolo2' }));
+      // balões
+      balloons.forEach((b, i) => {
+        const g = el('g', {});
+        g.appendChild(el('circle', { cx:b.x, cy:b.y, r:b.r, class:'balloon', 'data-k':b.k, fill:'#E9E3F1' }));
+        g.appendChild(el('circle', { cx:b.x, cy:b.y, r:b.r, fill:'url(#shade)' }));
+        g.appendChild(el('circle', { cx:b.x, cy:b.y, r:b.r, fill:'url(#shine)' }));
+        svg.appendChild(g);
+      });
+    }
+    drawScene();
+
+    function render(){
+      // cores
+      box.querySelectorAll('.sw').forEach(b => {
+        const i = st.cores.findIndex(c => c[0] === b.title);
+        b.classList.toggle('on', i >= 0); b.dataset.n = i >= 0 ? i + 1 : '';
+      });
+      $('bCoresLabel').textContent = st.cores.length ? st.cores.map(c => c[0]).join(' · ') : 'Nenhuma cor escolhida ainda.';
+      const pal = st.cores.length ? st.cores.map(c => c[1]) : ['#E9E3F1','#DCD3EA','#F1ECF7'];
+      svg.querySelectorAll('.balloon').forEach(c => { c.setAttribute('fill', pal[c.dataset.k % pal.length]); });
+      $('bMini').querySelectorAll('span').forEach((b, i) => { b.style.backgroundColor = pal[i % pal.length]; });
+      const main = st.cores[0] ? st.cores[0][1] : '#FFFFFF';
+      const bolo = svg.querySelector('#bBolo'), bolo2 = svg.querySelector('#bBolo2');
+      if (bolo) { bolo.setAttribute('fill', st.cores[1] ? st.cores[1][1] : '#FFFFFF'); bolo2.setAttribute('fill', main); }
+      const txt = svg.querySelector('#bTemaTxt'); if (txt) {
+        const t = st.tema || 'Sua festa';
+        txt.textContent = t.length > 16 ? t.slice(0, 15) + '…' : t;
+        txt.setAttribute('font-size', t.length > 11 ? 24 : 30);
+      }
+      // resumo
+      $('rTipo').textContent = st.tipo || '—';
+      $('rTema').textContent = st.tema || '—';
+      $('rCores').innerHTML = st.cores.length ? '<span class="dots">' + st.cores.map(c => `<span style="background:${c[1]}" title="${c[0]}"></span>`).join('') + '</span> ' + st.cores.map(c => c[0]).join(', ') : '—';
+      $('rItens').textContent = st.itens.length ? st.itens.join(', ') : '—';
+    }
+    render();
+
+    $('bEnviar').addEventListener('click', () => {
+      const data = $('bData').value ? $('bData').value.split('-').reverse().join('/') : 'a definir';
+      const msg = [
+        'Olá! Montei minha festa no site da Zanon Decora 🎈',
+        '',
+        $('bNome').value.trim() ? `*Nome:* ${$('bNome').value.trim()}` : null,
+        `*Festa:* ${st.tipo || 'a definir'}`,
+        `*Tema:* ${st.tema || 'a definir'}`,
+        `*Cores:* ${st.cores.length ? st.cores.map(c => c[0]).join(', ') : 'a definir'}`,
+        `*Itens:* ${st.itens.length ? st.itens.join(', ') : 'a definir'}`,
+        `*Data:* ${data}`,
+        $('bConv').value.trim() ? `*Convidados:* ${$('bConv').value.trim()}` : null,
+        $('bLocal').value.trim() ? `*Local:* ${$('bLocal').value.trim()}` : null,
+        '',
+        'Pode me passar um orçamento?'
+      ].filter(x => x !== null).join('\n');
+      window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank');
+    });
+  })();
 
   // formulário -> WhatsApp
   document.getElementById('quoteForm').addEventListener('submit', e => {
