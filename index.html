@@ -301,6 +301,23 @@
   .foot .social a:hover{background:var(--grad);color:#fff;border-color:transparent}
   .foot .social svg{width:18px;height:18px}
 
+  /* ---------- abas ---------- */
+  .tab-hidden{display:none!important}
+  .menu a.on{color:var(--brand)}
+  .menu a.on::after{width:100%}
+  .tabbar{display:none}
+
+  /* ---------- montagem em passos ---------- */
+  .b-progress{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:700;color:var(--brand);letter-spacing:.04em}
+  .b-bar{flex:1;height:6px;border-radius:6px;background:var(--line);overflow:hidden}
+  .b-bar i{display:block;height:100%;width:16%;background:var(--grad);border-radius:6px;transition:width .3s}
+  .b-steps .b-step{display:none}
+  .b-steps .b-step.atual{display:block;animation:passo .35s ease}
+  @keyframes passo{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+  .b-nav{display:flex;justify-content:space-between;gap:12px}
+  .b-nav .btn{flex:1;justify-content:center}
+  .b-nav .btn[hidden]{display:none}
+
   /* ---------- whatsapp flutuante ---------- */
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.4);transition:transform .2s}
   .wa-float:hover{transform:scale(1.08)}
@@ -339,7 +356,26 @@
     .nav .btn{display:none}
     .nav,header.scrolled .nav{height:84px}
     .logo img,header.scrolled .logo img{height:70px}
-    .burger{display:block}
+    .burger{display:none}
+    .menu{display:none!important}
+    body{padding-bottom:78px}
+    .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;height:68px;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);box-shadow:0 -8px 24px -18px rgba(42,33,64,.5)}
+    .tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:700;color:var(--ink-soft);border-radius:14px}
+    .tabbar a svg{width:23px;height:23px}
+    .tabbar a.on{color:var(--brand);background:rgba(111,64,156,.08)}
+    .wa-float{bottom:88px;right:16px;width:54px;height:54px}
+    /* prévia fixa no topo enquanto escolhe; resumo e envio no último passo */
+    .b-grid:not(.final) .b-preview{position:sticky;top:84px;z-index:6;order:-1;box-shadow:0 18px 30px -24px rgba(42,33,64,.6)}
+    .b-grid:not(.final) .b-preview .sum{display:none}
+    .b-grid:not(.final) .b-preview .stage svg{max-height:34vh;width:auto;margin:0 auto}
+    .b-grid.final .b-preview{position:static;order:1}
+    .mini{display:none!important}
+    #monte .sec-head{margin-bottom:16px}
+    #monte .sec-head p{display:none}
+    #monte h2{font-size:34px}
+    .b-grid{gap:16px}
+    section{padding:56px 0}
+    .hero{min-height:auto;padding-top:104px}
     section{padding:84px 0}
     .hero{padding-top:110px}
     .hero-meta{gap:22px}
@@ -361,13 +397,11 @@
   <div class="wrap nav">
     <a href="#top" class="logo"><img src="img/logo.png" alt="Zanon Decora" width="520" height="439"></a>
     <nav class="menu" id="menu">
-      <a href="#historia">Nossa história</a>
-      <a href="#decoracoes">Decorações</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#aluguel">Aluguel</a>
-      <a href="#monte">Monte sua festa</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#orcamento">Contato</a>
+      <a href="#inicio" data-tab="inicio">Início</a>
+      <a href="#decoracoes" data-tab="decoracoes">Decorações</a>
+      <a href="#monte" data-tab="monte">Monte sua festa</a>
+      <a href="#servicos" data-tab="servicos">Serviços e aluguel</a>
+      <a href="#orcamento" data-tab="contato">Contato</a>
     </nav>
     <a class="btn btn-dark" href="#orcamento">Pedir orçamento</a>
     <button class="burger" id="burger" aria-label="Abrir menu"><i></i><i></i></button>
@@ -387,7 +421,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
             Solicitar orçamento
           </a>
-          <a class="btn btn-ghost" href="#decoracoes">Ver decorações</a>
+          <a class="btn btn-ghost" href="#monte">Monte sua festa</a>
         </div>
         <div class="hero-meta rv">
           <div><b>100%</b><small>personalizado</small></div>
@@ -581,7 +615,8 @@
       </div>
 
       <div class="b-grid">
-        <div class="b-steps">
+        <div class="b-steps" id="bSteps">
+          <div class="b-progress"><span id="bPasso">Passo 1 de 6</span><div class="b-bar"><i id="bBarra"></i></div></div>
           <div class="b-step rv">
             <h3><i>1</i>Qual é a festa?</h3>
             <p class="hint">Escolha uma opção.</p>
@@ -615,7 +650,7 @@
 
           <div class="b-step rv">
             <h3><i>3</i>Escolha até 3 cores</h3>
-            <p class="hint">A prévia ao lado muda na hora.</p>
+            <p class="hint">A prévia muda na hora.</p>
             <div class="swatches" id="bCores"></div>
             <div class="sw-label" id="bCoresLabel">Nenhuma cor escolhida ainda.</div>
             <div class="mini" id="bMini" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
@@ -678,6 +713,10 @@
               </div>
               <label>Cidade / bairro<input id="bLocal" placeholder="Ex.: SBC, Santo André"></label>
             </div>
+          </div>
+          <div class="b-nav">
+            <button class="btn btn-ghost" type="button" id="bVoltar">← Voltar</button>
+            <button class="btn btn-dark" type="button" id="bProx">Próximo →</button>
           </div>
         </div>
 
@@ -781,6 +820,8 @@
     </div>
   </div>
 </footer>
+
+<nav class="tabbar" id="tabbar" aria-label="Seções do site"><a href="#inicio" data-tab="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Início</span></a><a href="#decoracoes" data-tab="decoracoes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Festas</span></a><a href="#monte" data-tab="monte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="9" rx="5.5" ry="6.5"/><path d="M12 15.5l-1 2h2l-1-2M12 17.5c0 2 1.5 2.5 1.5 4"/></svg><span>Monte</span></a><a href="#servicos" data-tab="servicos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Serviços</span></a><a href="#orcamento" data-tab="contato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg><span>Contato</span></a></nav>
 
 <a class="wa-float" href="https://wa.me/5511960801908?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
@@ -1380,7 +1421,7 @@
       drawArch();
       $('bShared').hidden = false;
       render();
-      setTimeout(() => document.getElementById('monte').scrollIntoView(), 300);
+
     })();
 
     // ---- salvar a prévia como imagem (no celular abre o compartilhar) ----
@@ -1435,6 +1476,59 @@
       ].filter(x => x !== null).join('\n');
       window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank');
     });
+  })();
+
+  // ---------- abas: cada parte do site numa aba, sem rolar a página inteira ----------
+  (() => {
+    const ABAS = { inicio:['.hero', '.marquee', '#historia'], decoracoes:['#decoracoes'], monte:['#monte'],
+                   servicos:['#servicos', '#aluguel', '#como-funciona'], contato:['#orcamento'] };
+    const idParaAba = { top:'inicio', inicio:'inicio', orcamento:'contato', contato:'contato' };
+    Object.entries(ABAS).forEach(([aba, sels]) => sels.forEach(sel => {
+      const el = document.querySelector(sel); if (!el) return;
+      el.dataset.tab = aba; if (el.id) idParaAba[el.id] = aba;
+    }));
+    function abrir(aba, alvo){
+      document.querySelectorAll('main > [data-tab]').forEach(el => el.classList.toggle('tab-hidden', el.dataset.tab !== aba));
+      document.querySelectorAll('#menu a[data-tab], #tabbar a[data-tab]').forEach(a => a.classList.toggle('on', a.dataset.tab === aba));
+      document.querySelectorAll(`main > [data-tab="${aba}"] .rv`).forEach(e => e.classList.add('in'));
+      const primeiro = document.querySelector(`main > [data-tab="${aba}"]`);
+      if (alvo && alvo !== primeiro) alvo.scrollIntoView({ behavior:'instant', block:'start' });
+      else window.scrollTo({ top:0, behavior:'instant' });
+    }
+    function rota(){
+      const id = decodeURIComponent(location.hash.slice(1)) || 'inicio';
+      abrir(idParaAba[id] || 'inicio', document.getElementById(id));
+    }
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]'); if (!a) return;
+      const id = a.getAttribute('href').slice(1); if (!id || !(idParaAba[id] || document.getElementById(id))) return;
+      e.preventDefault();
+      if (location.hash !== '#' + id) history.pushState(null, '', location.search + '#' + id);
+      rota();
+    });
+    addEventListener('popstate', rota);
+    rota();
+  })();
+
+  // ---------- montagem em passos: um passo por vez ----------
+  (() => {
+    const passos = [...document.querySelectorAll('#bSteps .b-step')], grid = document.querySelector('.b-grid');
+    const ultimo = passos.length - 1; let atual = 0;
+    function ir(n, rolar){
+      atual = Math.max(0, Math.min(ultimo, n));
+      passos.forEach((p, i) => p.classList.toggle('atual', i === atual));
+      passos[atual].classList.add('in');
+      document.getElementById('bPasso').textContent = `Passo ${atual + 1} de ${passos.length}`;
+      document.getElementById('bBarra').style.width = ((atual + 1) / passos.length * 100) + '%';
+      document.getElementById('bVoltar').style.visibility = atual ? 'visible' : 'hidden';
+      document.getElementById('bProx').hidden = atual === ultimo;
+      grid.classList.toggle('final', atual === ultimo);
+      if (rolar) document.getElementById('bSteps').scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+    document.getElementById('bVoltar').onclick = () => ir(atual - 1, true);
+    document.getElementById('bProx').onclick = () => ir(atual + 1, true);
+    // link de prévia enviado pela cliente abre direto no resumo
+    ir(document.getElementById('bShared').hidden ? 0 : ultimo, false);
   })();
 
   // formulário -> WhatsApp
