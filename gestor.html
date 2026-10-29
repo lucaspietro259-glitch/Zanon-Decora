@@ -71,6 +71,7 @@
   .f-ass{margin-top:16px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;font-size:12px;color:var(--soft)}
   .f-ass .linha{border-top:1px solid var(--ink);padding-top:5px;min-width:220px;text-align:center}
   .f-ass .slogan{font-family:"Great Vibes",cursive;font-size:24px;color:var(--brand)}
+  .btn[disabled]{opacity:.55;cursor:progress}
   .doc-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 auto 18px;max-width:210mm}
 
   /* celular (só na tela; a impressão em PDF não muda) */
@@ -98,6 +99,7 @@
     .f-ass .linha{min-width:0;width:100%}
     .doc-bar{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;max-width:none;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--line);flex-wrap:nowrap;gap:8px;box-shadow:0 -10px 24px -18px rgba(42,33,64,.5)}
     .doc-bar .btn{flex:1;padding:12px 8px;font-size:13px}
+    .hide-m{display:none!important}
     .toast{bottom:84px}
   }
   @media print{
@@ -239,8 +241,9 @@
   <!-- ================= DOCUMENTO ================= -->
   <section id="doc">
     <div class="doc-bar">
-      <button class="btn" onclick="window.print()">Salvar PDF</button>
-      <button class="btn wa" id="docWa">Enviar no WhatsApp</button>
+      <button class="btn" id="docPdf">Salvar PDF</button>
+      <button class="btn wa" id="docWa">Enviar PDF no WhatsApp</button>
+      <button class="btn ghost hide-m" id="docImp" onclick="window.print()">Imprimir</button>
       <button class="btn ghost" id="docVoltar">Editar</button>
     </div>
     <div class="folha" id="folha"></div>
@@ -413,14 +416,54 @@
     $('doc').dataset.id = o.id;
     document.querySelectorAll('.view').forEach(v => v.classList.remove('on')); $('doc').style.display = 'block'; scrollTo(0, 0);
     ajustaFolha();
-    $('docWa').onclick = () => {
+    prepara(o, t, valido);
+  }
+
+  // ---------- PDF de verdade (arquivo) para baixar e enviar anexado no WhatsApp ----------
+  const carrega = src => new Promise((ok, erro) => {
+    if (document.querySelector(`script[src="${src}"]`)) return ok();
+    const sc = document.createElement('script'); sc.src = src; sc.onload = ok; sc.onerror = () => erro(new Error('Não foi possível carregar ' + src)); document.head.appendChild(sc);
+  });
+  async function gerarPdf(){
+    await Promise.all([carrega('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'), carrega('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js')]);
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    await Promise.all([...document.querySelectorAll('#folha img')].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; })));
+    const canvas = await html2canvas($('folha'), { scale: 2, backgroundColor: '#ffffff', windowWidth: 1200, useCORS: true,
+      onclone: d => { const f = d.getElementById('folha'); f.style.cssText = 'width:210mm;max-width:none;margin:0;padding:11mm 12mm;border-radius:0;box-shadow:none;background:#fff;height:auto;overflow:visible';
+                      const c = f.querySelector('.corpo'); if (c) c.style.zoom = 1; } });
+    const pdf = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', compress: true });
+    const h = canvas.height * 210 / canvas.width, img = canvas.toDataURL('image/jpeg', 0.92);
+    if (h <= 297) pdf.addImage(img, 'JPEG', 0, 0, 210, h);                       // cabe: uma página
+    else { const w = 210 * 297 / h; pdf.addImage(img, 'JPEG', (210 - w) / 2, 0, w, 297); }   // grande demais: reduz para caber em uma página
+    return { blob: pdf.output('blob'), paginas: pdf.internal.getNumberOfPages(), canvas };
+  }
+  let pdfAtual = null;
+  function prepara(o, t, valido){
+    const nomeArq = `Orcamento-${o.id}-${(o.cliente || 'cliente').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '')}.pdf`;
+    const rotulo = { pdf: $('docPdf').textContent, wa: 'Enviar PDF no WhatsApp' };
+    pdfAtual = null; [$('docPdf'), $('docWa')].forEach(b => b.disabled = true); $('docPdf').textContent = 'Preparando PDF…'; $('docWa').textContent = 'Preparando…';
+    const meu = o.id + Date.now(); pdfAtual = { chave: meu };
+    gerarPdf().then(({ blob }) => {
+      if (!pdfAtual || pdfAtual.chave !== meu) return;
+      pdfAtual.file = new File([blob], nomeArq, { type: 'application/pdf' });
+      [$('docPdf'), $('docWa')].forEach(b => b.disabled = false); $('docPdf').textContent = 'Salvar PDF'; $('docWa').textContent = rotulo.wa;
+    }).catch(() => { $('docPdf').textContent = 'Salvar PDF'; $('docWa').textContent = rotulo.wa; $('docPdf').disabled = $('docWa').disabled = false; pdfAtual = null; toast('Não consegui gerar o PDF. Use Imprimir.'); });
+
+    const baixa = file => { const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); };
+    $('docPdf').onclick = () => { if (pdfAtual && pdfAtual.file) baixa(pdfAtual.file); };
+    $('docWa').onclick = async () => {
+      if (!(pdfAtual && pdfAtual.file)) return;
+      const file = pdfAtual.file;
+      const texto = `Olá, ${o.cliente}! Segue o orçamento ${o.id} da sua festa, da Zanon Decora. Qualquer dúvida, estou à disposição! 💜`;
+      // celular: abre a tela de compartilhar já com o PDF anexado (é só escolher o WhatsApp e a cliente)
+      try {
+        if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Orçamento ' + o.id, text: texto }); return; }
+      } catch (e) { if (e && e.name === 'AbortError') return; }
+      // computador (sem compartilhamento de arquivo): baixa o PDF e abre a conversa para anexar
+      baixa(file);
       const fone = (o.fone || '').replace(/\D/g, ''); const dest = fone ? (fone.length <= 11 ? '55' + fone : fone) : '';
-      const msg = [`Olá, ${o.cliente}! Aqui é a Sheila, da Zanon Decora 🎈`, '', `Segue o orçamento *${o.id}* da sua festa${o.tema ? ' (' + o.tema + ')' : ''}${o.data ? ' para ' + dataBR(o.data) : ''}:`, '',
-        ...o.itens.map(i => `• ${i.q > 1 ? i.q + 'x ' : ''}${i.n}: ${R$(i.q * i.v)}`), '',
-        o.desc ? `Desconto: − ${R$(o.desc)}` : null, o.frete ? `Deslocamento: ${R$(o.frete)}` : null,
-        `*Total: ${R$(t.tot)}*`, `Sinal para reservar a data (${o.sinal}%): ${R$(t.sinal)}`, `Pagamento: ${o.pag}`, `Válido até ${valido.toLocaleDateString('pt-BR')}.`, '',
-        'Envio também o PDF com todos os detalhes. Qualquer dúvida, estou à disposição! 💜'].filter(x => x !== null).join('\n');
-      window.open(`https://wa.me/${dest}?text=${encodeURIComponent(msg)}`, '_blank');
+      toast('PDF baixado: anexe no WhatsApp (clipe 📎)');
+      setTimeout(() => window.open(`https://wa.me/${dest}?text=${encodeURIComponent(texto)}`, '_blank'), 900);
     };
   }
   $('docVoltar').onclick = () => { $('doc').style.display = 'none'; abrir('novo'); };
