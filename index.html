@@ -3,195 +3,490 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zanon Decora</title>
-<meta name="description" content="Zanon Decora — decorações personalizadas para festas, casamentos e eventos em São Bernardo do Campo e região do ABC. Feitas com carinho.">
-<link rel="icon" type="image/png" href="img/favicon.png">
-<link rel="apple-touch-icon" href="img/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Zanon Decora · Decoração de festas em São Bernardo do Campo, ABC e São Paulo</title>
+<meta name="description" content="Decoração personalizada para festas infantis, 15 anos, casamentos, chá de bebê, batizados e eventos corporativos em São Bernardo do Campo, ABC Paulista e São Paulo. Peça seu orçamento.">
+<meta name="theme-color" content="#14101F">
+<link rel="canonical" href="https://www.zanon-decora.shop/">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Zanon Decora">
+<meta property="og:title" content="Zanon Decora · Transformamos momentos especiais em memórias inesquecíveis">
+<meta property="og:description" content="Decorações exclusivas para festas e eventos em São Bernardo do Campo, ABC e São Paulo.">
+<meta property="og:url" content="https://www.zanon-decora.shop/"><meta property="og:image" content="https://www.zanon-decora.shop/img/astronauta-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/favicon.png"><link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preload" as="image" href="img/15-anos-1.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Nunito+Sans:opsz,wght@6..12,400..700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Zanon Decora", "description": "Decoração personalizada de festas e eventos.", "url": "https://www.zanon-decora.shop/", "telephone": "+55 11 96080-1908", "image": "https://www.zanon-decora.shop/img/astronauta-1.jpg", "logo": "https://www.zanon-decora.shop/img/logo.png", "sameAs": ["https://www.instagram.com/zanondecora/"], "address": {"@type": "PostalAddress", "addressLocality": "São Bernardo do Campo", "addressRegion": "SP", "addressCountry": "BR"}, "areaServed": ["São Bernardo do Campo", "Santo André", "São Caetano do Sul", "ABC Paulista", "São Paulo"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Serviços", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Festas infantis"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Aniversários adultos"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Casamentos e noivados"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Chá de bebê e revelação"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Batizados"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Eventos corporativos"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Festas temáticas"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Aluguel de pula-pula e piscina de bolinhas"}}]}}</script>
+<script>try{var h=decodeURIComponent(location.hash.slice(1))||'inicio';document.documentElement.dataset.aba=['inicio','decoracoes','monte','servicos','contato'].indexOf(h)>-1?h:(h==='orcamento'?'contato':'inicio')}catch(e){}</script>
 <style>
+  /* =====================================================================
+     ZANON DECORA · sistema visual premium
+     ===================================================================== */
   :root{
-    --bg:#FBF9FD;
-    --bg-2:#F2EDF8;
-    --ink:#2A2140;
-    --ink-soft:#6B6480;
-    --line:#E3DBEE;
-    --brand:#6F409C;         /* roxo do "Z" da logo */
-    --brand-2:#3D9ED1;       /* azul dos balões */
-    --teal:#58A3B6;          /* turquesa do "n" e do "a" */
-    --pink:#E36FA4;          /* balão rosa */
-    --violet:#8A55C0;        /* balão roxo */
-    --brand-soft:#E6DAF3;
-    --grad:linear-gradient(100deg,#6F409C 0%,#5A6FC0 50%,#3D9ED1 100%);
-    --grad-dark:linear-gradient(125deg,#2E1A4D 0%,#2B2A5E 55%,#1D4A63 100%);
+    --ink:#14101F;            /* preto-ameixa profundo */
+    --ink-2:#1E1732;
+    --ink-soft:#6A6379;
+    --bg:#FAF8F5;             /* marfim */
+    --bg-2:#F3EFF6;
     --card:#FFFFFF;
+    --line:#E8E2EE;
+    --brand:#6F409C;          /* roxo da logo */
+    --brand-2:#3D9ED1;        /* azul dos balões */
+    --teal:#58A3B6;
+    --pink:#E36FA4;
+    --violet:#8A55C0;
+    --brand-soft:#E8DDF4;
+    --grad:linear-gradient(100deg,#6F409C 0%,#5A6FC0 52%,#3D9ED1 100%);
+    --grad-soft:linear-gradient(100deg,#F3A6CB 0%,#C9A9F0 50%,#8FD3EA 100%);
     --radius:22px;
-    --serif:"Fraunces", Georgia, serif;
-    --sans:"Nunito Sans", system-ui, sans-serif;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Nunito Sans",system-ui,sans-serif;
+    --ease:cubic-bezier(.2,.7,.2,1);
+    --shadow:0 30px 60px -40px rgba(20,16,31,.55);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
-  img{display:block;max-width:100%}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  img,video{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
-  .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
-  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brand);font-weight:700}
-  .steps-sec .eyebrow{color:#F3A6CB}
-  .steps-sec h2 em{background:linear-gradient(100deg,#F3A6CB,#8FD3EA);-webkit-background-clip:text;background-clip:text}
-  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.015em;font-variation-settings:"SOFT" 100}
-  h2{font-size:clamp(32px,4.8vw,56px)}
-  h2 em,h1 em{font-family:var(--serif);font-style:italic;font-weight:500;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .08em .12em 0}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s, background .2s, color .2s;cursor:pointer;border:0;font-family:inherit}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-dark{background:var(--grad);color:#fff;box-shadow:0 12px 26px -14px rgba(111,64,156,.8)}
-  .btn-dark:hover{filter:brightness(1.08)}
+  button{font:inherit;color:inherit}
+  :focus-visible{outline:2.5px solid var(--brand-2);outline-offset:3px;border-radius:8px}
+  .skip{position:absolute;left:12px;top:-60px;z-index:200;background:#fff;color:var(--ink);padding:10px 16px;border-radius:999px;font-weight:700;transition:top .2s}
+  .skip:focus{top:12px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+  .sec{padding:clamp(72px,9vw,132px) 0;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--brand);font-weight:800}
+  .eyebrow::before{content:"";width:34px;height:1.5px;background:var(--grad)}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spacing:-.02em;font-variation-settings:"SOFT" 100,"WONK" 0}
+  h2{font-size:clamp(34px,5.2vw,68px);margin-top:14px}
+  h3{font-size:clamp(22px,2.4vw,30px)}
+  em{font-style:italic}
+  h2 em,h1 em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+  .lead{font-size:clamp(16px,1.35vw,19px);color:var(--ink-soft);max-width:560px}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:36px;flex-wrap:wrap;margin-bottom:clamp(30px,4vw,56px)}
+  .sec-head .lead{margin:0}
+
+  /* ---------- botões ---------- */
+  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border-radius:999px;font-weight:700;font-size:15px;letter-spacing:.01em;cursor:pointer;border:0;overflow:hidden;isolation:isolate;transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s,color .3s,border-color .3s}
+  .btn svg{width:18px;height:18px;flex:none;transition:transform .3s var(--ease)}
+  .btn:hover svg.arr-i{transform:translateX(4px)}
+  .btn:active{transform:scale(.97)}
+  .btn-dark{background:var(--grad);color:#fff;box-shadow:0 16px 34px -16px rgba(111,64,156,.85)}
+  .btn-dark::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease);z-index:-1}
+  .btn-dark:hover{transform:translateY(-2px);box-shadow:0 22px 40px -16px rgba(111,64,156,.95)}
+  .btn-dark:hover::after{transform:translateX(120%)}
   .btn-ghost{border:1.5px solid var(--brand);color:var(--brand);background:transparent}
-  .btn-ghost:hover{background:var(--brand);color:#fff}
-  .btn svg{width:18px;height:18px}
+  .btn-ghost:hover{background:var(--brand);color:#fff;transform:translateY(-2px)}
+  .btn-glass{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(12px)}
+  .btn-glass:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+  .btn-wa{background:#25D366;color:#073B1B;box-shadow:0 16px 34px -18px rgba(37,211,102,.9)}
+  .btn-wa:hover{transform:translateY(-2px);background:#2BE070}
+  .btn[disabled]{opacity:.55;cursor:progress}
+  .btn-sm{padding:10px 18px;font-size:13.5px}
 
-  /* ---------- header ---------- */
-  header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s, box-shadow .3s}
-  header.scrolled{background:rgba(251,249,253,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:100px;transition:height .3s}
-  header.scrolled .nav{height:80px}
-  header.scrolled .logo img{height:66px}
+  /* ---------- cabeçalho flutuante (vidro) ---------- */
+  header{position:fixed;top:14px;left:0;right:0;z-index:80;pointer-events:none}
+  .nav{pointer-events:auto;width:min(1200px,100% - 24px);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:7px 8px 7px 20px;border-radius:999px;background:rgba(255,255,255,.74);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border:1px solid rgba(255,255,255,.75);box-shadow:0 14px 44px -22px rgba(20,16,31,.55);transition:background .3s,box-shadow .3s}
+  header.scrolled .nav{background:rgba(255,255,255,.9)}
   .logo{display:flex;align-items:center}
-  .logo img{height:86px;width:auto;transition:height .3s}
-  footer .logo img{height:120px}
-  .menu{display:flex;gap:34px;font-size:14px;font-weight:500}
-  .menu a{position:relative}
-  .menu a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--brand);transition:width .25s}
-  .menu a:hover::after{width:100%}
-  .nav .btn{padding:11px 20px;font-size:14px}
-  .burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer}
-  .burger i{display:block;width:22px;height:1.5px;background:var(--ink);margin:5px auto;transition:.3s}
+  .logo img{height:46px;width:auto}
+  .menu{display:flex;gap:4px}
+  .menu a{position:relative;padding:10px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink-soft);transition:color .25s,background .25s}
+  .menu a:hover{color:var(--ink);background:rgba(111,64,156,.07)}
+  .menu a.on{color:var(--brand);background:rgba(111,64,156,.1)}
+  .nav-acoes{display:flex;align-items:center;gap:8px}
+  .gestor-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:800;color:var(--ink-soft);padding:10px 14px;border-radius:999px;transition:.25s}
+  .gestor-btn:hover{color:var(--brand);background:rgba(111,64,156,.08)}
+  .gestor-btn svg{width:15px;height:15px}
 
-  /* ---------- hero ---------- */
-  .hero{min-height:100vh;padding:140px 0 70px;position:relative;display:flex;align-items:center}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
-  .hero h1{font-size:clamp(42px,6.2vw,86px);margin:22px 0 26px}
-  .hero p.lead{font-size:18px;color:var(--ink-soft);max-width:460px;margin-bottom:36px}
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-meta{display:flex;gap:36px;margin-top:54px;padding-top:28px;border-top:1px solid var(--line);max-width:480px}
-  .hero-meta b{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--brand);display:block;line-height:1}
-  .hero-meta small{font-size:13px;color:var(--ink-soft)}
+  /* ---------- abas ---------- */
+  
+  main > [data-tab].tab-in{animation:tabIn .7s var(--ease) both}
+  @keyframes tabIn{from{opacity:0;transform:translateY(22px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+  .tabbar{display:none}
 
-  /* photos arranged as a balloon cluster */
-  .cluster{position:relative;aspect-ratio:1/1.08;width:100%}
-  .bubble{position:absolute;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 30px 60px -30px rgba(42,33,64,.45)}
-  .bubble img{width:100%;height:100%;object-fit:cover}
-  .bubble.b1{width:62%;aspect-ratio:1;left:4%;top:6%}
-  .bubble.b2{width:40%;aspect-ratio:1;right:2%;top:0}
-  .bubble.b3{width:44%;aspect-ratio:1;right:6%;bottom:4%}
-  .bubble.b4{width:28%;aspect-ratio:1;left:14%;bottom:0}
-  .dot{position:absolute;border-radius:50% 50% 48% 48%;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.85),rgba(255,255,255,0) 34%),radial-gradient(circle at 70% 80%,rgba(0,0,0,.18),transparent 60%),var(--c);box-shadow:0 18px 30px -18px var(--c)}
-  .dot.d1{--c:var(--pink);width:13%;aspect-ratio:1;left:-2%;top:52%}
-  .dot.d2{--c:var(--brand-2);width:9%;aspect-ratio:1;right:44%;top:3%}
-  .dot.d3{--c:var(--violet);width:11%;aspect-ratio:1;right:-3%;top:44%}
-  .dot.d4{--c:var(--teal);width:6%;aspect-ratio:1;left:47%;bottom:10%}
-  .float{animation:float 7s ease-in-out infinite}
-  .float.slow{animation-duration:9s;animation-delay:-2s}
-  .float.slower{animation-duration:11s;animation-delay:-4s}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100svh;background:var(--ink);color:#fff;overflow:hidden;display:flex;align-items:center;padding:128px 0 84px}
+  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none;will-change:transform}
+  .hero::before{width:62vw;height:62vw;max-width:820px;max-height:820px;left:-16%;top:-30%;background:radial-gradient(circle,#6F409C 0%,rgba(111,64,156,0) 68%);animation:orbA 16s ease-in-out infinite alternate}
+  .hero::after{width:52vw;height:52vw;max-width:700px;max-height:700px;right:-14%;bottom:-26%;background:radial-gradient(circle,#3D9ED1 0%,rgba(61,158,209,0) 66%);animation:orbB 19s ease-in-out infinite alternate}
+  @keyframes orbA{to{transform:translate(8vw,6vh) scale(1.12)}}
+  @keyframes orbB{to{transform:translate(-7vw,-7vh) scale(1.1)}}
+  .hero-glow{position:absolute;width:34vw;height:34vw;max-width:460px;max-height:460px;left:44%;top:6%;border-radius:50%;background:radial-gradient(circle,rgba(227,111,164,.5),rgba(227,111,164,0) 68%);filter:blur(60px);pointer-events:none;animation:orbA 22s ease-in-out infinite alternate-reverse}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(30px,5vw,80px);align-items:center}
+  .hero .eyebrow{color:#C9B2E6}
+  .hero .eyebrow::before{background:var(--grad-soft)}
+  .hero h1{font-size:clamp(40px,5vw,72px);font-weight:300;margin:22px 0 24px;letter-spacing:-.035em;line-height:1.02}
+  .hero h1 em{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{font-size:clamp(16px,1.4vw,19px);color:#CFC7DE;max-width:520px;margin-bottom:34px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-trust{display:flex;gap:clamp(18px,3vw,38px);margin-top:48px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);max-width:560px;flex-wrap:wrap}
+  .hero-trust div{display:flex;align-items:center;gap:10px;font-size:13.5px;color:#CFC7DE;font-weight:700}
+  .hero-trust svg{width:20px;height:20px;color:#C9A9F0;flex:none}
+  .stack{position:relative;aspect-ratio:1/1.06;width:min(100%,560px);margin-inline:auto;perspective:1400px;--mx:0;--my:0}
+  .ph{position:absolute;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.16);box-shadow:0 50px 90px -30px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.04) inset;transform:translate3d(calc(var(--mx)*var(--d)*1px),calc(var(--my)*var(--d)*1px),0) rotate(var(--r,0deg));transition:transform .25s ease-out;will-change:transform}
+  .ph img{width:100%;height:100%;object-fit:cover}
+  .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,16,31,.55))}
+  .ph1{width:60%;aspect-ratio:3/4;left:0;top:6%;--d:16;--r:-3deg;z-index:2}
+  .ph2{width:50%;aspect-ratio:3/4;right:0;top:0;--d:30;--r:4deg;z-index:3}
+  .ph3{width:56%;aspect-ratio:16/10;right:4%;bottom:0;--d:44;--r:-2deg;z-index:4}
+  .ph .cap{position:absolute;left:14px;bottom:12px;z-index:2;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:#fff}
+  .glass-tag{position:absolute;z-index:5;display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:18px;background:rgba(255,255,255,.12);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.24);font-size:13px;font-weight:800;color:#fff;box-shadow:0 20px 40px -20px rgba(0,0,0,.6);animation:flut 6s ease-in-out infinite}
+  .glass-tag svg{width:20px;height:20px;color:#F3A6CB}
+  .glass-tag.t1{left:-2%;bottom:16%}
+  .glass-tag.t2{right:-3%;top:44%;animation-delay:-3s}
+  @keyframes flut{50%{transform:translateY(-10px)}}
+  .scroll-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#A79FB8;font-weight:800}
+  .scroll-cue i{width:1.5px;height:34px;background:linear-gradient(#C9A9F0,transparent);animation:cue 2s ease-in-out infinite}
+  @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-  /* ---------- marquee ---------- */
-  .marquee{background:var(--grad-dark);color:#fff;overflow:hidden;padding:22px 0;white-space:nowrap}
-  .marquee-track{display:inline-flex;gap:48px;animation:scroll 38s linear infinite;font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-style:italic;font-weight:300}
-  .marquee-track span{display:inline-flex;align-items:center;gap:48px}
-  .marquee-track span::after{content:"";width:14px;height:16px;border-radius:50% 50% 46% 46%;background:var(--pink)}
+  /* ---------- faixa ---------- */
+  .marquee{background:var(--ink-2);color:#E8DDF4;overflow:hidden;padding:20px 0;white-space:nowrap;border-block:1px solid rgba(255,255,255,.08)}
+  .marquee-track{display:inline-flex;gap:46px;animation:scroll 46s linear infinite;font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);font-style:italic;font-weight:300}
+  .marquee-track span{display:inline-flex;align-items:center;gap:46px}
+  .marquee-track span::after{content:"";width:9px;height:11px;border-radius:50% 50% 46% 46%;background:var(--pink)}
   .marquee-track span:nth-child(3n+2)::after{background:var(--brand-2)}
   .marquee-track span:nth-child(3n)::after{background:var(--violet)}
   @keyframes scroll{to{transform:translateX(-50%)}}
 
-  section{padding:120px 0}
+  /* ---------- reveal ---------- */
+  .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+  .rv.in{opacity:1;transform:none}
+  .rv-clip{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+  .rv-clip.in{clip-path:inset(0 0 0 0)}
 
-  /* ---------- história ---------- */
-  .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
-  .story-photo{position:relative}
-  .story-photo .arch{border-radius:999px 999px var(--radius) var(--radius);overflow:hidden;aspect-ratio:3/4}
-  .story-photo .arch img,.story-photo .arch video{width:100%;height:100%;object-fit:cover;display:block}
-  .story-photo .tag{position:absolute;right:-24px;bottom:40px;background:var(--card);padding:18px 22px;border-radius:18px;box-shadow:0 20px 40px -20px rgba(42,33,64,.35);max-width:220px}
-  .story-photo .tag b{font-family:var(--serif);font-weight:400;font-size:20px;font-style:italic;display:block;line-height:1.2}
-  .story-photo .tag small{font-size:13px;color:var(--ink-soft)}
-  .story h2{margin:18px 0 30px}
-  .story p{color:var(--ink-soft);margin-bottom:18px;font-size:17px}
-  .story blockquote{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.3;border-left:2px solid var(--brand);padding-left:24px;margin:34px 0}
-  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+  /* ---------- sobre ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,7vw,110px);align-items:center}
+  .arch{position:relative;border-radius:999px 999px 28px 28px;overflow:hidden;aspect-ratio:3/4.1;box-shadow:var(--shadow);background:var(--ink-2)}
+  .arch video,.arch img{width:100%;height:100%;object-fit:cover;display:block}
+  .arch-tag{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);padding:10px 20px;border-radius:999px;background:rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;white-space:nowrap}
+  .about p{color:var(--ink-soft);margin-top:18px;font-size:clamp(16px,1.25vw,18px)}
+  .about blockquote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(22px,2.3vw,30px);line-height:1.3;margin:30px 0;padding-left:24px;border-left:2px solid transparent;border-image:var(--grad) 1}
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
   .values div{border-top:1px solid var(--line);padding-top:16px}
   .values b{display:block;font-size:15px;margin-bottom:4px}
-  .values small{color:var(--ink-soft);font-size:13.5px;line-height:1.5;display:block}
+  .values small{color:var(--ink-soft);font-size:14px;line-height:1.5;display:block}
 
-  /* ---------- galeria ---------- */
-  .gallery{background:var(--bg-2)}
-  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px;flex-wrap:wrap}
-  .sec-head p{max-width:380px;color:var(--ink-soft)}
-  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
-  .filters button{font-family:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:.2s}
-  .filters button:hover{border-color:var(--ink)}
-  .filters button.on{background:var(--grad);color:#fff;border-color:transparent}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:3/4.4;background:var(--line);transition:opacity .35s, transform .35s}
-  .item.wide{grid-column:span 2;aspect-ratio:6.1/4.4}
-  .grid{grid-auto-flow:dense}
+  /* ---------- destaques (trilho) ---------- */
+  .rail-sec{background:var(--ink);color:#fff;overflow:hidden}
+  .rail-sec h2{color:#fff}
+  .rail-sec .eyebrow{color:#C9B2E6}.rail-sec .lead{color:#B9B0CA}
+  .rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px max(20px,calc((100vw - 1200px)/2)) 30px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .rail::-webkit-scrollbar{display:none}
+  .rcard{position:relative;flex:0 0 clamp(250px,26vw,340px);aspect-ratio:3/4.2;border-radius:26px;overflow:hidden;scroll-snap-align:start;cursor:pointer;border:1px solid rgba(255,255,255,.1);isolation:isolate;transition:transform .5s var(--ease),box-shadow .5s}
+  .rcard img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+  .rcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,16,31,.88));z-index:1}
+  .rcard:hover{transform:translateY(-8px);box-shadow:0 40px 70px -30px rgba(0,0,0,.8)}
+  .rcard:hover img{transform:scale(1.07)}
+  .rcard div{position:absolute;left:20px;right:20px;bottom:18px;z-index:2}
+  .rcard small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:#C9B2E6}
+  .rcard b{display:block;font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.1;margin-top:4px}
+  .rail-foot{display:flex;justify-content:center;margin-top:12px}
+
+  /* ---------- processo ---------- */
+  .process{position:relative;background:var(--ink-2);color:#fff;overflow:hidden}
+  .process-bg{position:absolute;inset:-12% 0;background:var(--bgimg) center/cover;opacity:.22;transform:translate3d(0,var(--py,0px),0);will-change:transform}
+  .process::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--ink-2),rgba(30,23,50,.72) 30%,rgba(30,23,50,.72) 70%,var(--ink-2));z-index:1}
+  .process .wrap{position:relative;z-index:2}
+  .process h2{color:#fff}.process .eyebrow{color:#C9B2E6}.process .lead{color:#B9B0CA}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{padding:30px 26px;border-radius:26px;background:rgba(255,255,255,.07);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.13);transition:transform .5s var(--ease),background .4s,border-color .4s}
+  .step:hover{transform:translateY(-8px);background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+  .step .n{font-family:var(--serif);font-style:italic;font-weight:300;font-size:60px;line-height:1;background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:18px}
+  .step b{display:block;font-size:18px;margin-bottom:8px}
+  .step p{color:#C0B8D0;font-size:15px;line-height:1.55}
+
+  /* ---------- prova social ---------- */
+  .dif-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .dif{padding:28px 26px;border-radius:24px;background:var(--card);border:1px solid var(--line);transition:transform .45s var(--ease),box-shadow .45s,border-color .3s}
+  .dif:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--brand-soft)}
+  .dif i{display:grid;place-items:center;width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,rgba(111,64,156,.12),rgba(61,158,209,.14));color:var(--brand);margin-bottom:18px}
+  .dif i svg{width:24px;height:24px}
+  .dif b{display:block;font-family:var(--serif);font-size:21px;font-weight:500;margin-bottom:6px}
+  .dif p{color:var(--ink-soft);font-size:15px;line-height:1.55}
+  .testi{margin-top:56px}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .testi-c{padding:30px;border-radius:26px;background:var(--card);border:1px solid var(--line)}
+  .testi-c blockquote{font-family:var(--serif);font-style:italic;font-weight:300;font-size:20px;line-height:1.4}
+  .testi-c cite{display:block;margin-top:18px;font-style:normal;font-weight:800;font-size:14px}
+  .testi-c small{color:var(--ink-soft)}
+  .insta{margin-top:64px;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,70px);align-items:center;padding:clamp(24px,4vw,48px);border-radius:32px;background:linear-gradient(135deg,#F1E8FA,#E6F1F8)}
+  .insta h3{font-size:clamp(26px,3vw,40px)}
+  .insta p{color:var(--ink-soft);margin:12px 0 24px}
+  .insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .insta-grid a{position:relative;display:block;aspect-ratio:1;border-radius:18px;overflow:hidden}
+  .insta-grid img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+  .insta-grid a:hover img{transform:scale(1.1)}
+  .insta-grid a::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(111,64,156,.4),rgba(61,158,209,.4));opacity:0;transition:opacity .4s}
+  .insta-grid a:hover::after{opacity:1}
+
+  /* ---------- chamada final ---------- */
+  .cta-band{position:relative;overflow:hidden;border-radius:clamp(26px,3vw,44px);background:var(--ink);color:#fff;padding:clamp(40px,7vw,96px) clamp(24px,5vw,80px);text-align:center;isolation:isolate}
+  .cta-band::before,.cta-band::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.6;z-index:-1}
+  .cta-band::before{width:60%;aspect-ratio:1;left:-12%;top:-50%;background:radial-gradient(circle,#6F409C,transparent 68%)}
+  .cta-band::after{width:55%;aspect-ratio:1;right:-10%;bottom:-60%;background:radial-gradient(circle,#3D9ED1,transparent 68%)}
+  .cta-band h2{color:#fff;font-weight:300;margin:0 auto;max-width:15ch}
+  .cta-band h2 em{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .cta-band p{color:#CFC7DE;max-width:520px;margin:18px auto 30px}
+  .cta-band .row-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- portfólio ---------- */
+  .page-hero{padding:clamp(124px,14vw,176px) 0 clamp(26px,4vw,48px)}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+  .filters button{font-size:14px;font-weight:700;padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:.25s var(--ease)}
+  .filters button small{opacity:.55;margin-left:6px;font-weight:700}
+  .filters button:hover{border-color:var(--brand);transform:translateY(-2px)}
+  .filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;grid-auto-flow:dense}
+  .pcard{position:relative;border-radius:24px;overflow:hidden;cursor:pointer;aspect-ratio:3/4.2;background:var(--bg-2);isolation:isolate;transition:transform .5s var(--ease),box-shadow .5s,opacity .35s}
+  .pcard.wide{grid-column:span 2;aspect-ratio:10/7}
+  .pcard.hide{display:none}
+  .pcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
   .slides{position:absolute;inset:0}
-  .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
-  .slides video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
-  .slides img.on,.slides video.on{opacity:1}
-  .item:hover .slides img.on{transform:scale(1.05)}
-  .item .count{position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,252,247,.9);color:var(--ink);font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px;display:flex;align-items:center;gap:6px}
-  .item .count svg{width:14px;height:14px}
-  .item .arr{position:absolute;top:50%;z-index:2;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,252,247,.92);color:var(--ink);font-size:17px;cursor:pointer;opacity:0;transition:opacity .25s}
-  .item:hover .arr{opacity:1}
-  .item .arr.l{left:12px}.item .arr.r{right:12px}
-  .item .dots{position:absolute;z-index:2;bottom:16px;right:18px;display:flex;gap:6px}
-  .item .dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5);transition:.3s}
-  .item .dots i.on{background:#fff;width:18px;border-radius:4px}
-  @media (hover:none){.item .arr{opacity:1;width:34px;height:34px}}
-  .item figcaption{position:absolute;z-index:1;inset:auto 0 0;padding:60px 20px 18px;background:linear-gradient(transparent,rgba(26,18,42,.75));color:#fff}
-  .item figcaption b{font-family:var(--serif);font-weight:400;font-size:22px;display:block;line-height:1.1}
-  .item figcaption small{font-size:12px;letter-spacing:.15em;text-transform:uppercase;opacity:.8}
-  .item.hide{display:none}
-  .gallery-foot{text-align:center;margin-top:50px}
-  .gallery-foot p{color:var(--ink-soft);margin-bottom:18px}
+  .slides img,.slides video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease,transform 1.1s var(--ease)}
+  .slides .on{opacity:1}
+  .pcard:hover .slides .on{transform:scale(1.06)}
+  .pcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,31,0) 42%,rgba(20,16,31,.82));z-index:1;pointer-events:none;transition:opacity .4s}
+  .pinfo{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 20px 18px;color:#fff}
+  .pinfo small{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:#D9C8F0}
+  .pinfo b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.1vw,27px);line-height:1.1;margin-top:3px}
+  .pinfo .ver{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;margin-top:10px;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .4s}
+  .pcard:hover .ver,.pcard:focus-visible .ver{max-height:30px;opacity:1}
+  .pcount{position:absolute;top:14px;left:14px;z-index:3;display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.2);color:#fff;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.3)}
+  .pcount svg{width:14px;height:14px}
+  .parr{position:absolute;top:50%;z-index:3;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-size:17px;cursor:pointer;opacity:0;transition:opacity .3s,background .3s}
+  .parr:hover{background:rgba(255,255,255,.4)}
+  .pcard:hover .parr{opacity:1}
+  .parr.l{left:12px}.parr.r{right:12px}
+  .pdots{position:absolute;z-index:3;top:20px;right:18px;display:flex;gap:5px}
+  .pdots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);transition:.3s}
+  .pdots i.on{background:#fff;width:18px;border-radius:4px}
+  @media (hover:none){.parr{opacity:1;width:34px;height:34px}.pinfo .ver{max-height:30px;opacity:1}}
+  .p-empty{padding:60px 0;text-align:center;color:var(--ink-soft)}
+  .p-note{margin-top:34px;text-align:center;color:var(--ink-soft);font-size:15px}
 
   /* ---------- serviços ---------- */
-  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .svc{background:var(--card);border-radius:var(--radius);padding:38px 32px;border:1px solid var(--line);transition:transform .3s, box-shadow .3s;position:relative;overflow:hidden}
-  .svc:hover{transform:translateY(-6px);box-shadow:0 30px 50px -35px rgba(42,33,64,.5)}
-  .svc .ico{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin-bottom:26px;background:var(--bg-2)}
-  .svc .ico svg{width:28px;height:28px;stroke:var(--brand);fill:none;stroke-width:1.4}
-  .svc h3{font-size:28px;margin-bottom:12px}
-  .svc p{color:var(--ink-soft);font-size:15px}
-  .svc ul{list-style:none;margin-top:18px;font-size:14px}
-  .svc li{padding:8px 0;border-top:1px dashed var(--line);display:flex;gap:10px}
-  .svc li::before{content:"✦";color:var(--brand);font-size:11px;padding-top:3px}
-
-
-  /* ---------- aluguel ---------- */
-  .rentals{background:var(--bg-2)}
-  .rent-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-  .rent{background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
-  .rent .rent-photo{border-radius:0;aspect-ratio:4/3;cursor:pointer}
-  .rent .rent-photo figcaption{display:none}
-  .rent-body{padding:30px 32px 34px;display:flex;flex-direction:column;gap:14px;flex:1}
-  .rent-body h3{font-size:34px}
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .svc{position:relative;border-radius:28px;overflow:hidden;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s,border-color .3s;transform-style:preserve-3d;will-change:transform}
+  .svc:hover{box-shadow:var(--shadow);border-color:var(--brand-soft)}
+  .svc .im{position:relative;aspect-ratio:4/4.4;overflow:hidden}
+  .svc .im img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+  .svc:hover .im img{transform:scale(1.08)}
+  .svc .im::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,16,31,.5))}
+  .svc .body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .svc h3{font-size:23px}
+  .svc p{color:var(--ink-soft);font-size:14.5px;line-height:1.55;flex:1}
+  .svc .go{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--brand);margin-top:6px;border:0;background:none;cursor:pointer;padding:0}
+  .svc .go svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+  .svc .go:hover svg{transform:translateX(5px)}
+  .rent-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .rent{display:grid;grid-template-rows:auto 1fr;border-radius:32px;overflow:hidden;background:var(--card);border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s}
+  .rent:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .rent-photo{position:relative;aspect-ratio:16/11;overflow:hidden;background:#fff}
+  .rent-photo .slides img{object-fit:cover}
+  .rent-photo.product .slides img{object-fit:contain;padding:18px}
+  .rent-body{padding:28px 30px 32px;display:flex;flex-direction:column;gap:14px}
+  .rent-body h3{font-size:clamp(28px,3vw,38px)}
   .rent-body p{color:var(--ink-soft)}
-  .rent-body ul{list-style:none;font-size:14.5px;margin-bottom:8px}
+  .specs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .specs div{background:var(--bg-2);border-radius:16px;padding:12px 14px}
+  .specs dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:800}
+  .specs dd{font-family:var(--serif);font-size:22px;color:var(--brand);line-height:1.2;margin-top:2px}
+  .rent-body ul{list-style:none;font-size:14.5px}
   .rent-body li{padding:9px 0;border-top:1px dashed var(--line);display:flex;gap:10px}
-  .rent-body li::before{content:"✦";color:var(--brand);font-size:11px;padding-top:4px}
-  .rent-body .btn{align-self:flex-start;margin-top:auto}
-  .rent .product{background:#fff}
-  .rent .product .slides img{object-fit:contain;padding:14px}
-  .rent .product:hover .slides img.on{transform:none}
-  .specs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:4px 0 6px}
-  .specs div{background:var(--bg-2);border-radius:14px;padding:12px 14px}
-  .specs dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
-  .specs dd{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--brand);line-height:1.2;margin-top:2px}
-  @media (max-width:420px){.specs dd{font-size:18px}.specs div{padding:10px}}
-  .rent-note{margin-top:18px;font-size:12px;color:var(--ink-soft);text-align:right}
-  @media (max-width:760px){.rent-grid{grid-template-columns:1fr}.rent-body{padding:24px 22px 28px}.rent-body h3{font-size:28px}}
+  .rent-body li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--grad);margin-top:9px;flex:none}
+  .rent-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .rent-note{margin-top:16px;font-size:12.5px;color:var(--ink-soft);text-align:right}
 
+  /* ---------- orçamento em etapas ---------- */
+  .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,72px);align-items:start}
+  .contact-info p{color:var(--ink-soft);margin:16px 0 28px;max-width:420px}
+  .c-list{list-style:none;display:grid;gap:12px}
+  .c-list a{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--line);border-radius:20px;transition:transform .35s var(--ease),border-color .3s,box-shadow .3s}
+  .c-list a:hover{transform:translateX(6px);border-color:var(--brand-soft);box-shadow:var(--shadow)}
+  .c-list i{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,rgba(111,64,156,.12),rgba(61,158,209,.14));color:var(--brand);flex:none}
+  .c-list svg{width:22px;height:22px}
+  .c-list small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:800}
+  .c-list b{font-weight:800}
+  .q-card{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.95),rgba(255,255,255,.78));border:1px solid #fff;border-radius:34px;padding:clamp(24px,3.4vw,44px);box-shadow:0 40px 80px -40px rgba(20,16,31,.45);backdrop-filter:blur(14px)}
+  .q-card::before{content:"";position:absolute;inset:-1px;border-radius:35px;padding:1.5px;background:linear-gradient(135deg,rgba(111,64,156,.5),rgba(255,255,255,0) 40%,rgba(61,158,209,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .q-prog{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:800;color:var(--brand);margin-bottom:22px}
+  .q-bar{flex:1;height:6px;border-radius:6px;background:var(--line);overflow:hidden}
+  .q-bar i{display:block;height:100%;width:20%;background:var(--grad);border-radius:6px;transition:width .5s var(--ease)}
+  .q-step{display:none}
+  .q-step.atual{display:grid;gap:16px;animation:passo .5s var(--ease)}
+  .q-step h3{font-size:clamp(26px,3vw,36px);margin-bottom:2px}
+  .q-step .hint{color:var(--ink-soft);font-size:14.5px;margin-top:-8px}
+  @keyframes passo{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+  .q-nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px}
+  .q-nav .btn{flex:1}
+  .q-nav .btn[hidden]{display:none}
+  .q-err{color:#C2508A;font-weight:700;font-size:13.5px;min-height:18px}
+  .refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:10px;max-height:300px;overflow:auto;padding:4px;margin:-4px}
+  .ref{position:relative;border:0;padding:0;border-radius:16px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;background:var(--bg-2);outline:2px solid transparent;transition:outline-color .2s,transform .3s var(--ease)}
+  .ref img{width:100%;height:100%;object-fit:cover}
+  .ref:hover{transform:scale(1.04)}
+  .ref.on{outline-color:var(--brand)}
+  .ref.on::after{content:"✓";position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--grad);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center}
+  .ref span{position:absolute;left:0;right:0;bottom:0;padding:16px 6px 5px;font-size:10px;font-weight:800;color:#fff;background:linear-gradient(transparent,rgba(20,16,31,.85));text-align:center;line-height:1.15}
+  .q-resumo{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:14.5px;background:var(--bg-2);padding:18px 20px;border-radius:20px}
+  .q-resumo dt{color:var(--ink-soft);font-weight:800}
+  .q-resumo dd{font-weight:700;word-break:break-word}
+
+  /* ---------- formulários (base) ---------- */
+  label{display:grid;gap:6px;font-size:13px;font-weight:800;color:var(--ink-soft)}
+  input,select,textarea{font:inherit;font-size:16px;padding:13px 15px;border-radius:14px;border:1.5px solid var(--line);background:#fff;color:var(--ink);outline:none;transition:border-color .25s,box-shadow .25s;width:100%}
+  input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(111,64,156,.1)}
+  textarea{resize:vertical;min-height:90px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  /* ---------- rodapé ---------- */
+  footer{background:var(--ink);color:#CFC7DE;padding:clamp(56px,7vw,96px) 0 28px;position:relative;overflow:hidden}
+  footer::before{content:"";position:absolute;width:50%;aspect-ratio:1;left:-15%;top:-40%;background:radial-gradient(circle,rgba(111,64,156,.5),transparent 68%);filter:blur(60px);pointer-events:none}
+  .foot-grid{position:relative;display:grid;grid-template-columns:1.3fr .8fr .9fr 1fr;gap:clamp(24px,4vw,56px)}
+  .foot-brand img{height:110px;width:auto;margin-bottom:18px;filter:brightness(1.6) saturate(1.1)}
+  .foot-brand p{font-size:14.5px;line-height:1.6;max-width:340px;color:#B2A9C4}
+  footer h4{font-family:var(--sans);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#fff;font-weight:800;margin-bottom:16px}
+  footer ul{list-style:none;display:grid;gap:10px;font-size:14.5px}
+  footer a{transition:color .25s}
+  footer ul a:hover{color:#fff}
+  .foot-social{display:flex;gap:10px;margin-top:20px}
+  .foot-social a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);transition:.3s var(--ease)}
+  .foot-social a:hover{background:#fff;color:var(--ink);transform:translateY(-3px)}
+  .foot-social svg{width:19px;height:19px}
+  .foot-bottom{position:relative;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:clamp(36px,5vw,64px);padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#8F86A3}
+
+  /* ---------- botão flutuante do WhatsApp ---------- */
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:10px;padding:13px 20px 13px 16px;border-radius:999px;background:#25D366;color:#06381A;font-weight:800;font-size:14.5px;box-shadow:0 18px 40px -14px rgba(37,211,102,.75),0 0 0 1px rgba(255,255,255,.25) inset;transition:transform .35s var(--ease),box-shadow .35s}
+  .wa-float:hover{transform:translateY(-4px) scale(1.03)}
+  .wa-float svg{width:26px;height:26px;fill:#06381A}
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid #25D366;animation:ring 2.6s ease-out infinite;pointer-events:none}
+  @keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.35);opacity:0}}
+
+  /* ---------- tela cheia ---------- */
+  .lb{position:fixed;inset:0;z-index:120;background:rgba(14,10,22,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:none;align-items:center;justify-content:center;padding:24px}
+  .lb.open{display:flex;animation:lbIn .4s var(--ease)}
+  @keyframes lbIn{from{opacity:0}to{opacity:1}}
+  .lb img{max-height:80vh;max-width:min(860px,100%);border-radius:20px;box-shadow:0 40px 100px -30px #000;margin-bottom:44px}
+  .lb video{max-height:80vh;max-width:min(560px,100%);border-radius:20px;margin-bottom:44px;display:none}
+  .lb .cap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#fff;font-family:var(--serif);font-style:italic;font-size:21px;font-weight:300}
+  .lb button{position:absolute;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:22px;transition:background .25s}
+  .lb button:hover{background:rgba(255,255,255,.28)}
+  .lb .x{top:20px;right:20px}
+  .lb .prev{left:20px;top:50%;transform:translateY(-50%)}
+  .lb .next{right:20px;top:50%;transform:translateY(-50%)}
+
+  /* ---------- responsivo ---------- */
+  @media (max-width:1100px){
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:980px){
+    .hero-grid,.about-grid,.contact-grid,.insta{grid-template-columns:1fr}
+    .hero{padding:118px 0 64px;min-height:auto}
+    .stack{width:min(100%,460px);margin-top:12px}
+    .p-grid{grid-template-columns:repeat(2,1fr)}
+    .dif-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}
+    .rent-grid{grid-template-columns:1fr}
+    .arch{max-width:420px;margin-inline:auto}
+    .scroll-cue{display:none}
+  }
+  @media (max-width:760px){
+    body{padding-bottom:92px}
+    .menu{display:none}
+    .nav{padding:6px 8px 6px 14px}
+    .logo img{height:40px}
+    .nav-acoes .btn{display:none}
+    .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:85;padding:6px;border-radius:26px;background:rgba(255,255,255,.82);backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);border:1px solid rgba(255,255,255,.8);box-shadow:0 20px 50px -18px rgba(20,16,31,.6)}
+    .tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px 2px;border-radius:20px;font-size:10.5px;font-weight:800;color:var(--ink-soft);transition:.3s var(--ease)}
+    .tabbar a svg{width:22px;height:22px}
+    .tabbar a.on{color:#fff;background:var(--grad);box-shadow:0 10px 22px -10px rgba(111,64,156,.9)}
+    .wa-float{bottom:96px;right:14px;padding:0;width:54px;height:54px;justify-content:center}
+    .wa-float span{display:none}
+    .hero h1{margin-top:16px}
+    .hero-cta .btn{flex:1}
+    .glass-tag{display:none}
+    .values,.steps,.dif-grid,.testi-grid,.svc-grid{grid-template-columns:1fr}
+    .row{grid-template-columns:1fr}
+    .specs{grid-template-columns:1fr 1fr 1fr}
+    .specs dd{font-size:18px}
+    .p-grid{gap:10px}
+    .pcard{border-radius:18px}
+    .pcard.wide{aspect-ratio:4/3}
+    .pinfo{padding:34px 12px 12px}
+    .pinfo b{font-size:17px}
+    .foot-grid{grid-template-columns:1fr}
+    .rcard{flex-basis:72vw}
+    .q-nav{position:sticky;bottom:96px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .rv,.rv-clip{opacity:1;transform:none;clip-path:none}
+  }
+
+/* stories */
+.stories{background:var(--bg)}
+.st-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);grid-template-areas:"head stage" "chap stage" "btn stage";column-gap:clamp(40px,6vw,96px);row-gap:28px;align-items:start}
+.st-head{grid-area:head}
+.st-head h2{margin-top:14px}
+.st-hint{margin-top:18px;color:var(--ink-soft);font-size:15.5px}
+.st-chap{grid-area:chap;display:flex;flex-direction:column;gap:10px}
+.st-chap button{display:flex;align-items:center;gap:14px;padding:10px 14px 10px 10px;border-radius:20px;border:1px solid var(--line);background:#fff;font:inherit;color:var(--ink);cursor:pointer;text-align:left;transition:.35s var(--ease)}
+.st-chap button:hover{transform:translateX(4px);border-color:var(--brand-soft)}
+.st-chap button[aria-current="true"]{background:#fff;box-shadow:var(--shadow);border-color:transparent}
+.st-chap img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;padding:2px;background:var(--grad);transition:.35s var(--ease)}
+.st-chap button[aria-current="true"] img{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--brand)}
+.st-chap b{display:block;font-weight:800;font-size:16px}
+.st-chap small{color:var(--ink-soft);font-size:13px}
+.st-btn{grid-area:btn}
+.st-stage{grid-area:stage;position:sticky;top:110px}
+.st-frame{position:relative;aspect-ratio:9/16;width:100%;max-width:420px;margin-inline:auto;border-radius:30px;overflow:hidden;background:#0E0B16;box-shadow:0 60px 110px -40px rgba(20,16,31,.55);isolation:isolate;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.st-slides{position:absolute;inset:0}
+.st-slide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+.st-slide.on{opacity:1}
+.st-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transform-origin:center}
+.st-frame.playing .st-slide.on img{animation:stKen 4.5s linear forwards}
+.st-frame.paused .st-slide.on img{animation-play-state:paused}
+@keyframes stKen{to{transform:scale(1.1)}}
+.st-shade{position:absolute;left:0;right:0;z-index:2;pointer-events:none}
+.st-shade-top{top:0;height:30%;background:linear-gradient(180deg,rgba(14,11,22,.7),transparent)}
+.st-shade-bot{bottom:0;height:38%;background:linear-gradient(0deg,rgba(14,11,22,.85),transparent)}
+.st-top{position:absolute;top:0;left:0;right:0;z-index:4;padding:14px 16px 0}
+.st-bars{display:flex;gap:4px}
+.st-bars i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.35);overflow:hidden}
+.st-bars i b{display:block;height:100%;width:0;background:#fff}
+.st-me{display:flex;align-items:center;gap:10px;margin-top:14px;color:#fff}
+.st-av{width:38px;height:38px;border-radius:50%;padding:2px;background:var(--grad);flex:none}
+.st-av img{width:100%;height:100%;border-radius:50%;background:#fff;object-fit:contain;padding:3px}
+.st-who{flex:1;min-width:0;line-height:1.2}
+.st-who b{display:block;font-size:14px;font-weight:800}
+.st-who small{font-size:12px;color:#E5DBF3;opacity:.9}
+.st-pause{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(8px)}
+.st-pause svg{width:14px;height:14px}
+.st-pause .i-play{display:none}
+.st-frame.paused .st-pause .i-pause{display:none}
+.st-frame.paused .st-pause .i-play{display:block}
+.st-cap{position:absolute;left:20px;right:20px;bottom:26px;z-index:4;margin:0;color:#fff;font-family:var(--serif);font-size:clamp(20px,2vw,24px);line-height:1.25;text-shadow:0 2px 16px rgba(0,0,0,.45)}
+.st-nav{position:absolute;top:110px;bottom:90px;z-index:5;width:40%;background:transparent;border:0;cursor:pointer}
+.st-prev{left:0}
+.st-next{right:0;width:60%}
+.st-nav:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+@media (max-width:860px){
+  .st-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "chap" "stage" "btn";row-gap:24px}
+  .st-chap{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:4px 2px 8px;scrollbar-width:none;align-items:flex-start}
+  .st-chap::-webkit-scrollbar{display:none}
+  .st-chap button{flex-direction:column;align-items:center;gap:8px;border:0;background:none;box-shadow:none;padding:0;width:84px;flex:none;scroll-snap-align:start;text-align:center}
+  .st-chap button:hover{transform:none}
+  .st-chap img{width:70px;height:70px}
+  .st-chap button b{font-size:12.5px;line-height:1.2}
+  .st-chap small{display:none}
+  .st-stage{position:static;width:100%}
+  .st-frame{max-width:400px}
+  .st-btn .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.st-frame.playing .st-slide.on img{animation:none}}
 
   /* ---------- monte sua festa ---------- */
   .builder{background:var(--bg-2)}
@@ -263,54 +558,6 @@
     .items{grid-template-columns:1fr}
   }
 
-  /* ---------- como funciona ---------- */
-  .steps-sec{background:var(--grad-dark);color:#fff}
-  .steps-sec .sec-head p{color:#C9C1DC}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
-  .step{padding:34px 28px 10px 0;border-top:1px solid rgba(255,255,255,.18);position:relative}
-  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-style:italic;font-weight:600;font-variation-settings:"SOFT" 100;font-size:56px;background:linear-gradient(100deg,#F3A6CB,#8FD3EA);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:1;margin-bottom:22px}
-  .step b{font-size:18px;display:block;margin-bottom:8px;font-weight:600}
-  .step p{color:#C9C1DC;font-size:15px}
-
-  /* ---------- orçamento ---------- */
-  .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
-  .quote h2{margin:18px 0 24px}
-  .quote .info{color:var(--ink-soft);font-size:17px;margin-bottom:34px}
-  .contact-list{list-style:none;display:grid;gap:14px}
-  .contact-list a{display:flex;align-items:center;gap:16px;padding:18px 22px;background:var(--card);border:1px solid var(--line);border-radius:18px;transition:border-color .2s}
-  .contact-list a:hover{border-color:var(--brand)}
-  .contact-list svg{width:24px;height:24px;flex:none}
-  .contact-list small{display:block;font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase}
-  .contact-list b{font-weight:600}
-  form{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:40px;display:grid;gap:18px}
-  form h3{font-size:30px;margin-bottom:4px}
-  form .sub{color:var(--ink-soft);font-size:14px;margin-top:-10px}
-  label{font-size:13px;font-weight:600;display:grid;gap:7px}
-  input,select,textarea{font-family:inherit;font-size:15px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);outline:none;transition:border-color .2s;width:100%}
-  input:focus,select:focus,textarea:focus{border-color:var(--brand)}
-  textarea{resize:vertical;min-height:90px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  form .btn{justify-content:center;margin-top:6px}
-
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line);padding:50px 0 40px}
-  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-  .foot p{color:var(--ink-soft);font-size:14px}
-  .foot .social{display:flex;gap:12px}
-  .foot .social a{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.2s}
-  .foot .social a:hover{background:var(--grad);color:#fff;border-color:transparent}
-  .foot .social svg{width:18px;height:18px}
-
-  /* ---------- botão da área do gestor ---------- */
-  .nav-acoes{display:flex;align-items:center;gap:10px}
-  .gestor-btn{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:var(--brand);border:1.5px solid var(--brand-soft);background:#fff;padding:9px 14px;border-radius:999px;transition:.2s}
-  .gestor-btn:hover{border-color:var(--brand);background:#FBF8FE}
-  .gestor-btn svg{width:16px;height:16px}
-  /* ---------- abas ---------- */
-  .tab-hidden{display:none!important}
-  .menu a.on{color:var(--brand)}
-  .menu a.on::after{width:100%}
-  .tabbar{display:none}
 
   /* ---------- montagem em passos ---------- */
   .b-progress{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:700;color:var(--brand);letter-spacing:.04em}
@@ -323,299 +570,215 @@
   .b-nav .btn{flex:1;justify-content:center}
   .b-nav .btn[hidden]{display:none}
 
-  /* ---------- whatsapp flutuante ---------- */
-  .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.4);transition:transform .2s}
-  .wa-float:hover{transform:scale(1.08)}
-  .wa-float svg{width:30px;height:30px;fill:#fff}
 
-  /* ---------- lightbox ---------- */
-  .lb{position:fixed;inset:0;z-index:100;background:rgba(26,18,42,.92);display:none;align-items:center;justify-content:center;padding:30px}
-  .lb.open{display:flex}
-  .lb video{max-height:78vh;max-width:min(560px,100%);border-radius:18px;margin-bottom:40px;display:none}
-  .lb img{max-height:78vh;margin-bottom:40px;max-width:min(560px,100%);border-radius:18px}
-  .lb .cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#fff;font-family:var(--serif);font-style:italic;font-size:22px}
-  .lb button{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:22px}
-  .lb .x{top:22px;right:22px}
-  .lb .prev{left:22px;top:50%;transform:translateY(-50%)}
-  .lb .next{right:22px;top:50%;transform:translateY(-50%)}
+html[data-aba="inicio"] main>[data-tab]:not([data-tab="inicio"]),html[data-aba="decoracoes"] main>[data-tab]:not([data-tab="decoracoes"]),html[data-aba="monte"] main>[data-tab]:not([data-tab="monte"]),html[data-aba="servicos"] main>[data-tab]:not([data-tab="servicos"]),html[data-aba="contato"] main>[data-tab]:not([data-tab="contato"]){display:none!important}
+/* v5: faixa de fotos no lugar do marquee de palavras */
+.film{overflow:hidden;padding:26px 0;background:var(--bg);position:relative}
+.film::before,.film::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.film::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.film::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+.film-track{display:flex;gap:16px;width:max-content;animation:filmRun 60s linear infinite}
+.film:hover .film-track{animation-play-state:paused}
+.film-track img{height:150px;width:auto;border-radius:18px;object-fit:cover;box-shadow:0 18px 40px -22px rgba(20,16,31,.55)}
+@keyframes filmRun{to{transform:translateX(-50%)}}
+@media(max-width:760px){.film-track img{height:110px;border-radius:14px}}
+@media(prefers-reduced-motion:reduce){.film-track{animation:none}}
+html[data-aba="inicio"] header .logo img{filter:brightness(1.45) saturate(1.1) drop-shadow(0 0 5px rgba(255,255,255,.45))}
+/* v4: interatividade e ajustes pedidos */
+.svc{isolation:isolate}
+.svc::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--sx,50%) var(--sy,30%),rgba(255,255,255,.28),transparent 60%)}
+.svc:hover::before{opacity:1}
+.svc .im img{transition:transform 1.1s var(--ease),filter .6s}
+.svc:hover .im img{filter:saturate(1.15)}
+.rcard{transition:transform .5s var(--ease),box-shadow .5s;transform-style:preserve-3d}
+.rcard:hover{box-shadow:0 40px 70px -30px rgba(111,64,156,.55)}
+.rcard::before{content:"Ver projeto";position:absolute;top:18px;left:18px;z-index:3;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#fff;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);opacity:0;transform:translateY(-6px);transition:.4s var(--ease)}
+.rcard:hover::before,.rcard:focus-visible::before{opacity:1;transform:none}
+@media (hover:none){.rcard::before{opacity:1;transform:none}}
+.btn{transition:transform .35s var(--ease),box-shadow .35s,background .35s}
+.btn:hover{transform:translateY(-2px)}
+/* v3: abertura nova e seção Como funciona clara */
+.hero2{position:relative;min-height:100svh;display:flex;flex-direction:column;color:#fff;background:#14101F;overflow:hidden;padding:130px 0 40px}
+.hero2-bg{position:absolute;inset:0;z-index:0}
+.hero2-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transform:scale(1.04);animation:heroZoom 2.4s var(--ease) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero2-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,16,31,.94) 0%,rgba(20,16,31,.7) 42%,rgba(20,16,31,.15) 100%),linear-gradient(0deg,rgba(20,16,31,.85),transparent 40%)}
+.hero2-in{position:relative;z-index:2;margin-block:auto;margin-inline:auto;width:min(1200px,calc(100% - 40px));padding-top:40px}
+.hero2-in>*{max-width:680px}
+.hero2-eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:#E6D8F7;margin-bottom:22px}
+.hero2 h1{font-size:clamp(44px,6vw,92px);font-weight:300;line-height:1.02;letter-spacing:-.03em;color:#fff}
+.hero2 h1 em{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero2-sub{margin-top:24px;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:#E6DFF0;max-width:560px}
+.hero2 .hero-cta{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.hero2-strip{position:relative;z-index:2;margin-inline:auto;width:min(1200px,calc(100% - 40px));display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding-top:40px}
+.hs{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.hs img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.hs::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,16,31,.75))}
+.hs:hover img{transform:scale(1.07)}
+.hs span{position:absolute;left:14px;bottom:12px;z-index:2;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#fff}
+.process.light{background:var(--bg)}
+.process.light h2,.process.light .step b{color:var(--ink)}
+.process.light .eyebrow{color:var(--brand)}
+.process.light .lead,.process.light .step p{color:var(--ink-soft)}
+.process.light .step{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.process.light .step .n{color:var(--brand)}
+@media(max-width:760px){.hero2-in,.hero2-strip{width:calc(100% - 32px)}.hero2{padding-top:110px}.hero2-bg::after{background:linear-gradient(180deg,rgba(20,16,31,.6),rgba(20,16,31,.96) 75%)}.hero2-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.hs span{font-size:11px}}
+/* v2: refinamentos */
+.ph::after{background:linear-gradient(180deg,transparent 72%,rgba(20,16,31,.5))}
+.ph img{filter:brightness(1.08) saturate(1.08)}
+html[data-aba="inicio"] header .nav{background:linear-gradient(135deg,rgba(40,30,62,.18),rgba(20,16,31,.08));-webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 22px 50px -22px rgba(0,0,0,.6)}
+html[data-aba="inicio"] header .menu a{color:#EDE6F7}
+html[data-aba="inicio"] header .menu a:hover{color:#fff;background:rgba(255,255,255,.1)}
+html[data-aba="inicio"] header .menu a.on{color:#fff;background:rgba(255,255,255,.16)}
+html[data-aba="inicio"] header .gestor-btn{color:#DCD2EC}
+.hero::before{content:"";position:absolute;inset:-10%;background:url(img/15-anos-1.jpg) center/cover;filter:blur(70px) saturate(1.4);opacity:.32;z-index:0}
+.hero-glow{z-index:1}
+.process h2 em,.rail-sec h2 em,.hero h2 em{background:var(--grad-soft);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stack{width:min(100%,620px)}
+.hero-trust{flex-wrap:nowrap;gap:clamp(14px,2vw,28px);max-width:640px}
+.hero-trust div{font-size:13px;white-space:nowrap}
+.rail{padding-inline:max(20px,calc((100vw - 1200px)/2));scroll-padding-inline:max(20px,calc((100vw - 1200px)/2))}
+@media(max-width:760px){.hero-trust{flex-wrap:wrap}.hero-trust div{white-space:normal}}
+.rent-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rent,.rent-body{min-width:0}.specs{gap:8px}
+@media(max-width:980px){.rent-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:480px){.specs{grid-template-columns:1fr 1fr}.rent-body{padding:22px 20px 26px}.rent-actions .btn{flex:1 1 100%;justify-content:center}}
+.builder{padding-top:clamp(120px,14vw,170px)!important}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
 
-  /* ---------- reveal ---------- */
-  .rv{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)}
-  .rv.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.float,.marquee-track{animation:none}}
-
-  /* ---------- responsivo ---------- */
-  @media (max-width:980px){
-    .hero-grid,.story-grid,.quote-grid{grid-template-columns:1fr;gap:50px}
-    .cluster{max-width:520px;margin-inline:auto}
-    .grid{grid-template-columns:repeat(2,1fr)}
-    .services{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr 1fr;row-gap:20px}
-    .story-photo{max-width:440px}
-    .story-photo .tag{right:-8px}
-  }
-  @media (max-width:760px){
-    .menu{position:fixed;inset:84px 0 auto;background:var(--bg);flex-direction:column;gap:0;padding:10px 16px 24px;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:transform .35s, visibility .35s;visibility:hidden;z-index:-1}
-    .menu.open{transform:none;visibility:visible}
-    .menu a{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
-    .nav .btn{display:none}
-    .nav,header.scrolled .nav{height:84px}
-    .logo img,header.scrolled .logo img{height:70px}
-    .burger{display:none}
-    .nav-acoes .btn{display:none}
-    .gestor-btn{padding:9px 12px;font-size:12.5px}
-    .menu{display:none!important}
-    body{padding-bottom:78px}
-    .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;height:68px;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);box-shadow:0 -8px 24px -18px rgba(42,33,64,.5)}
-    .tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:700;color:var(--ink-soft);border-radius:14px}
-    .tabbar a svg{width:23px;height:23px}
-    .tabbar a.on{color:var(--brand);background:rgba(111,64,156,.08)}
-    .wa-float{bottom:88px;right:16px;width:54px;height:54px}
-    /* prévia fixa no topo enquanto escolhe; resumo e envio no último passo */
-    .b-grid:not(.final) .b-preview{position:sticky;top:84px;z-index:6;order:-1;box-shadow:0 18px 30px -24px rgba(42,33,64,.6)}
-    .b-grid:not(.final) .b-preview .sum{display:none}
-    .b-grid:not(.final) .b-preview .stage svg{max-height:34vh;width:auto;margin:0 auto}
-    .b-grid.final .b-preview{position:static;order:1}
-    .mini{display:none!important}
-    #monte .sec-head{margin-bottom:16px}
-    #monte .sec-head p{display:none}
-    #monte h2{font-size:34px}
-    .b-grid{gap:16px}
-    section{padding:56px 0}
-    .hero{min-height:auto;padding-top:104px}
-    section{padding:84px 0}
-    .hero{padding-top:110px}
-    .hero-meta{gap:22px}
-    .values{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr}
-    .grid{gap:12px}
-    .item.wide{grid-column:span 2;aspect-ratio:4/3}
-    .item figcaption{padding:40px 14px 12px}
-    .item figcaption b{font-size:18px}
-    .row{grid-template-columns:1fr}
-    form{padding:28px 22px}
-    .lb .prev,.lb .next{top:auto;bottom:70px;transform:none}
-  }
 </style>
 </head>
 <body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
 <header id="top">
-  <div class="wrap nav">
-    <a href="#top" class="logo"><img src="img/logo.png" alt="Zanon Decora" width="520" height="439"></a>
-    <nav class="menu" id="menu">
+  <div class="nav">
+    <a href="#inicio" class="logo" data-tab="inicio" aria-label="Zanon Decora · início"><img src="img/logo.png" alt="Zanon Decora" width="520" height="439"></a>
+    <nav class="menu" id="menu" aria-label="Navegação principal">
       <a href="#inicio" data-tab="inicio">Início</a>
-      <a href="#decoracoes" data-tab="decoracoes">Decorações</a>
+      <a href="#decoracoes" data-tab="decoracoes">Portfólio</a>
       <a href="#monte" data-tab="monte">Monte sua festa</a>
       <a href="#servicos" data-tab="servicos">Serviços e aluguel</a>
-      <a href="#orcamento" data-tab="contato">Contato</a>
+      <a href="#contato" data-tab="contato">Contato</a>
     </nav>
     <div class="nav-acoes">
-      <a class="gestor-btn" href="/gestor.html" rel="nofollow" title="Área do gestor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Gestor</span></a>
-      <a class="btn btn-dark" href="#orcamento">Pedir orçamento</a>
+      <a class="gestor-btn" href="/gestor.html" rel="nofollow" title="Área do gestor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Gestor</span></a>
+      <a class="btn btn-dark btn-sm" href="#contato" data-tab="contato">Pedir orçamento</a>
     </div>
-    <button class="burger" id="burger" aria-label="Abrir menu"><i></i><i></i></button>
   </div>
 </header>
 
-<main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow rv">Decoração de festas · São Bernardo do Campo & ABC</div>
-        <h1 class="rv">Mais do que festas, criamos <em>memórias</em></h1>
-        <p class="lead rv">Decorações personalizadas para aniversários, casamentos, chás e eventos corporativos. Cada detalhe pensado e montado com carinho.</p>
-        <div class="hero-ctas rv">
-          <a class="btn btn-dark" href="#orcamento">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-            Solicitar orçamento
-          </a>
-          <a class="btn btn-ghost" href="#monte">Monte sua festa</a>
-        </div>
-        <div class="hero-meta rv">
-          <div><b>100%</b><small>personalizado</small></div>
-          <div><b>SBC</b><small>e região do ABC</small></div>
-          <div><b>♡</b><small>feito com carinho</small></div>
-        </div>
-      </div>
+<main id="conteudo">
 
-      <div class="cluster rv" aria-hidden="true">
-        <div class="dot d1 float slow"></div>
-        <div class="dot d2 float"></div>
-        <div class="dot d3 float slower"></div>
-        <div class="dot d4 float slow"></div>
-        <div class="bubble b1 float slower"><img src="img/lara-1.jpg" alt=""></div>
-        <div class="bubble b2 float"><img src="img/pokemon-1.jpg" alt=""></div>
-        <div class="bubble b3 float slow"><img src="img/rose-pessego-1.jpg" alt=""></div>
-        <div class="bubble b4 float"><img src="img/margaridas-1.jpg" alt=""></div>
+  <!-- ===================== INÍCIO ===================== -->
+  <section id="inicio" class="hero2" data-tab="inicio" aria-labelledby="h1">
+    <div class="hero2-bg" aria-hidden="true"><img src="img/15-anos-1.jpg" alt="" fetchpriority="high" decoding="async"></div>
+    <div class="wrap hero2-in">
+      <p class="hero2-eyebrow">Decoração de festas · São Bernardo do Campo, ABC e São Paulo</p>
+      <h1 id="h1">Transformamos momentos especiais em <em>memórias inesquecíveis.</em></h1>
+      <p class="hero2-sub">Decorações exclusivas, criadas com carinho em cada detalhe para transformar a sua celebração em uma experiência única.</p>
+      <div class="hero-cta">
+        <a class="btn btn-dark" href="#contato" data-tab="contato">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-glass" href="#decoracoes" data-tab="decoracoes">Ver decorações</a>
       </div>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Aniversários</span><span>Casamentos</span><span>Chá de bebê</span><span>Batizados</span><span>15 anos</span><span>Times de futebol</span><span>Noivados</span><span>Chá revelação</span><span>Eventos corporativos</span>
-      <span>Aniversários</span><span>Casamentos</span><span>Chá de bebê</span><span>Batizados</span><span>15 anos</span><span>Times de futebol</span><span>Noivados</span><span>Chá revelação</span><span>Eventos corporativos</span>
+  <section id="destaques" class="sec rail-sec" data-tab="inicio" aria-labelledby="h-dest">
+    <div class="wrap sec-head">
+      <div><p class="eyebrow rv">Festas que realizamos</p><h2 id="h-dest" class="rv" style="--i:1">Alguns dos nossos <em>projetos</em></h2></div>
+      <p class="lead rv" style="--i:2">Fotos reais de decorações montadas pela Zanon Decora. Toque em um projeto para ver em tela cheia.</p>
     </div>
-  </div>
-
-  <!-- HISTÓRIA -->
-  <!-- TEXTO PARA REVISAR: a história abaixo foi escrita a partir do Instagram. Ajuste com os dados reais (ano de início, nome da fundadora, marcos). -->
-  <section id="historia" class="story">
-    <div class="wrap story-grid">
-      <div class="story-photo rv">
-        <div class="arch"><video src="video/nossa-historia.mp4" poster="video/nossa-historia-capa.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Bastidores de uma montagem da Zanon Decora"></video></div>
-        <div class="tag"><b>Por trás de cada festa</b><small>montagem feita à mão, peça por peça</small></div>
-      </div>
-      <div>
-        <div class="eyebrow rv">Nossa história</div>
-        <h2 class="rv">Uma paixão que virou <em>ofício</em></h2>
-        <p class="rv">A Zanon Decora nasceu do amor por celebrar. O que começou decorando as festas de amigos e da família em São Bernardo do Campo foi ganhando forma, cor e muitos balões, até se tornar um ateliê de decoração dedicado a transformar ideias em cenários.</p>
-        <p class="rv">Acreditamos que nenhuma festa é igual à outra. Por isso cada projeto começa com uma conversa: quem é o homenageado, o que ele ama, que sensação o dia precisa ter. A partir daí escolhemos a paleta, o tema e cada peça, do arco de balões ao último docinho na mesa.</p>
-        <blockquote class="rv">“Caminhos novos dão medo, mas é neles que Deus faz coisas novas acontecerem.”</blockquote>
-        <p class="rv">Hoje atendemos todo o ABC paulista e a capital, sempre com o mesmo cuidado do começo.</p>
-        <div class="values rv">
-          <div><b>Personalizado</b><small>Cada decoração é criada do zero para o seu evento.</small></div>
-          <div><b>Cuidado</b><small>Montagem e desmontagem feitas pela nossa equipe.</small></div>
-          <div><b>Carinho</b><small>Tratamos a sua festa como se fosse nossa.</small></div>
-        </div>
-      </div>
-    </div>
+    <div class="rail" id="rail"><a class="rcard" href="#decoracoes" data-open="26" role="button" aria-label="Abrir Vermelho paixão"><img src="img/vermelho-2.jpg" alt="Arco de balões vermelhos com letreiro Happy Birthday e neon" width="802" height="1200" loading="lazy" decoding="async"><div><small>Adulto</small><b>Vermelho paixão</b></div></a><a class="rcard" href="#decoracoes" data-open="1" role="button" aria-label="Abrir Astronauta"><img src="img/astronauta-1.jpg" alt="Festa infantil tema astronauta com foguete, planetas, estrelas e balões azuis" width="1280" height="720" loading="lazy" decoding="async"><div><small>Infantil</small><b>Astronauta</b></div></a><a class="rcard" href="#decoracoes" data-open="6" role="button" aria-label="Abrir Lilás &amp; luzes"><img src="img/15-anos-1.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 1" width="900" height="1200" loading="lazy" decoding="async"><div><small>15 anos</small><b>Lilás &amp; luzes</b></div></a><a class="rcard" href="#decoracoes" data-open="21" role="button" aria-label="Abrir Dino party"><img src="img/dino-1.jpg" alt="Festa infantil tema dinossauro — foto 1" width="1191" height="1200" loading="lazy" decoding="async"><div><small>Infantil</small><b>Dino party</b></div></a><a class="rcard" href="#decoracoes" data-open="5" role="button" aria-label="Abrir Azul-marinho"><img src="img/azul-marinho-3.jpg" alt="Balões azul-marinho com neon Happy Birthday e mesa" width="675" height="1200" loading="lazy" decoding="async"><div><small>Adulto</small><b>Azul-marinho</b></div></a><a class="rcard" href="#decoracoes" data-open="7" role="button" aria-label="Abrir Margaridas"><img src="img/margaridas-1.jpg" alt="Chá de bebê amarelo com margaridas de balão — foto 1" width="675" height="1200" loading="lazy" decoding="async"><div><small>Chá de bebê</small><b>Margaridas</b></div></a></div>
+    <div class="wrap rail-foot"><a class="btn btn-glass" href="#decoracoes" data-tab="decoracoes">Ver portfólio completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </section>
 
-  <!-- GALERIA -->
-  <section id="decoracoes" class="gallery">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="eyebrow rv">Portfólio</div>
-          <h2 class="rv">Nossas <em>decorações</em></h2>
-        </div>
-        <p class="rv">Uma seleção de festas que tivemos o prazer de montar. Passe as fotos de cada festa ou clique para ver em tela cheia.</p>
+  <!-- ===================== STORIES ===================== -->
+  <section id="stories" class="sec stories" data-tab="inicio" aria-labelledby="h-stories">
+    <div class="wrap st-grid">
+      <div class="st-head">
+        <p class="eyebrow rv">Nosso jeito de montar</p>
+        <h2 id="h-stories" class="rv" style="--i:1">Uma festa, <em>capítulo por capítulo</em></h2>
+        <p class="st-hint rv" style="--i:2">Toque nas laterais da foto para avançar ou voltar. Segure para pausar.</p>
       </div>
-
-      <div class="filters rv" id="filters">
-        <button class="on" data-f="all">Todas</button>
-        <button data-f="infantil">Infantil</button>
-        <button data-f="teen">13, 15 e 18 anos</button>
-        <button data-f="adulto">Adulto</button>
-        <button data-f="times">Times</button>
-        <button data-f="cha">Chá de bebê</button>
-        <button data-f="datas">Datas especiais</button>
-      </div>
-
-      <div class="grid" id="grid">
-        <figure class="item wide rv" data-cat="infantil"><div class="slides"><img src="img/pokemon-1.jpg" alt="Festa infantil tema Pokémon — foto 1" loading="lazy" class="on"><img src="img/pokemon-2.jpg" alt="Festa infantil tema Pokémon — foto 2" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>2 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Infantil</small><b>Pokémon</b></figcaption></figure>
-        <figure class="item wide rv" data-cat="infantil"><div class="slides"><img src="img/astronauta-1.jpg" alt="Festa infantil tema astronauta com foguete, planetas, estrelas e balões azuis" loading="lazy" class="on"><video src="video/astronauta-video.mp4" poster="video/astronauta-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração astronauta"></video></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>1 foto + vídeo</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Infantil</small><b>Astronauta</b></figcaption></figure>
-        <figure class="item rv" data-cat="cha infantil"><div class="slides"><img src="img/lara-1.jpg" alt="Decoração arco-íris pastel com urso de pelúcia e blocos BABY — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Arco-íris da Lara</b></figcaption></figure>
-        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/rosa-prata-1.jpg" alt="Aniversário tema Ana Castela em rosa e prata — foto 1" loading="lazy" class="on"></div><figcaption><small>Adulto</small><b>Ana Castela</b></figcaption></figure>
-        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/rose-pessego-1.jpg" alt="Arco de balões rosé, pêssego e cobre ao ar livre — foto 1" loading="lazy" class="on"></div><figcaption><small>Adulto</small><b>Rosé & pêssego</b></figcaption></figure>
-        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/azul-marinho-3.jpg" alt="Balões azul-marinho com neon Happy Birthday e mesa" loading="lazy" class="on"><video src="video/azul-marinho-video.mp4" poster="video/azul-marinho-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração azul-marinho"></video><img src="img/azul-marinho-2.jpg" alt="Balões azul-marinho com letreiro Happy Birthday" loading="lazy"><img src="img/azul-marinho-1.jpg" alt="Balões azul-marinho com letreiro Happy Birthday" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>3 fotos + vídeo</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i><i></i><i></i></div><figcaption><small>Adulto</small><b>Azul-marinho</b></figcaption></figure>
-        <figure class="item rv" data-cat="teen"><div class="slides"><img src="img/15-anos-1.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 1" loading="lazy" class="on"><img src="img/15-anos-2.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 2" loading="lazy"><img src="img/15-anos-3.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 3" loading="lazy"><img src="img/15-anos-4.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 4" loading="lazy"><img src="img/15-anos-5.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 5" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>5 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i><i></i><i></i><i></i></div><figcaption><small>15 anos</small><b>Lilás & luzes</b></figcaption></figure>
-        <figure class="item rv" data-cat="cha"><div class="slides"><img src="img/margaridas-1.jpg" alt="Chá de bebê amarelo com margaridas de balão — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Margaridas</b></figcaption></figure>
-        <figure class="item rv" data-cat="infantil"><div class="slides"><img src="img/sereia-1.jpg" alt="Festa tema sereia com balões lilás, rosa e azul — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil</small><b>Sereia</b></figcaption></figure>
-        <figure class="item rv" data-cat="adulto datas"><div class="slides"><img src="img/branco-flores-1.jpg" alt="Decoração branca com flores e folhagens — foto 1" loading="lazy" class="on"></div><figcaption><small>Especial</small><b>Branco & flores</b></figcaption></figure>
-        <figure class="item rv" data-cat="teen"><div class="slides"><img src="img/13-anos-1.jpg" alt="Decoração de 13 anos em rosa e vermelho com neon — foto 1" loading="lazy" class="on"></div><figcaption><small>13 anos</small><b>Rosa & cereja</b></figcaption></figure>
-        <figure class="item wide rv" data-cat="times teen"><div class="slides"><img src="img/corinthians-2.jpg" alt="Aniversário de 18 anos tema Corinthians em preto, branco e dourado" loading="lazy" class="on"><img src="img/corinthians-1.jpg" alt="Painel Corinthians com balões preto, branco e dourado e neon 18" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>2 fotos</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Times · 18 anos</small><b>Corinthians</b></figcaption></figure>
-        <figure class="item rv" data-cat="times"><div class="slides"><img src="img/sao-paulo-1.jpg" alt="Festa tema São Paulo Futebol Clube em vermelho, preto e branco — foto 1" loading="lazy" class="on"></div><figcaption><small>Times</small><b>São Paulo FC</b></figcaption></figure>
-        <figure class="item rv" data-cat="infantil cha"><div class="slides"><img src="img/arco-iris-1.jpg" alt="Arco-íris de balões pastel com nuvens — foto 1" loading="lazy" class="on"><img src="img/arco-iris-2.jpg" alt="Arco-íris de balões pastel com nuvens — foto 2" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>2 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Infantil</small><b>Arco-íris</b></figcaption></figure>
-        <figure class="item rv" data-cat="cha"><div class="slides"><img src="img/ursinho-1.jpg" alt="Chá de bebê com urso de pelúcia e balões azul e rosa — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Ursinho</b></figcaption></figure>
-        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/lilas-1.jpg" alt="Balões lilás com letreiro Happy Birthday — foto 1" loading="lazy" class="on"></div><figcaption><small>Adulto</small><b>Lilás</b></figcaption></figure>
-        <figure class="item wide rv" data-cat="adulto"><div class="slides"><img src="img/60-anos-1.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 1" loading="lazy" class="on"><img src="img/60-anos-2.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 2" loading="lazy"><img src="img/60-anos-3.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 3" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>3 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i><i></i></div><figcaption><small>Adulto</small><b>60 anos</b></figcaption></figure>
-        <figure class="item rv" data-cat="cha"><div class="slides"><img src="img/oh-baby-salvia-1.jpg" alt="Chá de bebê verde sálvia, nude e dourado — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Oh baby sálvia</b></figcaption></figure>
-        <figure class="item rv" data-cat="infantil"><div class="slides"><img src="img/candy-1.jpg" alt="Festa infantil em rosa, lilás e verde-água — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil</small><b>Candy colors</b></figcaption></figure>
-        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/70-anos-1.jpg" alt="Aniversário de 70 anos em pêssego e salmão com balões suspensos e número 70 em neon" loading="lazy" class="on"><video src="video/70-anos-video.mp4" poster="video/70-anos-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração de 70 anos"></video></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>1 foto + vídeo</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Adulto</small><b>70 anos</b></figcaption></figure>
-        <figure class="item rv" data-cat="infantil"><div class="slides"><img src="img/cerejinha-1.jpg" alt="Festa tema cereja com balões rosa — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil</small><b>Cerejinha</b></figcaption></figure>
-        <figure class="item wide rv" data-cat="infantil"><div class="slides"><img src="img/dino-1.jpg" alt="Festa infantil tema dinossauro — foto 1" loading="lazy" class="on"><img src="img/dino-2.jpg" alt="Festa infantil tema dinossauro — foto 2" loading="lazy"><img src="img/dino-3.jpg" alt="Festa infantil tema dinossauro — foto 3" loading="lazy"><img src="img/dino-4.jpg" alt="Festa infantil tema dinossauro — foto 4" loading="lazy"><img src="img/dino-5.jpg" alt="Festa infantil tema dinossauro — foto 5" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>5 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i><i></i><i></i><i></i></div><figcaption><small>Infantil</small><b>Dino party</b></figcaption></figure>
-        <figure class="item rv" data-cat="infantil"><div class="slides"><img src="img/dj-baby-1.jpg" alt="Primeiro aninho tema DJ e música em preto, branco e prata — foto 1" loading="lazy" class="on"></div><figcaption><small>Infantil · 1 ano</small><b>DJ baby</b></figcaption></figure>
-        <figure class="item rv" data-cat="cha"><div class="slides"><img src="img/oh-baby-rose-1.jpg" alt="Chá de bebê rosé com blocos BABY e ursinho — foto 1" loading="lazy" class="on"></div><figcaption><small>Chá de bebê</small><b>Oh baby rosé</b></figcaption></figure>
-        <figure class="item rv" data-cat="datas"><div class="slides"><img src="img/pascoa-1.jpg" alt="Guirlanda de balões em formato de coelho — foto 1" loading="lazy" class="on"></div><figcaption><small>Datas especiais</small><b>Páscoa</b></figcaption></figure>
-        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/preto-prata-1.jpg" alt="Arranjo de balões preto e prata cromado — foto 1" loading="lazy" class="on"></div><figcaption><small>Adulto</small><b>Preto & prata</b></figcaption></figure>
-        <figure class="item rv" data-cat="adulto"><div class="slides"><img src="img/vermelho-2.jpg" alt="Arco de balões vermelhos com letreiro Happy Birthday e neon" loading="lazy" class="on"><video src="video/vermelho-video.mp4" poster="video/vermelho-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração Vermelho paixão"></video><img src="img/vermelho-3.jpg" alt="Balões vermelhos e mesas de acrílico com neon" loading="lazy"><img src="img/vermelho-1.jpg" alt="Balões vermelhos com topo Happy Birthday" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>3 fotos + vídeo</span><button class="arr l" aria-label="Anterior">←</button><button class="arr r" aria-label="Próxima">→</button><div class="dots"><i></i><i></i><i></i><i></i></div><figcaption><small>Adulto</small><b>Vermelho paixão</b></figcaption></figure>
-      </div>
-
-      <div class="gallery-foot rv">
-        <p>Tem muito mais no nosso Instagram, com vídeos das montagens e festas novas toda semana.</p>
-        <a class="btn btn-ghost" href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener">Ver no Instagram @zanondecora</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVIÇOS -->
-  <section id="servicos">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="eyebrow rv">O que fazemos</div>
-          <h2 class="rv">Do intimista ao <em>grandioso</em></h2>
-        </div>
-        <p class="rv">Formatos para todo tipo de celebração e orçamento. Nos conte o que imagina e montamos a proposta.</p>
-      </div>
-      <div class="services">
-        <article class="svc rv">
-          <div class="ico"><svg viewBox="0 0 32 32"><circle cx="12" cy="11" r="7"/><circle cx="21" cy="14" r="6"/><path d="M12 18l-1 3h2l-1-3M21 20l-1 3h2l-1-3M12 21c0 4 3 6 5 8M21 23c0 3-2 4-4 6"/></svg></div>
-          <h3>Festas & aniversários</h3>
-          <p>Decoração completa com painel, arco de balões, mesa do bolo e todos os detalhes do tema.</p>
-          <ul><li>Infantil, 15 anos e adulto</li><li>Chá de bebê e chá revelação</li><li>Batizado e primeira comunhão</li></ul>
-        </article>
-        <article class="svc rv">
-          <div class="ico"><svg viewBox="0 0 32 32"><circle cx="12" cy="19" r="7"/><circle cx="20" cy="19" r="7"/><path d="M16 4l2 4h-4l2-4z"/></svg></div>
-          <h3>Casamentos & noivados</h3>
-          <p>Cenários elegantes para o sim, a recepção e as fotos, com flores, tecidos e iluminação.</p>
-          <ul><li>Painel de cerimônia e mesa de doces</li><li>Cascatas de balões perolados</li><li>Noivado e bodas</li></ul>
-        </article>
-        <article class="svc rv">
-          <div class="ico"><svg viewBox="0 0 32 32"><rect x="5" y="10" width="22" height="16" rx="2"/><path d="M12 10V7h8v3M5 16h22"/></svg></div>
-          <h3>Eventos corporativos</h3>
-          <p>Ambientação com as cores da sua marca para lançamentos, confraternizações e datas comemorativas.</p>
-          <ul><li>Confraternização de fim de ano</li><li>Inaugurações e lançamentos</li><li>Datas sazonais</li></ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ALUGUEL -->
-  <section id="aluguel" class="rentals">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="eyebrow rv">Aluguel de brinquedos</div>
-          <h2 class="rv">Diversão que <em>completa</em> a festa</h2>
-        </div>
-        <p class="rv">Além da decoração, alugamos brinquedos para a criançada. Dá para contratar junto com a decoração ou separado.</p>
-      </div>
-      <div class="rent-grid">
-        <article class="rent rv">
-          <figure class="item rent-photo product"><div class="slides"><img src="img/pula-pula-1.jpg?v=2" alt="Pula-pula cama elástica colorido com rede de proteção e escadinha" loading="lazy" class="on"></div><figcaption><small>Aluguel</small><b>Pula-pula</b></figcaption></figure>
-          <div class="rent-body">
-            <h3>Pula-pula</h3>
-            <p>O brinquedo que nunca sai de moda. Garante horas de pulos, risadas e crianças gastando energia enquanto os adultos aproveitam a festa.</p>
-            <dl class="specs"><div><dt>Diâmetro</dt><dd>4,30 m</dd></div><div><dt>Peso máximo</dt><dd>150 kg</dd></div><div><dt>Espaço necessário</dt><dd>5 × 5 m</dd></div></dl>
-            <ul><li>Para festas em casa, salão, condomínio ou chácara</li><li>Pode ser contratado junto com a decoração ou sozinho</li><li>Consulte datas disponíveis e valores pelo WhatsApp</li></ul>
-            <a class="btn btn-dark" href="https://wa.me/5511960801908?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20sobre%20o%20aluguel%20de%20pula-pula%20%F0%9F%8E%88" target="_blank" rel="noopener">Consultar disponibilidade</a>
+      <nav class="st-chap" id="stChapters" aria-label="Capítulos"></nav>
+      <div class="st-btn"><a class="btn btn-glass" href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg> Ver mais no Instagram</a></div>
+      <div class="st-stage">
+        <div class="st-frame" id="stFrame" role="region" aria-roledescription="carrossel" aria-label="Stories da Zanon Decora, por capítulos">
+          <div class="st-slides" id="stSlides"></div>
+          <div class="st-shade st-shade-top" aria-hidden="true"></div>
+          <div class="st-shade st-shade-bot" aria-hidden="true"></div>
+          <div class="st-top">
+            <div class="st-bars" id="stBars"></div>
+            <div class="st-me">
+              <span class="st-av"><img src="img/logo.png" alt="" width="520" height="439"></span>
+              <div class="st-who"><b>@zanondecora</b><small id="stChapName"></small></div>
+              <button class="st-pause" id="stPause" type="button" aria-label="Pausar">
+                <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg>
+              </button>
+            </div>
           </div>
-        </article>
-        <article class="rent rv">
-          <figure class="item rent-photo"><div class="slides"><img src="img/piscina-bolinha-1.jpg" alt="Bolinhas coloridas de piscina de bolinhas" loading="lazy" class="on"><img src="img/piscina-bolinha-2.jpg" alt="Piscina de bolinhas rosa, azul, amarela e branca" loading="lazy"></div><span class="count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M9 6l1.5-2h3L15 6"/></svg>2 fotos</span><button class="arr l" aria-label="Foto anterior">←</button><button class="arr r" aria-label="Próxima foto">→</button><div class="dots"><i></i><i></i></div><figcaption><small>Aluguel</small><b>Piscina de bolinhas</b></figcaption></figure>
-          <div class="rent-body">
-            <h3>Piscina de bolinhas</h3>
-            <p>Colorida, segura e irresistível para os pequenos. Perfeita para festas infantis, chás de bebê e primeiros aninhos.</p>
-            <dl class="specs"><div><dt>Área</dt><dd>2 × 2 m</dd></div><div><dt>Proteção</dt><dd>Cercada com tela</dd></div><div><dt>Bolinhas</dt><dd>2 mil</dd></div></dl>
-            <ul><li>Ideal para os pequenos, inclusive do primeiro aninho</li><li>Combina com qualquer tema de decoração</li><li>Consulte datas disponíveis e valores pelo WhatsApp</li></ul>
-            <a class="btn btn-dark" href="https://wa.me/5511960801908?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20sobre%20o%20aluguel%20de%20piscina%20de%20bolinhas%20%F0%9F%8E%88" target="_blank" rel="noopener">Consultar disponibilidade</a>
-          </div>
-        </article>
+          <p class="st-cap" id="stCap"></p>
+          <button class="st-nav st-prev" id="stPrev" type="button" aria-label="Foto anterior"></button>
+          <button class="st-nav st-next" id="stNext" type="button" aria-label="Próxima foto"></button>
+        </div>
       </div>
-      <p class="rent-note rv">Imagens ilustrativas.</p>
     </div>
   </section>
 
+  <section id="prova" class="sec" data-tab="inicio" aria-labelledby="h-prova">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow rv">Por que a Zanon Decora</p><h2 id="h-prova" class="rv" style="--i:1">Cada detalhe pensado <em>para você</em></h2></div>
+        <p class="lead rv" style="--i:2">Mais do que enfeitar um espaço, criamos o cenário em que as suas melhores lembranças acontecem.</p>
+      </div>
+      <div class="dif-grid">
+        <div class="dif rv" style="--i:0"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></i><b>Decoração personalizada</b><p>Projeto criado do zero para o seu tema, as suas cores e o seu espaço.</p></div>
+        <div class="dif rv" style="--i:1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.3 0 6 2.8 6 6.3 0 3.6-2.7 6.2-6 6.2s-6-2.6-6-6.2C6 5.8 8.7 3 12 3z"/><path d="M12 15.5l-1 2.2h2zM12 17.7c0 1.5 1 2 1 3.3"/></svg></i><b>Prévia online da sua festa</b><p>Monte o arco, escolha as cores e veja como a decoração pode ficar antes de fechar.</p></div>
+        <div class="dif rv" style="--i:2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></i><b>Fotos de festas reais</b><p>Todo o nosso portfólio é feito de decorações que realmente montamos.</p></div>
+        <div class="dif rv" style="--i:3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="10" rx="5"/><path d="M8 11v4M6 13h4"/><circle cx="16" cy="12" r=".6"/><circle cx="18" cy="14" r=".6"/></svg></i><b>Aluguel de brinquedos</b><p>Pula-pula e piscina de bolinhas para completar a festa da criançada.</p></div>
+        <div class="dif rv" style="--i:4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></i><b>Atendimento direto</b><p>Conversa rápida e sem burocracia pelo WhatsApp com a nossa equipe.</p></div>
+        <div class="dif rv" style="--i:5"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 0 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></i><b>SBC, ABC e São Paulo</b><p>Atendemos São Bernardo do Campo, a região do ABC Paulista e a capital.</p></div>
+      </div>
 
+      <!-- DEPOIMENTOS: a estrutura está pronta. Quando tiver depoimentos reais, preencha a lista DEPOIMENTOS no fim do arquivo. Enquanto estiver vazia, este bloco fica escondido. -->
+      <div class="testi" id="depoimentos" hidden>
+        <p class="eyebrow">Depoimentos</p>
+        <div class="testi-grid" id="depoGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" data-tab="inicio" aria-label="Chamada para orçamento" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-band rv">
+        <h2>Vamos criar a <em>sua festa?</em></h2>
+        <p>Conte a data, o tema e o local. A nossa equipe prepara uma proposta personalizada para você.</p>
+        <div class="row-btns">
+          <a class="btn btn-dark" href="#contato" data-tab="contato">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-glass" href="#monte" data-tab="monte">Monte sua festa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PORTFÓLIO ===================== -->
+  <section id="decoracoes" class="sec" data-tab="decoracoes" aria-labelledby="h-port" style="padding-top:0">
+    <div class="wrap page-hero">
+      <p class="eyebrow">Portfólio</p>
+      <h2 id="h-port" style="margin-bottom:16px">Nossas <em>decorações</em></h2>
+      <p class="lead">Fotos reais das festas que montamos. Passe as imagens de cada projeto ou toque para ver em tela cheia.</p>
+    </div>
+    <div class="wrap">
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por categoria"></div>
+      <div class="p-grid" id="grid"><article class="pcard wide" data-id="0" data-cat="infantil" data-carousel tabindex="0" role="button" aria-label="Ver Pokémon em tela cheia"><div class="slides"><img src="img/pokemon-1.jpg" alt="Festa infantil tema Pokémon — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"><img src="img/pokemon-2.jpg" alt="Festa infantil tema Pokémon — foto 2" width="675" height="1200" loading="lazy" decoding="async"></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>2</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i></div><div class="pinfo"><small>Infantil</small><b>Pokémon</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard wide" data-id="1" data-cat="infantil" data-carousel tabindex="0" role="button" aria-label="Ver Astronauta em tela cheia"><div class="slides"><img src="img/astronauta-1.jpg" alt="Festa infantil tema astronauta com foguete, planetas, estrelas e balões azuis" width="1280" height="720" loading="lazy" decoding="async" class="on"><video src="video/astronauta-video.mp4" poster="video/astronauta-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração astronauta"></video></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>2</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i></div><div class="pinfo"><small>Infantil</small><b>Astronauta</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="2" data-cat="cha infantil" data-carousel tabindex="0" role="button" aria-label="Ver Arco-íris da Lara em tela cheia"><div class="slides"><img src="img/lara-1.jpg" alt="Decoração arco-íris pastel com urso de pelúcia e blocos BABY — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Chá de bebê</small><b>Arco-íris da Lara</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="3" data-cat="adulto" data-carousel tabindex="0" role="button" aria-label="Ver Ana Castela em tela cheia"><div class="slides"><img src="img/rosa-prata-1.jpg" alt="Aniversário tema Ana Castela em rosa e prata — foto 1" width="900" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Adulto</small><b>Ana Castela</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="4" data-cat="adulto" data-carousel tabindex="0" role="button" aria-label="Ver Rosé &amp; pêssego em tela cheia"><div class="slides"><img src="img/rose-pessego-1.jpg" alt="Arco de balões rosé, pêssego e cobre ao ar livre — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Adulto</small><b>Rosé &amp; pêssego</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="5" data-cat="adulto" data-carousel tabindex="0" role="button" aria-label="Ver Azul-marinho em tela cheia"><div class="slides"><img src="img/azul-marinho-3.jpg" alt="Balões azul-marinho com neon Happy Birthday e mesa" width="675" height="1200" loading="lazy" decoding="async" class="on"><video src="video/azul-marinho-video.mp4" poster="video/azul-marinho-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração azul-marinho"></video><img src="img/azul-marinho-2.jpg" alt="Balões azul-marinho com letreiro Happy Birthday" width="675" height="1200" loading="lazy" decoding="async"><img src="img/azul-marinho-1.jpg" alt="Balões azul-marinho com letreiro Happy Birthday" width="675" height="1200" loading="lazy" decoding="async"></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>4</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i><i></i><i></i></div><div class="pinfo"><small>Adulto</small><b>Azul-marinho</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="6" data-cat="teen" data-carousel tabindex="0" role="button" aria-label="Ver Lilás &amp; luzes em tela cheia"><div class="slides"><img src="img/15-anos-1.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 1" width="900" height="1200" loading="lazy" decoding="async" class="on"><img src="img/15-anos-2.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 2" width="900" height="1200" loading="lazy" decoding="async"><img src="img/15-anos-3.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 3" width="900" height="1200" loading="lazy" decoding="async"><img src="img/15-anos-4.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 4" width="900" height="1200" loading="lazy" decoding="async"><img src="img/15-anos-5.jpg" alt="Decoração de 15 anos em lilás e champanhe com luzes — foto 5" width="900" height="1200" loading="lazy" decoding="async"></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>5</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i><i></i><i></i><i></i></div><div class="pinfo"><small>15 anos</small><b>Lilás &amp; luzes</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="7" data-cat="cha" data-carousel tabindex="0" role="button" aria-label="Ver Margaridas em tela cheia"><div class="slides"><img src="img/margaridas-1.jpg" alt="Chá de bebê amarelo com margaridas de balão — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Chá de bebê</small><b>Margaridas</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="8" data-cat="infantil" data-carousel tabindex="0" role="button" aria-label="Ver Sereia em tela cheia"><div class="slides"><img src="img/sereia-1.jpg" alt="Festa tema sereia com balões lilás, rosa e azul — foto 1" width="992" height="1072" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Infantil</small><b>Sereia</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="9" data-cat="adulto datas" data-carousel tabindex="0" role="button" aria-label="Ver Branco &amp; flores em tela cheia"><div class="slides"><img src="img/branco-flores-1.jpg" alt="Decoração branca com flores e folhagens — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Especial</small><b>Branco &amp; flores</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="10" data-cat="teen" data-carousel tabindex="0" role="button" aria-label="Ver Rosa &amp; cereja em tela cheia"><div class="slides"><img src="img/13-anos-1.jpg" alt="Decoração de 13 anos em rosa e vermelho com neon — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>13 anos</small><b>Rosa &amp; cereja</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard wide" data-id="11" data-cat="times teen" data-carousel tabindex="0" role="button" aria-label="Ver Corinthians em tela cheia"><div class="slides"><img src="img/corinthians-2.jpg" alt="Aniversário de 18 anos tema Corinthians em preto, branco e dourado" width="1200" height="882" loading="lazy" decoding="async" class="on"><img src="img/corinthians-1.jpg" alt="Painel Corinthians com balões preto, branco e dourado e neon 18" width="819" height="1200" loading="lazy" decoding="async"></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>2</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i></div><div class="pinfo"><small>Times · 18 anos</small><b>Corinthians</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="12" data-cat="times" data-carousel tabindex="0" role="button" aria-label="Ver São Paulo FC em tela cheia"><div class="slides"><img src="img/sao-paulo-1.jpg" alt="Festa tema São Paulo Futebol Clube em vermelho, preto e branco — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Times</small><b>São Paulo FC</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="13" data-cat="infantil cha" data-carousel tabindex="0" role="button" aria-label="Ver Arco-íris em tela cheia"><div class="slides"><img src="img/arco-iris-1.jpg" alt="Arco-íris de balões pastel com nuvens — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"><img src="img/arco-iris-2.jpg" alt="Arco-íris de balões pastel com nuvens — foto 2" width="675" height="1200" loading="lazy" decoding="async"></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>2</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i></div><div class="pinfo"><small>Infantil</small><b>Arco-íris</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="14" data-cat="cha" data-carousel tabindex="0" role="button" aria-label="Ver Ursinho em tela cheia"><div class="slides"><img src="img/ursinho-1.jpg" alt="Chá de bebê com urso de pelúcia e balões azul e rosa — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Chá de bebê</small><b>Ursinho</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="15" data-cat="adulto" data-carousel tabindex="0" role="button" aria-label="Ver Lilás em tela cheia"><div class="slides"><img src="img/lilas-1.jpg" alt="Balões lilás com letreiro Happy Birthday — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Adulto</small><b>Lilás</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard wide" data-id="16" data-cat="adulto" data-carousel tabindex="0" role="button" aria-label="Ver 60 anos em tela cheia"><div class="slides"><img src="img/60-anos-1.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 1" width="799" height="1200" loading="lazy" decoding="async" class="on"><img src="img/60-anos-2.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 2" width="1200" height="800" loading="lazy" decoding="async"><img src="img/60-anos-3.jpg" alt="Aniversário de 60 anos em preto e prata com globos espelhados — foto 3" width="799" height="1200" loading="lazy" decoding="async"></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>3</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i><i></i></div><div class="pinfo"><small>Adulto</small><b>60 anos</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="17" data-cat="cha" data-carousel tabindex="0" role="button" aria-label="Ver Oh baby sálvia em tela cheia"><div class="slides"><img src="img/oh-baby-salvia-1.jpg" alt="Chá de bebê verde sálvia, nude e dourado — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Chá de bebê</small><b>Oh baby sálvia</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="18" data-cat="infantil" data-carousel tabindex="0" role="button" aria-label="Ver Candy colors em tela cheia"><div class="slides"><img src="img/candy-1.jpg" alt="Festa infantil em rosa, lilás e verde-água — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Infantil</small><b>Candy colors</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="19" data-cat="adulto" data-carousel tabindex="0" role="button" aria-label="Ver 70 anos em tela cheia"><div class="slides"><img src="img/70-anos-1.jpg" alt="Aniversário de 70 anos em pêssego e salmão com balões suspensos e número 70 em neon" width="1055" height="1200" loading="lazy" decoding="async" class="on"><video src="video/70-anos-video.mp4" poster="video/70-anos-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração de 70 anos"></video></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>2</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i></div><div class="pinfo"><small>Adulto</small><b>70 anos</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="20" data-cat="infantil" data-carousel tabindex="0" role="button" aria-label="Ver Cerejinha em tela cheia"><div class="slides"><img src="img/cerejinha-1.jpg" alt="Festa tema cereja com balões rosa — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Infantil</small><b>Cerejinha</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard wide" data-id="21" data-cat="infantil" data-carousel tabindex="0" role="button" aria-label="Ver Dino party em tela cheia"><div class="slides"><img src="img/dino-1.jpg" alt="Festa infantil tema dinossauro — foto 1" width="1191" height="1200" loading="lazy" decoding="async" class="on"><img src="img/dino-2.jpg" alt="Festa infantil tema dinossauro — foto 2" width="903" height="1200" loading="lazy" decoding="async"><img src="img/dino-3.jpg" alt="Festa infantil tema dinossauro — foto 3" width="903" height="1200" loading="lazy" decoding="async"><img src="img/dino-4.jpg" alt="Festa infantil tema dinossauro — foto 4" width="903" height="1200" loading="lazy" decoding="async"><img src="img/dino-5.jpg" alt="Festa infantil tema dinossauro — foto 5" width="903" height="1200" loading="lazy" decoding="async"></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>5</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i><i></i><i></i><i></i></div><div class="pinfo"><small>Infantil</small><b>Dino party</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="22" data-cat="infantil" data-carousel tabindex="0" role="button" aria-label="Ver DJ baby em tela cheia"><div class="slides"><img src="img/dj-baby-1.jpg" alt="Primeiro aninho tema DJ e música em preto, branco e prata — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Infantil · 1 ano</small><b>DJ baby</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="23" data-cat="cha" data-carousel tabindex="0" role="button" aria-label="Ver Oh baby rosé em tela cheia"><div class="slides"><img src="img/oh-baby-rose-1.jpg" alt="Chá de bebê rosé com blocos BABY e ursinho — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Chá de bebê</small><b>Oh baby rosé</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="24" data-cat="datas" data-carousel tabindex="0" role="button" aria-label="Ver Páscoa em tela cheia"><div class="slides"><img src="img/pascoa-1.jpg" alt="Guirlanda de balões em formato de coelho — foto 1" width="552" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Datas especiais</small><b>Páscoa</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="25" data-cat="adulto" data-carousel tabindex="0" role="button" aria-label="Ver Preto &amp; prata em tela cheia"><div class="slides"><img src="img/preto-prata-1.jpg" alt="Arranjo de balões preto e prata cromado — foto 1" width="675" height="1200" loading="lazy" decoding="async" class="on"></div><div class="pinfo"><small>Adulto</small><b>Preto &amp; prata</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article><article class="pcard" data-id="26" data-cat="adulto" data-carousel tabindex="0" role="button" aria-label="Ver Vermelho paixão em tela cheia"><div class="slides"><img src="img/vermelho-2.jpg" alt="Arco de balões vermelhos com letreiro Happy Birthday e neon" width="802" height="1200" loading="lazy" decoding="async" class="on"><video src="video/vermelho-video.mp4" poster="video/vermelho-video-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da decoração Vermelho paixão"></video><img src="img/vermelho-3.jpg" alt="Balões vermelhos e mesas de acrílico com neon" width="675" height="1200" loading="lazy" decoding="async"><img src="img/vermelho-1.jpg" alt="Balões vermelhos com topo Happy Birthday" width="675" height="1200" loading="lazy" decoding="async"></div><span class="pcount"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-8 8"/></svg>4</span><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i><i></i><i></i></div><div class="pinfo"><small>Adulto</small><b>Vermelho paixão</b><span class="ver">Ver em tela cheia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></article></div>
+      <p class="p-note">Tem uma ideia parecida? <a href="#contato" data-tab="contato" style="color:var(--brand);font-weight:800">Peça o seu orçamento →</a></p>
+    </div>
+  </section>
+
+  <!-- ===================== MONTE SUA FESTA ===================== -->
   <!-- MONTE SUA FESTA -->
-  <section id="monte" class="builder">
+  <section id="monte" class="builder" data-tab="monte">
     <div class="wrap">
       <div class="sec-head">
         <div>
@@ -755,89 +918,130 @@
     </div>
   </section>
 
-  <!-- COMO FUNCIONA -->
-  <section id="como-funciona" class="steps-sec">
+
+
+  <!-- ===================== SERVIÇOS ===================== -->
+  <section id="servicos" class="sec" data-tab="servicos" aria-labelledby="h-serv" style="padding-top:0">
+    <div class="wrap page-hero">
+      <p class="eyebrow">O que fazemos</p>
+      <h2 id="h-serv" style="margin-bottom:16px">Do intimista ao <em>grandioso</em></h2>
+      <p class="lead">Decoração para todo tipo de celebração. Conte o que você imagina e montamos a proposta.</p>
+    </div>
+    <div class="wrap"><div class="svc-grid"><article class="svc rv" style="--i:0"><div class="im"><img src="img/dino-1.jpg" alt="Festas infantis: decoração da Zanon Decora" width="1191" height="1200" loading="lazy" decoding="async"></div><div class="body"><h3>Festas infantis</h3><p>Dino party, super-heróis, princesas e muito mais. Cenários cheios de cor e de detalhes para a criançada se encantar.</p><button class="go" type="button" data-quote="Aniversário infantil">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="svc rv" style="--i:1"><div class="im"><img src="img/vermelho-2.jpg" alt="Aniversários adultos: decoração da Zanon Decora" width="802" height="1200" loading="lazy" decoding="async"></div><div class="body"><h3>Aniversários adultos</h3><p>Decorações sofisticadas para marcar 30, 50, 60 anos ou qualquer data, com paleta e estilo do homenageado.</p><button class="go" type="button" data-quote="Aniversário adulto">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="svc rv" style="--i:2"><div class="im"><img src="img/branco-flores-1.jpg" alt="Casamentos e noivados: decoração da Zanon Decora" width="675" height="1200" loading="lazy" decoding="async"></div><div class="body"><h3>Casamentos e noivados</h3><p>Flores, balões e composições delicadas para celebrar o amor com leveza, bom gosto e muito acolhimento.</p><button class="go" type="button" data-quote="Casamento / noivado">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="svc rv" style="--i:3"><div class="im"><img src="img/lara-1.jpg" alt="Chá de bebê e revelação: decoração da Zanon Decora" width="675" height="1200" loading="lazy" decoding="async"></div><div class="body"><h3>Chá de bebê e revelação</h3><p>Tons suaves e detalhes afetuosos para receber o bebê, ou revelar a grande surpresa, em grande estilo.</p><button class="go" type="button" data-quote="Chá de bebê / revelação">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="svc rv" style="--i:0"><div class="im"><img src="img/ursinho-1.jpg" alt="Batizados: decoração da Zanon Decora" width="675" height="1200" loading="lazy" decoding="async"></div><div class="body"><h3>Batizados</h3><p>Decorações delicadas e acolhedoras para celebrar um momento de fé e família.</p><button class="go" type="button" data-quote="Batizado">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="svc rv" style="--i:1"><div class="im"><img src="img/preto-prata-1.jpg" alt="Eventos corporativos: decoração da Zanon Decora" width="675" height="1200" loading="lazy" decoding="async"></div><div class="body"><h3>Eventos corporativos</h3><p>Ambientação elegante para confraternizações, lançamentos e comemorações da sua empresa.</p><button class="go" type="button" data-quote="Evento corporativo">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article><article class="svc rv" style="--i:2"><div class="im"><img src="img/astronauta-1.jpg" alt="Festas temáticas: decoração da Zanon Decora" width="1280" height="720" loading="lazy" decoding="async"></div><div class="body"><h3>Festas temáticas</h3><p>Do espaço ao fundo do mar: criamos o cenário do tema que você sonhar, com identidade própria.</p><button class="go" type="button" data-quote="Aniversário infantil">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></article></div></div>
+  </section>
+
+  <section id="aluguel" class="sec" data-tab="servicos" aria-labelledby="h-alug" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head">
-        <div>
-          <div class="eyebrow rv">Como funciona</div>
-          <h2 class="rv">Você sonha, <em>a gente monta</em></h2>
-        </div>
-        <p class="rv">Um processo simples, do primeiro “oi” até a última foto da festa.</p>
+        <div><p class="eyebrow rv">Aluguel de brinquedos</p><h2 id="h-alug" class="rv" style="--i:1">Diversão que <em>completa</em> a festa</h2></div>
+        <p class="lead rv" style="--i:2">Além da decoração, alugamos brinquedos para a criançada. Dá para contratar junto com a decoração ou separado.</p>
       </div>
-      <div class="steps">
-        <div class="step rv"><b>Conte sua ideia</b><p>Fale com a gente no WhatsApp: data, local e tema.</p></div>
-        <div class="step rv"><b>Proposta sob medida</b><p>Criamos uma sugestão de decoração com paleta, itens e valor.</p></div>
-        <div class="step rv"><b>Montagem no local</b><p>No dia, nossa equipe chega antes e monta tudo com cuidado.</p></div>
-        <div class="step rv"><b>É só celebrar</b><p>Você aproveita a festa. Depois, a desmontagem fica com a gente.</p></div>
-      </div>
+      <div class="rent-grid"><article class="rent rv"><div class="rent-photo product" data-carousel><div class="slides"><img src="img/pula-pula-1.jpg?v=2" alt="Pula-pula cama elástica colorido com rede de proteção e escadinha" width="596" height="447" loading="lazy" decoding="async" class="on"></div></div><div class="rent-body"><h3>Pula-pula</h3><p>O brinquedo que nunca sai de moda. Garante horas de pulos, risadas e crianças gastando energia enquanto os adultos aproveitam a festa.</p><dl class="specs"><div><dt>Diâmetro</dt><dd>4,30 m</dd></div><div><dt>Peso máximo</dt><dd>150 kg</dd></div><div><dt>Espaço necessário</dt><dd>5 × 5 m</dd></div></dl><ul><li>Para festas em casa, salão, condomínio ou chácara</li><li>Pode ser contratado junto com a decoração ou sozinho</li><li>Consulte datas disponíveis e valores pelo WhatsApp</li></ul><div class="rent-actions"><a class="btn btn-dark" href="https://wa.me/5511960801908?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20sobre%20o%20aluguel%20de%20pula-pula." target="_blank" rel="noopener">Consultar disponibilidade</a><button class="btn btn-ghost" type="button" data-quote="Aniversário infantil">Solicitar orçamento</button></div></div></article><article class="rent rv"><div class="rent-photo" data-carousel><div class="slides"><img src="img/piscina-bolinha-1.jpg" alt="Bolinhas coloridas de piscina de bolinhas" width="1400" height="934" loading="lazy" decoding="async" class="on"><img src="img/piscina-bolinha-2.jpg" alt="Piscina de bolinhas rosa, azul, amarela e branca" width="788" height="1400" loading="lazy" decoding="async"></div><button class="parr l" type="button" aria-label="Foto anterior">‹</button><button class="parr r" type="button" aria-label="Próxima foto">›</button><div class="pdots"><i></i><i></i></div></div><div class="rent-body"><h3>Piscina de bolinhas</h3><p>Colorida, segura e irresistível para os pequenos. Perfeita para festas infantis, chás de bebê e primeiros aninhos.</p><dl class="specs"><div><dt>Área</dt><dd>2 × 2 m</dd></div><div><dt>Proteção</dt><dd>Cercada com tela</dd></div><div><dt>Bolinhas</dt><dd>2 mil</dd></div></dl><ul><li>Ideal para os pequenos, inclusive do primeiro aninho</li><li>Combina com qualquer tema de decoração</li><li>Consulte datas disponíveis e valores pelo WhatsApp</li></ul><div class="rent-actions"><a class="btn btn-dark" href="https://wa.me/5511960801908?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20sobre%20o%20aluguel%20de%20piscina%20de%20bolinhas." target="_blank" rel="noopener">Consultar disponibilidade</a><button class="btn btn-ghost" type="button" data-quote="Aniversário infantil">Solicitar orçamento</button></div></div></article></div>
+      <p class="rent-note">Imagens ilustrativas dos brinquedos.</p>
     </div>
   </section>
 
-  <!-- ORÇAMENTO -->
-  <section id="orcamento" class="quote">
-    <div class="wrap quote-grid">
-      <div>
-        <div class="eyebrow rv">Orçamento</div>
-        <h2 class="rv">Vamos criar a sua <em>festa?</em></h2>
-        <p class="info rv">Preencha o formulário e ele abre uma conversa no nosso WhatsApp já com os detalhes do seu evento. Respondemos o quanto antes.</p>
-        <ul class="contact-list rv">
-          <li><a href="https://wa.me/5511960801908" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-            <span><small>WhatsApp</small><b>(11) 96080-1908</b></span></a></li>
-          <li><a href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#6F409C" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#6F409C"/></svg>
-            <span><small>Instagram</small><b>@zanondecora</b></span></a></li>
-          <li><a href="#orcamento">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#6F409C" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            <span><small>Atendimento</small><b>São Bernardo do Campo, ABC e São Paulo</b></span></a></li>
+  <!-- ===================== CONTATO / ORÇAMENTO ===================== -->
+  <section id="contato" class="sec" data-tab="contato" aria-labelledby="h-cont" style="padding-top:0">
+    <div class="wrap page-hero">
+      <p class="eyebrow">Orçamento</p>
+      <h2 id="h-cont" style="margin-bottom:16px">Vamos criar a <em>sua festa?</em></h2>
+      <p class="lead">Responda em poucos passos e enviamos tudo organizado para o nosso WhatsApp. Os valores são definidos pela nossa equipe depois de conhecer o seu projeto.</p>
+    </div>
+    <div class="wrap contact-grid">
+      <div class="contact-info rv">
+        <ul class="c-list">
+          <li><a href="https://wa.me/5511960801908" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.900 11.900 0 0 0 4.600 4c1.700.7 2.400.8 3.200.7a2.700 2.700 0 0 0 1.800-1.300 2.200 2.200 0 0 0 .2-1.300c-.1-.1-.3-.2-.6-.3z"/></svg></i><span><small>WhatsApp</small><b>(11) 96080-1908</b></span></a></li>
+          <li><a href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg></i><span><small>Instagram</small><b>@zanondecora</b></span></a></li>
+          <li><a href="#contato" data-tab="contato"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 0 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></i><span><small>Atendimento</small><b>SBC, ABC e São Paulo</b></span></a></li>
         </ul>
+        <p style="margin-top:26px;margin-bottom:0">Prefere ver como a sua decoração pode ficar? <a href="#monte" data-tab="monte" style="color:var(--brand);font-weight:800">Monte sua festa →</a></p>
       </div>
 
-      <form id="quoteForm" class="rv">
-        <h3>Pedir orçamento</h3>
-        <p class="sub">Leva menos de um minuto.</p>
-        <label>Seu nome<input name="nome" required placeholder="Como podemos te chamar?"></label>
-        <div class="row">
-          <label>Tipo de evento
-            <select name="tipo">
-              <option>Aniversário infantil</option><option>Aniversário adulto</option><option>15 anos</option><option>Chá de bebê / revelação</option><option>Batizado</option><option>Casamento / noivado</option><option>Evento corporativo</option><option>Aluguel de pula-pula</option><option>Aluguel de piscina de bolinhas</option><option>Outro</option>
-            </select>
-          </label>
-          <label>Data do evento<input type="date" name="data"></label>
+      <form class="q-card rv" id="quoteForm" novalidate>
+        <div class="q-prog"><span id="qPasso">Passo 1 de 5</span><div class="q-bar"><i id="qBarra"></i></div></div>
+
+        <div class="q-step atual" data-q="1">
+          <h3>Vamos começar</h3>
+          <p class="hint">Como podemos te chamar e falar com você?</p>
+          <label>Seu nome<input id="qNome" autocomplete="name" placeholder="Nome e sobrenome"></label>
+          <label>WhatsApp<input id="qFone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000"></label>
         </div>
-        <div class="row">
-          <label>Cidade / bairro<input name="local" placeholder="Ex.: SBC, Santo André"></label>
+
+        <div class="q-step" data-q="2">
+          <h3>Sobre a festa</h3>
+          <p class="hint">Qual é a ocasião?</p>
+          <div class="chips" id="qTipo" role="group" aria-label="Tipo de evento"><button class="chip" type="button" data-v="Aniversário infantil" aria-pressed="false">Aniversário infantil</button><button class="chip" type="button" data-v="Aniversário adulto" aria-pressed="false">Aniversário adulto</button><button class="chip" type="button" data-v="13, 15 ou 18 anos" aria-pressed="false">13, 15 ou 18 anos</button><button class="chip" type="button" data-v="Chá de bebê / revelação" aria-pressed="false">Chá de bebê / revelação</button><button class="chip" type="button" data-v="Batizado" aria-pressed="false">Batizado</button><button class="chip" type="button" data-v="Casamento / noivado" aria-pressed="false">Casamento / noivado</button><button class="chip" type="button" data-v="Evento corporativo" aria-pressed="false">Evento corporativo</button><button class="chip" type="button" data-v="Time de futebol" aria-pressed="false">Time de futebol</button><button class="chip" type="button" data-v="Outro" aria-pressed="false">Outro</button></div>
+          <div class="row">
+            <label>Data da festa<input id="qData" type="date"></label>
+            <label>Cidade e bairro<input id="qLocal" autocomplete="address-level2" placeholder="Ex.: Rudge Ramos, São Bernardo"></label>
+          </div>
         </div>
-        <label>Tema, cores ou ideia<textarea name="ideia" placeholder="Conte o que você imagina…"></textarea></label>
-        <button class="btn btn-dark" type="submit">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-          Enviar pelo WhatsApp
-        </button>
+
+        <div class="q-step" data-q="3">
+          <h3>Estilo e decoração</h3>
+          <p class="hint">Conte o que você imagina. Pode deixar em branco o que ainda não decidiu.</p>
+          <label>Tema desejado<input id="qTema" placeholder="Ex.: Dinossauro, Barbie, jardim encantado, Corinthians"></label>
+          <div><span style="font-size:13px;font-weight:800;color:var(--ink-soft)">Cores preferidas (até 3)</span><div class="swatches" id="qCores" style="margin-top:10px"></div><div class="sw-label" id="qCoresTxt">Nenhuma cor escolhida.</div></div>
+          <div><span style="font-size:13px;font-weight:800;color:var(--ink-soft)">Tipo de decoração desejada</span><div class="chips" id="qDeco" style="margin-top:10px"><button class="chip" type="button" data-v="Arco de balões" aria-pressed="false">Arco de balões</button><button class="chip" type="button" data-v="Painel e cenário" aria-pressed="false">Painel e cenário</button><button class="chip" type="button" data-v="Mesa do bolo" aria-pressed="false">Mesa do bolo</button><button class="chip" type="button" data-v="Balões e flores" aria-pressed="false">Balões e flores</button><button class="chip" type="button" data-v="Iluminação" aria-pressed="false">Iluminação</button><button class="chip" type="button" data-v="Brinquedos (aluguel)" aria-pressed="false">Brinquedos (aluguel)</button></div></div>
+        </div>
+
+        <div class="q-step" data-q="4">
+          <h3>Referências e detalhes</h3>
+          <p class="hint">Escolha até 3 festas do nosso portfólio que você gostou. Ajuda muito a entender o seu gosto.</p>
+          <div class="refs" id="qRefs" role="group" aria-label="Referências do portfólio"><button class="ref" type="button" data-v="Dino party" aria-pressed="false"><img src="img/dino-1.jpg" alt="Dino party" loading="lazy" decoding="async"><span>Dino party</span></button><button class="ref" type="button" data-v="Astronauta" aria-pressed="false"><img src="img/astronauta-1.jpg" alt="Astronauta" loading="lazy" decoding="async"><span>Astronauta</span></button><button class="ref" type="button" data-v="Vermelho paixão" aria-pressed="false"><img src="img/vermelho-2.jpg" alt="Vermelho paixão" loading="lazy" decoding="async"><span>Vermelho paixão</span></button><button class="ref" type="button" data-v="Lilás &amp; luzes" aria-pressed="false"><img src="img/15-anos-1.jpg" alt="Lilás &amp; luzes" loading="lazy" decoding="async"><span>Lilás &amp; luzes</span></button><button class="ref" type="button" data-v="Azul-marinho" aria-pressed="false"><img src="img/azul-marinho-3.jpg" alt="Azul-marinho" loading="lazy" decoding="async"><span>Azul-marinho</span></button><button class="ref" type="button" data-v="Margaridas" aria-pressed="false"><img src="img/margaridas-1.jpg" alt="Margaridas" loading="lazy" decoding="async"><span>Margaridas</span></button><button class="ref" type="button" data-v="Rosa &amp; cereja" aria-pressed="false"><img src="img/13-anos-1.jpg" alt="Rosa &amp; cereja" loading="lazy" decoding="async"><span>Rosa &amp; cereja</span></button><button class="ref" type="button" data-v="Oh baby rosé" aria-pressed="false"><img src="img/oh-baby-rose-1.jpg" alt="Oh baby rosé" loading="lazy" decoding="async"><span>Oh baby rosé</span></button><button class="ref" type="button" data-v="Sereia" aria-pressed="false"><img src="img/sereia-1.jpg" alt="Sereia" loading="lazy" decoding="async"><span>Sereia</span></button><button class="ref" type="button" data-v="Corinthians" aria-pressed="false"><img src="img/corinthians-2.jpg" alt="Corinthians" loading="lazy" decoding="async"><span>Corinthians</span></button><button class="ref" type="button" data-v="Ursinho" aria-pressed="false"><img src="img/ursinho-1.jpg" alt="Ursinho" loading="lazy" decoding="async"><span>Ursinho</span></button><button class="ref" type="button" data-v="60 anos" aria-pressed="false"><img src="img/60-anos-1.jpg" alt="60 anos" loading="lazy" decoding="async"><span>60 anos</span></button></div>
+          <label>Quanto pretende investir? (opcional)<input id="qInvest" placeholder="Ex.: ainda não defini, ou um valor aproximado"></label>
+          <label>Observações adicionais<textarea id="qObs" placeholder="Algo que a gente precisa saber? Horário, local, ideias, referências…"></textarea></label>
+        </div>
+
+        <div class="q-step" data-q="5">
+          <h3>Conferir e enviar</h3>
+          <p class="hint">Revise o resumo. Ao enviar, abrimos o WhatsApp da Zanon Decora com tudo organizado.</p>
+          <dl class="q-resumo" id="qResumo"></dl>
+        </div>
+
+        <p class="q-err" id="qErr" role="alert"></p>
+        <div class="q-nav">
+          <button class="btn btn-ghost" type="button" id="qVoltar">← Voltar</button>
+          <button class="btn btn-dark" type="button" id="qProx">Próximo →</button>
+          <button class="btn btn-wa" type="submit" id="qEnviar" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.900 11.900 0 0 0 4.600 4c1.700.7 2.400.8 3.200.7a2.700 2.700 0 0 0 1.800-1.300 2.200 2.200 0 0 0 .2-1.300c-.1-.1-.3-.2-.6-.3z"/></svg> Enviar pelo WhatsApp</button>
+        </div>
       </form>
     </div>
   </section>
+
 </main>
 
 <footer>
-  <div class="wrap foot">
-    <a href="#top" class="logo"><img src="img/logo-completa.png" alt="Zanon Decora — Mais do que festas, criamos memórias" loading="lazy"></a>
-    <p>Decorações personalizadas, feitas com carinho · SBC e região · © <span id="yr"></span></p>
-    <a href="/gestor.html" rel="nofollow" style="font-size:12px;color:var(--ink-soft);opacity:.7">Área do gestor</a>
-    <div class="social">
-      <a href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
-      <a href="https://wa.me/5511960801908" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.5 12.4c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-5-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l.9 2.2c0 .1.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1.1-.2.7-.9.9-1.2.2-.2.4-.2.7-.1.2.1 1.7.9 2 1 .3.1.5.2.6.4 0 .1 0 .7-.2 1.4z"/></svg></a>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="img/logo-completa.png" alt="Zanon Decora · Mais do que festas, criamos memórias" width="760" height="680" loading="lazy">
+        <p>Decorações personalizadas para festas, casamentos e eventos em São Bernardo do Campo, no ABC Paulista e em São Paulo. Feitas com carinho em cada detalhe.</p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener" aria-label="Instagram da Zanon Decora"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg></a>
+          <a href="https://wa.me/5511960801908" target="_blank" rel="noopener" aria-label="WhatsApp da Zanon Decora"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.900 11.900 0 0 0 4.600 4c1.700.7 2.400.8 3.200.7a2.700 2.700 0 0 0 1.800-1.300 2.200 2.200 0 0 0 .2-1.300c-.1-.1-.3-.2-.6-.3z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Navegar</h4><ul>
+        <li><a href="#inicio" data-tab="inicio">Início</a></li><li><a href="#decoracoes" data-tab="decoracoes">Portfólio</a></li><li><a href="#monte" data-tab="monte">Monte sua festa</a></li><li><a href="#servicos" data-tab="servicos">Serviços e aluguel</a></li><li><a href="#contato" data-tab="contato">Contato</a></li></ul></div>
+      <div><h4>Serviços</h4><ul>
+        <li>Festas infantis</li><li>Aniversários adultos</li><li>13, 15 e 18 anos</li><li>Casamentos e noivados</li><li>Chá de bebê e revelação</li><li>Batizados</li><li>Eventos corporativos</li><li>Aluguel de brinquedos</li></ul></div>
+      <div><h4>Contato</h4><ul>
+        <li><a href="https://wa.me/5511960801908" target="_blank" rel="noopener">WhatsApp (11) 96080-1908</a></li>
+        <li><a href="https://www.instagram.com/zanondecora/" target="_blank" rel="noopener">@zanondecora</a></li>
+        <li>São Bernardo do Campo, ABC e São Paulo</li>
+        <li><a href="/gestor.html" rel="nofollow">Área do gestor</a></li></ul></div>
     </div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> Zanon Decora · Mais do que festas, criamos memórias.</span><a href="#top" data-tab="inicio">Voltar ao topo ↑</a></div>
   </div>
 </footer>
 
-<nav class="tabbar" id="tabbar" aria-label="Seções do site"><a href="#inicio" data-tab="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Início</span></a><a href="#decoracoes" data-tab="decoracoes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Festas</span></a><a href="#monte" data-tab="monte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="9" rx="5.5" ry="6.5"/><path d="M12 15.5l-1 2h2l-1-2M12 17.5c0 2 1.5 2.5 1.5 4"/></svg><span>Monte</span></a><a href="#servicos" data-tab="servicos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Serviços</span></a><a href="#orcamento" data-tab="contato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg><span>Contato</span></a></nav>
+<nav class="tabbar" id="tabbar" aria-label="Seções do site"><a href="#inicio" data-tab="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg><span>Início</span></a><a href="#decoracoes" data-tab="decoracoes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-9 9"/></svg><span>Portfólio</span></a><a href="#monte" data-tab="monte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.3 0 6 2.8 6 6.3 0 3.6-2.7 6.2-6 6.2s-6-2.6-6-6.2C6 5.8 8.7 3 12 3z"/><path d="M12 15.5l-1 2.2h2zM12 17.7c0 1.5 1 2 1 3.3"/></svg><span>Monte</span></a><a href="#servicos" data-tab="servicos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span>Serviços</span></a><a href="#contato" data-tab="contato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Orçamento</span></a></nav>
 
-<a class="wa-float" href="https://wa.me/5511960801908?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
-</a>
+<a class="wa-float" href="https://wa.me/5511960801908?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar com a Zanon Decora no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.900 11.900 0 0 0 4.600 4c1.700.7 2.400.8 3.200.7a2.700 2.700 0 0 0 1.800-1.300 2.200 2.200 0 0 0 .2-1.300c-.1-.1-.3-.2-.6-.3z"/></svg><span>Fale conosco</span></a>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true">
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visualização em tela cheia">
   <button class="x" aria-label="Fechar">✕</button>
   <button class="prev" aria-label="Anterior">←</button>
   <img alt="">
@@ -847,102 +1051,6 @@
 </div>
 
 <script>
-  const WHATS = "5511960801908";
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // header ao rolar
-  const header = document.querySelector('header');
-  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30), {passive:true});
-
-  // menu mobile
-  const menu = document.getElementById('menu');
-  document.getElementById('burger').onclick = () => menu.classList.toggle('open');
-  menu.querySelectorAll('a').forEach(a => a.onclick = () => menu.classList.remove('open'));
-
-  // animação de entrada
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-  }), {threshold:.12});
-  document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(el); });
-  // garante que o topo apareça mesmo se o observer atrasar
-  requestAnimationFrame(() => document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('in')));
-
-  // vídeo da história: toca só quando está na tela (economiza bateria e dados)
-  const vid = document.querySelector('.arch video');
-  if (vid) new IntersectionObserver(([e]) => e.isIntersecting ? vid.play().catch(() => {}) : vid.pause(), {threshold:.25}).observe(vid);
-
-  // filtros da galeria
-  const items = [...document.querySelectorAll('.item')];
-  document.getElementById('filters').addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    document.querySelectorAll('#filters button').forEach(x => x.classList.toggle('on', x === b));
-    const f = b.dataset.f;
-    items.filter(it => it.dataset.cat).forEach(it => it.classList.toggle('hide', f !== 'all' && !it.dataset.cat.split(' ').includes(f)));
-  });
-
-  // carrossel dentro de cada card
-  items.forEach(it => {
-    const imgs = [...it.querySelectorAll('.slides > *')], dots = [...it.querySelectorAll('.dots i')];
-    it._i = 0;
-    it.go = n => {
-      it._i = (n + imgs.length) % imgs.length;
-      imgs.forEach((im, k) => {
-        im.classList.toggle('on', k === it._i);
-        if (im.tagName === 'VIDEO') k === it._i ? im.play().catch(() => {}) : im.pause();
-      });
-      dots.forEach((d, k) => d.classList.toggle('on', k === it._i));
-    };
-    it.go(0);
-    it.querySelector('.arr.l')?.addEventListener('click', e => { e.stopPropagation(); it.go(it._i - 1); });
-    it.querySelector('.arr.r')?.addEventListener('click', e => { e.stopPropagation(); it.go(it._i + 1); });
-    let x0 = null;
-    it.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
-    it.addEventListener('touchend', e => {
-      if (x0 === null) return;
-      const dx = e.changedTouches[0].clientX - x0; x0 = null;
-      if (Math.abs(dx) > 40 && imgs.length > 1) { it._swiped = true; it.go(it._i + (dx < 0 ? 1 : -1)); }
-    });
-  });
-
-  // lightbox: mostra todas as fotos da festa clicada
-  const lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbVid = lb.querySelector('video'), lbCap = lb.querySelector('.cap');
-  let album = null, cur = 0;
-  function show(i){
-    const imgs = [...album.querySelectorAll('.slides > *')];
-    cur = (i + imgs.length) % imgs.length;
-    const m = imgs[cur], isVid = m.tagName === 'VIDEO';
-    lbImg.style.display = isVid ? 'none' : ''; lbVid.style.display = isVid ? 'block' : 'none';
-    if (isVid) { if (lbVid.src !== m.src) lbVid.src = m.src; lbVid.play().catch(() => {}); }
-    else { lbVid.pause(); lbImg.src = m.src; lbImg.alt = m.alt; }
-    lbCap.textContent = album.querySelector('b').textContent + (imgs.length > 1 ? `  ·  ${cur + 1} / ${imgs.length}` : '');
-    lb.querySelectorAll('.prev,.next').forEach(b => b.style.display = imgs.length > 1 ? '' : 'none');
-    lb.classList.add('open');
-  }
-  items.forEach(it => it.addEventListener('click', () => {
-    if (it._swiped) { it._swiped = false; return; }
-    album = it; show(it._i);
-  }));
-  const close = () => { lb.classList.remove('open'); lbVid.pause(); album.go(cur); };
-  lb.querySelector('.x').onclick = close;
-  lb.querySelector('.prev').onclick = e => { e.stopPropagation(); show(cur - 1); };
-  lb.querySelector('.next').onclick = e => { e.stopPropagation(); show(cur + 1); };
-  lb.onclick = e => { if (e.target === lb) close(); };
-  lbVid.onclick = e => e.stopPropagation();
-  let lx = null;
-  lb.addEventListener('touchstart', e => lx = e.touches[0].clientX, {passive:true});
-  lb.addEventListener('touchend', e => {
-    if (lx === null) return;
-    const dx = e.changedTouches[0].clientX - lx; lx = null;
-    if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
-  });
-  addEventListener('keydown', e => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') show(cur - 1);
-    if (e.key === 'ArrowRight') show(cur + 1);
-  });
-
-
   // ---------- monte sua festa ----------
   (() => {
     const CORES = [
@@ -1487,37 +1595,6 @@
     });
   })();
 
-  // ---------- abas: cada parte do site numa aba, sem rolar a página inteira ----------
-  (() => {
-    const ABAS = { inicio:['.hero', '.marquee', '#historia'], decoracoes:['#decoracoes'], monte:['#monte'],
-                   servicos:['#servicos', '#aluguel', '#como-funciona'], contato:['#orcamento'] };
-    const idParaAba = { top:'inicio', inicio:'inicio', orcamento:'contato', contato:'contato' };
-    Object.entries(ABAS).forEach(([aba, sels]) => sels.forEach(sel => {
-      const el = document.querySelector(sel); if (!el) return;
-      el.dataset.tab = aba; if (el.id) idParaAba[el.id] = aba;
-    }));
-    function abrir(aba, alvo){
-      document.querySelectorAll('main > [data-tab]').forEach(el => el.classList.toggle('tab-hidden', el.dataset.tab !== aba));
-      document.querySelectorAll('#menu a[data-tab], #tabbar a[data-tab]').forEach(a => a.classList.toggle('on', a.dataset.tab === aba));
-      document.querySelectorAll(`main > [data-tab="${aba}"] .rv`).forEach(e => e.classList.add('in'));
-      const primeiro = document.querySelector(`main > [data-tab="${aba}"]`);
-      if (alvo && alvo !== primeiro) alvo.scrollIntoView({ behavior:'instant', block:'start' });
-      else window.scrollTo({ top:0, behavior:'instant' });
-    }
-    function rota(){
-      const id = decodeURIComponent(location.hash.slice(1)) || 'inicio';
-      abrir(idParaAba[id] || 'inicio', document.getElementById(id));
-    }
-    document.addEventListener('click', e => {
-      const a = e.target.closest('a[href^="#"]'); if (!a) return;
-      const id = a.getAttribute('href').slice(1); if (!id || !(idParaAba[id] || document.getElementById(id))) return;
-      e.preventDefault();
-      if (location.hash !== '#' + id) history.pushState(null, '', location.search + '#' + id);
-      rota();
-    });
-    addEventListener('popstate', rota);
-    rota();
-  })();
 
   // ---------- montagem em passos: um passo por vez ----------
   (() => {
@@ -1540,22 +1617,381 @@
     ir(document.getElementById('bShared').hidden ? 0 : ultimo, false);
   })();
 
-  // formulário -> WhatsApp
-  document.getElementById('quoteForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const d = Object.fromEntries(new FormData(e.target));
-    const data = d.data ? d.data.split('-').reverse().join('/') : 'a definir';
-    const msg = [
-      `Olá! Vim pelo site e gostaria de um orçamento!`,
-      ``,
-      `*Nome:* ${d.nome}`,
-      `*Evento:* ${d.tipo}`,
-      `*Data:* ${data}`,
-      d.local ? `*Local:* ${d.local}` : null,
-      d.ideia ? `*Ideia:* ${d.ideia}` : null
-    ].filter(x => x !== null).join('\n');
-    window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank');
+
+  const WHATS = "5511960801908";
+  const $ = id => document.getElementById(id);
+  const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const temHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  $('yr').textContent = new Date().getFullYear();
+
+  /* ---------- depoimentos reais (estrutura pronta) ----------
+     Preencha a lista abaixo SOMENTE com depoimentos reais, autorizados pelos clientes.
+     Enquanto estiver vazia, o bloco "Depoimentos" fica escondido no site. */
+  const DEPOIMENTOS = [
+    // { nome: 'Nome da cliente', festa: 'Aniversário de 15 anos', texto: 'Texto do depoimento real.' },
+  ];
+  if (DEPOIMENTOS.length) {
+    $('depoimentos').hidden = false;
+    $('depoGrid').innerHTML = DEPOIMENTOS.map(d => `<figure class="testi-c rv"><blockquote>“${d.texto}”</blockquote><cite>${d.nome}<br><small>${d.festa || ''}</small></cite></figure>`).join('');
+  }
+
+  /* ---------- cabeçalho ---------- */
+  const header = document.querySelector('header');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30), { passive: true });
+
+  /* ---------- revelar ao rolar ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .1, rootMargin: '0px 0px -5% 0px' });
+  const observa = raiz => (raiz || document).querySelectorAll('.rv:not(.in),.rv-clip:not(.in)').forEach(el => io.observe(el));
+  observa();
+  requestAnimationFrame(() => document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('in')));
+
+  /* ---------- profundidade: inclinação do topo com o mouse e parallax leve ---------- */
+  const stack = $('stack'), hero = document.querySelector('.hero');
+  if (stack && temHover && !reduz) {
+    hero.addEventListener('mousemove', e => {
+      const r = hero.getBoundingClientRect();
+      stack.style.setProperty('--mx', (((e.clientX - r.left) / r.width - .5) * 2).toFixed(3));
+      stack.style.setProperty('--my', (((e.clientY - r.top) / r.height - .5) * 2).toFixed(3));
+    });
+    hero.addEventListener('mouseleave', () => { stack.style.setProperty('--mx', 0); stack.style.setProperty('--my', 0); });
+  }
+  const bgProc = $('processBg'), secProc = $('como-funciona');
+  let ticking = false;
+  function parallax(){
+    ticking = false;
+    if (!bgProc || reduz || secProc.offsetParent === null) return;
+    const r = secProc.getBoundingClientRect();
+    if (r.bottom < -200 || r.top > innerHeight + 200) return;
+    bgProc.style.setProperty('--py', ((r.top + r.height / 2 - innerHeight / 2) * -.14).toFixed(1) + 'px');
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(parallax); } }, { passive: true });
+
+  /* ---------- vídeo da história: só toca quando aparece ---------- */
+  const vid = document.querySelector('.arch video');
+  if (vid) new IntersectionObserver(([e]) => e.isIntersecting ? vid.play().catch(() => {}) : vid.pause(), { threshold: .25 }).observe(vid);
+
+  /* ---------- abas ---------- */
+  const ABAS = ['inicio', 'decoracoes', 'monte', 'servicos', 'contato'];
+  const ALIAS = { orcamento: 'contato', top: 'inicio', conteudo: null };
+  const painel = () => [...document.querySelectorAll('main > [data-tab]')];
+  function abaDe(el){ const p = el && el.closest('main > [data-tab]'); return p ? p.dataset.tab : null; }
+  function rota(){
+    let id = decodeURIComponent(location.hash.slice(1)) || 'inicio';
+    if (ALIAS[id] !== undefined) id = ALIAS[id] || 'inicio';
+    const alvo = document.getElementById(id);
+    const aba = abaDe(alvo) || (ABAS.includes(id) ? id : 'inicio');
+    const mudou = document.documentElement.dataset.aba !== aba;
+    document.documentElement.dataset.aba = aba;
+    document.querySelectorAll('#menu a[data-tab], #tabbar a[data-tab]').forEach(a => a.classList.toggle('on', a.dataset.tab === aba));
+    if (mudou) painel().filter(p => p.dataset.tab === aba).forEach(p => { p.classList.remove('tab-in'); void p.offsetWidth; p.classList.add('tab-in'); });
+    document.querySelectorAll(`main > [data-tab="${aba}"] .rv`).forEach(el => io.observe(el));
+    const primeiro = painel().find(p => p.dataset.tab === aba);
+    if (alvo && alvo !== primeiro && alvo !== document.querySelector('main')) alvo.scrollIntoView({ behavior: 'instant', block: 'start' });
+    else scrollTo({ top: 0, behavior: 'instant' });
+    parallax();
+  }
+  function irPara(id){ if (location.hash !== '#' + id) history.pushState(null, '', location.pathname + location.search + '#' + id); rota(); }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a) return;
+    let id = a.getAttribute('href').slice(1); if (!id || id === 'conteudo') return;
+    if (ALIAS[id] !== undefined) id = ALIAS[id] || 'inicio';
+    if (!document.getElementById(id)) return;
+    e.preventDefault(); irPara(id);
   });
+  addEventListener('popstate', rota);
+  rota();
+
+  /* ---------- portfólio: filtros ---------- */
+  const CATS = [['infantil', 'Festas infantis'], ['teen', '13, 15 e 18 anos'], ['adulto', 'Festas adultas'], ['casamento', 'Casamentos'], ['cha', 'Chá de bebê'], ['revelacao', 'Chá revelação'], ['batizado', 'Batizados'], ['times', 'Times de futebol'], ['corporativo', 'Eventos corporativos'], ['datas', 'Datas especiais']];
+  const cards = [...document.querySelectorAll('.pcard')];
+  const conta = c => cards.filter(k => k.dataset.cat.split(' ').includes(c)).length;
+  // só mostra categorias que já têm fotos reais de festas nossas
+  $('filters').innerHTML = `<button class="on" data-f="all" aria-pressed="true">Todas<small>${cards.length}</small></button>` +
+    CATS.filter(([c]) => conta(c)).map(([c, n]) => `<button data-f="${c}" aria-pressed="false">${n}<small>${conta(c)}</small></button>`).join('');
+  $('filters').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    $('filters').querySelectorAll('button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+    const f = b.dataset.f;
+    cards.forEach(k => k.classList.toggle('hide', f !== 'all' && !k.dataset.cat.split(' ').includes(f)));
+  });
+
+  /* ---------- carrossel de fotos/vídeo dentro de cada card ---------- */
+  document.querySelectorAll('[data-carousel]').forEach(box => {
+    const midias = [...box.querySelectorAll('.slides > *')], dots = [...box.querySelectorAll('.pdots i')];
+    box._i = 0;
+    box.go = n => {
+      box._i = (n + midias.length) % midias.length;
+      midias.forEach((m, k) => { m.classList.toggle('on', k === box._i); if (m.tagName === 'VIDEO') k === box._i ? m.play().catch(() => {}) : m.pause(); });
+      dots.forEach((d, k) => d.classList.toggle('on', k === box._i));
+    };
+    box.go(0);
+    box.querySelector('.parr.l')?.addEventListener('click', e => { e.stopPropagation(); box.go(box._i - 1); });
+    box.querySelector('.parr.r')?.addEventListener('click', e => { e.stopPropagation(); box.go(box._i + 1); });
+    let x0 = null;
+    box.addEventListener('touchstart', e => x0 = e.touches[0].clientX, { passive: true });
+    box.addEventListener('touchend', e => {
+      if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40 && midias.length > 1) { box._swiped = true; box.go(box._i + (dx < 0 ? 1 : -1)); }
+    });
+  });
+
+  /* ---------- tela cheia ---------- */
+  const lb = $('lb'), lbImg = lb.querySelector('img'), lbVid = lb.querySelector('video'), lbCap = lb.querySelector('.cap');
+  let album = null, cur = 0, voltaFoco = null;
+  function mostra(i){
+    const ms = [...album.querySelectorAll('.slides > *')];
+    cur = (i + ms.length) % ms.length;
+    const m = ms[cur], ehVideo = m.tagName === 'VIDEO';
+    lbImg.style.display = ehVideo ? 'none' : ''; lbVid.style.display = ehVideo ? 'block' : 'none';
+    if (ehVideo) { if (lbVid.src !== m.src) lbVid.src = m.src; lbVid.play().catch(() => {}); }
+    else { lbVid.pause(); lbImg.src = m.currentSrc || m.src; lbImg.alt = m.alt; }
+    lbCap.textContent = album.querySelector('.pinfo b').textContent + (ms.length > 1 ? `  ·  ${cur + 1} / ${ms.length}` : '');
+    lb.querySelectorAll('.prev,.next').forEach(b => b.style.display = ms.length > 1 ? '' : 'none');
+    lb.classList.add('open'); document.body.style.overflow = 'hidden';
+  }
+  function abre(card){ voltaFoco = document.activeElement; album = card; mostra(card._i); lb.querySelector('.x').focus(); }
+  const fecha = () => { lb.classList.remove('open'); lbVid.pause(); document.body.style.overflow = ''; if (album) album.go(cur); if (voltaFoco) voltaFoco.focus?.(); };
+  cards.forEach(k => {
+    k.addEventListener('click', () => { if (k._swiped) { k._swiped = false; return; } abre(k); });
+    k.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abre(k); } });
+  });
+  document.querySelectorAll('[data-open]').forEach(r => r.addEventListener('click', () => { const k = document.querySelector(`.pcard[data-id="${r.dataset.open}"]`); if (k) abre(k); }));
+  lb.querySelector('.x').onclick = fecha;
+  lb.querySelector('.prev').onclick = e => { e.stopPropagation(); mostra(cur - 1); };
+  lb.querySelector('.next').onclick = e => { e.stopPropagation(); mostra(cur + 1); };
+  lb.onclick = e => { if (e.target === lb) fecha(); };
+  lbVid.onclick = e => e.stopPropagation();
+  let lx = null;
+  lb.addEventListener('touchstart', e => lx = e.touches[0].clientX, { passive: true });
+  lb.addEventListener('touchend', e => { if (lx === null) return; const dx = e.changedTouches[0].clientX - lx; lx = null; if (Math.abs(dx) > 40) mostra(cur + (dx < 0 ? 1 : -1)); });
+  addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') fecha();
+    if (e.key === 'ArrowLeft') mostra(cur - 1);
+    if (e.key === 'ArrowRight') mostra(cur + 1);
+  });
+
+  /* ---------- cards de serviço: leve inclinação 3D ao passar o mouse ---------- */
+  if (temHover && !reduz) document.querySelectorAll('.svc').forEach(c => {
+    c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-6px)`; });
+    c.addEventListener('mouseleave', () => { c.style.transform = ''; });
+  });
+
+  /* ---------- orçamento em etapas ---------- */
+  (() => {
+    const CORES = [['Branco','#F7F7F5'],['Rosa bebê','#F6C1D3'],['Rosa pink','#E3559A'],['Rosé','#D9A3A0'],['Vermelho','#C8102E'],['Laranja','#F28C38'],['Amarelo','#F6D55C'],['Pêssego','#F7B58E'],['Verde menta','#8EDCC2'],['Verde sálvia','#9DB08C'],['Verde bandeira','#2E9E57'],['Azul bebê','#A9D3F2'],['Azul royal','#2F5BD3'],['Azul-marinho','#1F2B5C'],['Lilás','#C9A9F0'],['Roxo','#7B4BB5'],['Nude','#E8CDB5'],['Dourado','#C9A44C'],['Prata','#BFC5CC'],['Preto','#222222']];
+    const q = { tipo: '', cores: [], deco: [], refs: [] };
+    const passos = [...document.querySelectorAll('#quoteForm .q-step')], ultimo = passos.length - 1; let atual = 0;
+    const erro = t => $('qErr').textContent = t || '';
+
+    // máscara do WhatsApp
+    $('qFone').addEventListener('input', e => {
+      let d = e.target.value.replace(/\D/g, '').slice(0, 11);
+      e.target.value = d.length > 6 ? `(${d.slice(0,2)}) ${d.slice(2, d.length > 10 ? 7 : 6)}-${d.slice(d.length > 10 ? 7 : 6)}` : d.length > 2 ? `(${d.slice(0,2)}) ${d.slice(2)}` : d;
+    });
+    $('qData').min = new Date().toISOString().slice(0, 10);
+
+    // tipo de evento (escolha única)
+    $('qTipo').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; q.tipo = b.dataset.v; $('qTipo').querySelectorAll('.chip').forEach(c => { c.classList.toggle('on', c === b); c.setAttribute('aria-pressed', c === b); }); erro(); });
+    // cores (até 3)
+    $('qCores').innerHTML = CORES.map(([n, h]) => `<button type="button" class="sw" title="${n}" aria-label="${n}" aria-pressed="false" style="background:${h}"></button>`).join('');
+    const pintaCores = () => {
+      $('qCores').querySelectorAll('.sw').forEach((b, i) => { const k = q.cores.indexOf(CORES[i][0]); b.classList.toggle('on', k >= 0); b.dataset.n = k >= 0 ? k + 1 : ''; b.setAttribute('aria-pressed', k >= 0); });
+      $('qCoresTxt').textContent = q.cores.length ? q.cores.join(' · ') : 'Nenhuma cor escolhida.';
+    };
+    $('qCores').addEventListener('click', e => { const b = e.target.closest('.sw'); if (!b) return; const n = CORES[[...$('qCores').children].indexOf(b)][0]; const i = q.cores.indexOf(n); if (i >= 0) q.cores.splice(i, 1); else { if (q.cores.length === 3) q.cores.shift(); q.cores.push(n); } pintaCores(); });
+    // tipo de decoração (múltipla)
+    $('qDeco').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; b.classList.toggle('on'); b.setAttribute('aria-pressed', b.classList.contains('on')); q.deco = [...$('qDeco').querySelectorAll('.chip.on')].map(c => c.dataset.v); });
+    // referências do portfólio (até 3)
+    $('qRefs').addEventListener('click', e => {
+      const b = e.target.closest('.ref'); if (!b) return; const v = b.dataset.v, i = q.refs.indexOf(v);
+      if (i >= 0) q.refs.splice(i, 1); else { if (q.refs.length === 3) { erro('Escolha até 3 referências.'); return; } q.refs.push(v); }
+      erro(); $('qRefs').querySelectorAll('.ref').forEach(r => { r.classList.toggle('on', q.refs.includes(r.dataset.v)); r.setAttribute('aria-pressed', q.refs.includes(r.dataset.v)); });
+    });
+
+    const dataBR = d => d ? d.split('-').reverse().join('/') : '';
+    const campos = () => [
+      ['Nome', $('qNome').value.trim()], ['WhatsApp', $('qFone').value.trim()], ['Evento', q.tipo], ['Data', dataBR($('qData').value)], ['Local', $('qLocal').value.trim()],
+      ['Tema', $('qTema').value.trim()], ['Cores', q.cores.join(', ')], ['Decoração desejada', q.deco.join(', ')], ['Referências do portfólio', q.refs.join(', ')],
+      ['Investimento previsto', $('qInvest').value.trim()], ['Observações', $('qObs').value.trim()]
+    ];
+    const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+    function valida(n){
+      if (n === 0) { if ($('qNome').value.trim().length < 2) return 'Digite o seu nome.'; if ($('qFone').value.replace(/\D/g, '').length < 10) return 'Digite um WhatsApp válido, com DDD.'; }
+      if (n === 1 && !q.tipo) return 'Escolha o tipo de evento.';
+      return '';
+    }
+    function ir(n, rolar){
+      atual = Math.max(0, Math.min(ultimo, n));
+      passos.forEach((p, i) => p.classList.toggle('atual', i === atual));
+      $('qPasso').textContent = `Passo ${atual + 1} de ${passos.length}`;
+      $('qBarra').style.width = ((atual + 1) / passos.length * 100) + '%';
+      $('qVoltar').style.visibility = atual ? 'visible' : 'hidden';
+      $('qProx').hidden = atual === ultimo; $('qEnviar').hidden = atual !== ultimo;
+      if (atual === ultimo) $('qResumo').innerHTML = campos().filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+      erro(); if (rolar) $('quoteForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    $('qProx').onclick = () => { const e = valida(atual); if (e) { erro(e); return; } ir(atual + 1, true); };
+    $('qVoltar').onclick = () => ir(atual - 1, true);
+    $('quoteForm').addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); if (atual < ultimo) $('qProx').click(); } });
+    $('quoteForm').addEventListener('submit', e => {
+      e.preventDefault();
+      for (let i = 0; i < 2; i++) { const m = valida(i); if (m) { ir(i, true); erro(m); return; } }
+      const msg = ['Olá! Vim pelo site da Zanon Decora e gostaria de um orçamento.', '', ...campos().filter(([, v]) => v).map(([k, v]) => `*${k}:* ${v}`)].join('\n');
+      window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank');
+    });
+    ir(0, false);
+
+    // botões "Solicitar orçamento" dos serviços já deixam o tipo de evento escolhido
+    document.querySelectorAll('[data-quote]').forEach(b => b.addEventListener('click', () => {
+      const chip = [...$('qTipo').children].find(c => c.dataset.v === b.dataset.quote);
+      if (chip) chip.click();
+      irPara('contato'); ir(0, false);
+    }));
+  })();
+
+  /* ---------- stories: capítulos com fotos reais ----------
+     Para trocar fotos ou legendas, edite só a lista CHAPTERS.
+     Cada capítulo tem título e de 2 a 4 fotos: [arquivo sem extensão, legenda]. */
+  const CHAPTERS = [
+    { title: 'Festas infantis', photos: [['dino-1', 'Dino party: cenário com balões e personagens'], ['dino-2', 'Detalhes temáticos para a criançada'], ['astronauta-1', 'Astronauta: foguete, planetas e estrelas']] },
+    { title: 'Chá de bebê', photos: [['lara-1', 'Arco-íris pastel com ursinho e detalhes em tons suaves']] },
+    { title: '15 anos', photos: [['15-anos-1', 'Número 15 iluminado em destaque'], ['15-anos-2', 'Cenário para a aniversariante']] },
+    { title: 'Festas adultas', photos: [['vermelho-2', 'Arco vermelho com balões transparentes'], ['azul-marinho-3', 'Azul-marinho com balões e luzes']] }
+  ];
+  const DURACAO = 4500, SEGURAR_MS = 220;
+
+  function initStory(){
+    const frame = document.getElementById('stFrame'); if (!frame) return;
+    const slidesEl = document.getElementById('stSlides'), barsEl = document.getElementById('stBars');
+    const capEl = document.getElementById('stCap'), chapName = document.getElementById('stChapName');
+    const chapsEl = document.getElementById('stChapters'), pauseBtn = document.getElementById('stPause');
+    const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const FOTOS = CHAPTERS.flatMap((c, ci) => c.photos.map(([n, l], pi) => ({ c: ci, p: pi, n, l })));
+    const primeiroDoCap = ci => FOTOS.findIndex(f => f.c === ci);
+
+    // slides e barras
+    FOTOS.forEach((f, k) => {
+      const s = document.createElement('div'); s.className = 'st-slide';
+      s.innerHTML = `<img src="img/stories/${f.n}-1280.webp" srcset="img/stories/${f.n}-640.webp 640w, img/stories/${f.n}-1280.webp 1280w" sizes="(max-width:860px) 100vw, 420px" alt="${f.l}" decoding="async">`;
+      slidesEl.appendChild(s);
+    });
+    barsEl.innerHTML = FOTOS.map(() => '<i><b></b></i>').join('');
+    const barras = [...barsEl.children].map(i => i.firstElementChild);
+
+    // capítulos
+    chapsEl.innerHTML = CHAPTERS.map((c, ci) => `<button type="button" data-c="${ci}"><img src="img/stories/${c.photos[0][0]}-640.webp" alt="" loading="lazy"><span><b>${c.title}</b><small>${c.photos.length} ${c.photos.length > 1 ? 'fotos' : 'foto'}</small></span></button>`).join('');
+    const botoesCap = [...chapsEl.querySelectorAll('button')];
+
+    let idx = 0, decorrido = 0, ultimo = 0, pausado = false, segurando = false, visivel = false, timer = null, pressTimer = null, segurou = false, x0 = null;
+    const slides = [...slidesEl.children];
+    const tocando = () => !reduz && !pausado && !segurando && visivel && !document.hidden;
+
+    function render(){
+      const f = FOTOS[idx];
+      slides.forEach((s, k) => s.classList.toggle('on', k === idx));
+      barras.forEach((b, k) => { b.style.width = k < idx ? '100%' : '0'; });
+      barras[idx].parentElement.dataset.on = '1';
+      capEl.textContent = f.l;
+      chapName.textContent = CHAPTERS[f.c].title;
+      botoesCap.forEach((b, k) => b.setAttribute('aria-current', k === f.c ? 'true' : 'false'));
+      // pré-carrega a próxima
+      const prox = FOTOS[(idx + 1) % FOTOS.length];
+      const im = new Image(); im.src = `img/stories/${prox.n}-1280.webp`;
+      // reinicia o zoom da foto atual
+      const img = slides[idx].querySelector('img');
+      img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
+      decorado();
+    }
+    function decorado(){
+      frame.classList.toggle('playing', !reduz);
+      frame.classList.toggle('paused', !tocando());
+      pauseBtn.setAttribute('aria-label', pausado ? 'Continuar' : 'Pausar');
+      barras.forEach((b, k) => { b.style.width = k < idx ? '100%' : (k === idx ? (decorrido / DURACAO * 100) + '%' : '0'); });
+    }
+    function vai(n){
+      idx = (n + FOTOS.length) % FOTOS.length; decorrido = 0; render();
+    }
+    function anterior(){
+      // voltar do início de um capítulo vai para a última foto do capítulo anterior
+      const f = FOTOS[idx];
+      if (f.p === 0 && decorrido < 600) {
+        const ant = (f.c - 1 + CHAPTERS.length) % CHAPTERS.length;
+        vai(FOTOS.findIndex(x => x.c === ant) + CHAPTERS[ant].photos.length - 1);
+      } else vai(idx - 1);
+    }
+    function proxima(){ vai(idx + 1); }
+
+    // relógio com requestAnimationFrame
+    function tick(t){
+      const dt = t - (ultimo || t); ultimo = t;
+      if (tocando()) { decorrido += dt; if (decorrido >= DURACAO) { proxima(); } else decorado(); }
+      timer = requestAnimationFrame(tick);
+    }
+    timer = requestAnimationFrame(tick);
+
+    // visibilidade do story na tela e aba oculta
+    new IntersectionObserver(([e]) => { visivel = e.isIntersecting; decorado(); }, { threshold: .4 }).observe(frame);
+    document.addEventListener('visibilitychange', decorado);
+
+    // pausa pelo botão
+    pauseBtn.addEventListener('click', e => { e.stopPropagation(); pausado = !pausado; decorado(); });
+
+    // toque: curto avança/volta, longo pausa
+    frame.addEventListener('pointerdown', e => {
+      if (e.target.closest('.st-pause')) return;
+      segurou = false; x0 = e.clientX;
+      pressTimer = setTimeout(() => { segurando = true; segurou = true; decorado(); }, SEGURAR_MS);
+    });
+    const soltar = e => {
+      clearTimeout(pressTimer);
+      if (e.target && e.target.closest && e.target.closest('.st-pause')) { segurando = false; return; }
+      if (segurando) { segurando = false; decorado(); return; }
+      if (segurou || x0 === null || e.type === 'pointercancel') { x0 = null; return; }
+      const r = frame.getBoundingClientRect(), x = (e.clientX - r.left) / r.width;
+      x < .4 ? anterior() : proxima();
+      x0 = null;
+    };
+    frame.addEventListener('pointerup', soltar);
+    frame.addEventListener('pointercancel', () => { clearTimeout(pressTimer); segurando = false; x0 = null; decorado(); });
+    frame.addEventListener('pointerleave', () => { clearTimeout(pressTimer); if (segurando) { segurando = false; decorado(); } });
+    // gesto de deslize no celular
+    frame.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    frame.addEventListener('touchend', e => {
+      if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) dx < 0 ? proxima() : anterior();
+    }, { passive: true });
+
+    // botões invisíveis das laterais
+    document.getElementById('stPrev').addEventListener('click', e => { e.stopPropagation(); anterior(); });
+    document.getElementById('stNext').addEventListener('click', e => { e.stopPropagation(); proxima(); });
+    botoesCap.forEach(b => b.addEventListener('click', () => vai(primeiroDoCap(+b.dataset.c))));
+    frame.addEventListener('keydown', e => { if (e.key === 'ArrowRight') proxima(); if (e.key === 'ArrowLeft') anterior(); if (e.key === ' ') { e.preventDefault(); pausado = !pausado; decorado(); } });
+    frame.tabIndex = 0;
+
+    vai(0);
+    if (reduz) pausado = true;
+  }
+  initStory();
+
+
+(() => {
+  const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduz || !matchMedia('(hover: hover)').matches) return;
+  document.querySelectorAll('.svc').forEach(c => c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--sx', (e.clientX - r.left) + 'px');
+    c.style.setProperty('--sy', (e.clientY - r.top) + 'px');
+  }));
+  document.querySelectorAll('.rcard').forEach(c => {
+    c.addEventListener('mousemove', e => {
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-6px)`;
+    });
+    c.addEventListener('mouseleave', () => { c.style.transform = ''; });
+  });
+})();
+
 </script>
 </body>
 </html>
