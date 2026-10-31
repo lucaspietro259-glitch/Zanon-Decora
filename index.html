@@ -572,6 +572,16 @@
 
 
 html[data-aba="inicio"] main>[data-tab]:not([data-tab="inicio"]),html[data-aba="decoracoes"] main>[data-tab]:not([data-tab="decoracoes"]),html[data-aba="monte"] main>[data-tab]:not([data-tab="monte"]),html[data-aba="servicos"] main>[data-tab]:not([data-tab="servicos"]),html[data-aba="contato"] main>[data-tab]:not([data-tab="contato"]){display:none!important}
+/* v7: abertura com foto lateral */
+.hero2-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(30px,5vw,80px);align-items:center}
+.hero2-txt{max-width:680px}
+.hero2-side figure{position:relative;margin:0;border-radius:32px;overflow:hidden;aspect-ratio:4/5;max-width:440px;margin-left:auto;border:1px solid rgba(255,255,255,.2);box-shadow:0 60px 100px -40px rgba(0,0,0,.8);transform:rotate(1.5deg);transition:transform .8s var(--ease)}
+.hero2-side figure:hover{transform:rotate(0) scale(1.01)}
+.hero2-side img{width:100%;height:100%;object-fit:cover}
+.hero2-side figcaption{position:absolute;left:18px;right:18px;bottom:18px;padding:14px 18px;border-radius:20px;background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:13px;font-weight:700}
+@media(max-width:960px){.hero2-in{grid-template-columns:minmax(0,1fr)}.hero2-side{display:none}}
+/* v6: abertura no celular */
+@media(max-width:760px){body .hero2 h1{font-size:36px;line-height:1.1;letter-spacing:-.02em}body .hero2-eyebrow{font-size:10.5px;letter-spacing:.16em;margin-bottom:16px;line-height:1.6}body .hero2-sub{font-size:15.5px;margin-top:16px;line-height:1.55}body .hero2 .hero-cta{margin-top:24px;flex-direction:column;gap:10px}body .hero2 .hero-cta .btn{width:100%;justify-content:center}body .hero2-in{padding-top:20px}}
 /* v5: faixa de fotos no lugar do marquee de palavras */
 .film{overflow:hidden;padding:26px 0;background:var(--bg);position:relative}
 .film::before,.film::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
@@ -673,12 +683,10 @@ html[data-aba="inicio"] header .gestor-btn{color:#DCD2EC}
   <section id="inicio" class="hero2" data-tab="inicio" aria-labelledby="h1">
     <div class="hero2-bg" aria-hidden="true"><img src="img/15-anos-1.jpg" alt="" fetchpriority="high" decoding="async"></div>
     <div class="wrap hero2-in">
-      <p class="hero2-eyebrow">Decoração de festas · São Bernardo do Campo, ABC e São Paulo</p>
-      <h1 id="h1">Transformamos momentos especiais em <em>memórias inesquecíveis.</em></h1>
-      <p class="hero2-sub">Decorações exclusivas, criadas com carinho em cada detalhe para transformar a sua celebração em uma experiência única.</p>
-      <div class="hero-cta">
-        <a class="btn btn-dark" href="#contato" data-tab="contato">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-glass" href="#decoracoes" data-tab="decoracoes">Ver decorações</a>
+      <div class="hero2-txt">
+        <p class="hero2-eyebrow">Decoração de festas · São Bernardo do Campo, ABC e São Paulo</p>
+        <h1 id="h1">Transformamos momentos especiais em <em>memórias inesquecíveis.</em></h1>
+        <p class="hero2-sub">Decorações exclusivas, criadas com carinho em cada detalhe para transformar a sua celebração em uma experiência única.</p>
       </div>
     </div>
   </section>
