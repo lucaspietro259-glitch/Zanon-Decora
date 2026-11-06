@@ -655,6 +655,21 @@ html[data-aba="inicio"] header .gestor-btn{color:#DCD2EC}
 .builder{padding-top:clamp(120px,14vw,170px)!important}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
 
+/* carrossel de lançamento */
+.lanc{background:var(--bg)}
+.lanc-wrap{position:relative}
+.lanc-rail{padding-bottom:20px}
+.lanc-rail .rcard{cursor:default;aspect-ratio:3/4.2}
+.lanc-rail .rcard::before{content:none}
+.lanc-rail .rcard b{font-size:22px}
+.lanc-arr{position:absolute;top:44%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);font-size:24px;line-height:1;cursor:pointer;color:var(--ink);display:grid;place-items:center;transition:.3s var(--ease)}
+.lanc-arr:hover{transform:translateY(-50%) scale(1.06);color:var(--brand)}
+.lanc-arr.l{left:14px}
+.lanc-arr.r{right:14px}
+.lanc-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.lanc-dots i{width:6px;height:6px;border-radius:4px;background:var(--line);transition:.35s var(--ease)}
+.lanc-dots i.on{width:22px;background:var(--grad)}
+@media(max-width:760px){.lanc-arr{width:38px;height:38px;font-size:20px}.lanc-arr.l{left:6px}.lanc-arr.r{right:6px}}
 </style>
 </head>
 <body>
@@ -723,6 +738,20 @@ html[data-aba="inicio"] header .gestor-btn{color:#DCD2EC}
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ===================== LANÇAMENTO (carrossel) ===================== -->
+  <section id="lancamento" class="sec lanc" data-tab="inicio" aria-labelledby="h-lanc">
+    <div class="wrap sec-head">
+      <div><p class="eyebrow rv">Eventos corporativos</p><h2 id="h-lanc" class="rv" style="--i:1">Lançamento de <em>marca</em></h2></div>
+      <p class="lead rv" style="--i:2">Paredes e arcos de balões em lilás, verde, amarelo e turquesa, com placas personalizadas para o evento.</p>
+    </div>
+    <div class="lanc-wrap">
+      <button class="lanc-arr l" type="button" aria-label="Foto anterior">‹</button>
+      <div class="rail lanc-rail" id="lancRail" role="region" aria-label="Fotos do lançamento"><figure class="rcard"><img src="img/lancamento/1.jpg" alt="Parede de balões em tons pastel" width="900" height="1200" loading="lazy" decoding="async"><figcaption><small>Lançamento de marca</small><b>Parede de balões em tons pastel</b></figcaption></figure><figure class="rcard"><img src="img/lancamento/2.jpg" alt="Arco de balões lilás com detalhes" width="900" height="1200" loading="lazy" decoding="async"><figcaption><small>Lançamento de marca</small><b>Arco de balões lilás com detalhes</b></figcaption></figure><figure class="rcard"><img src="img/lancamento/3.jpg" alt="Parede de balões com placas" width="900" height="1200" loading="lazy" decoding="async"><figcaption><small>Lançamento de marca</small><b>Parede de balões com placas</b></figcaption></figure><figure class="rcard"><img src="img/lancamento/4.jpg" alt="Detalhe da placa de lançamento" width="900" height="1200" loading="lazy" decoding="async"><figcaption><small>Lançamento de marca</small><b>Detalhe da placa de lançamento</b></figcaption></figure><figure class="rcard"><img src="img/lancamento/5.jpg" alt="Cheiro de aventura" width="900" height="1200" loading="lazy" decoding="async"><figcaption><small>Lançamento de marca</small><b>Cheiro de aventura</b></figcaption></figure><figure class="rcard"><img src="img/lancamento/6.jpg" alt="Cheiro de algodão doce" width="900" height="1200" loading="lazy" decoding="async"><figcaption><small>Lançamento de marca</small><b>Cheiro de algodão doce</b></figcaption></figure></div>
+      <button class="lanc-arr r" type="button" aria-label="Próxima foto">›</button>
+    </div>
+    <div class="lanc-dots" id="lancDots" aria-hidden="true"></div>
   </section>
 
   <section id="prova" class="sec" data-tab="inicio" aria-labelledby="h-prova">
@@ -1991,6 +2020,20 @@ html[data-aba="inicio"] header .gestor-btn{color:#DCD2EC}
   });
 })();
 
+
+  /* carrossel de lançamento: setas e indicador */
+  (() => {
+    const rail = document.getElementById('lancRail'); if (!rail) return;
+    const cards = [...rail.children], dots = document.getElementById('lancDots');
+    dots.innerHTML = cards.map(() => '<i></i>').join('');
+    const bolinhas = [...dots.children];
+    const passo = () => cards[0].getBoundingClientRect().width + 18;
+    const atualizar = () => { const k = Math.min(cards.length - 1, Math.round(rail.scrollLeft / passo())); bolinhas.forEach((b, i) => b.classList.toggle('on', i === k)); };
+    rail.addEventListener('scroll', atualizar, { passive: true });
+    document.querySelector('.lanc-arr.l').addEventListener('click', () => rail.scrollBy({ left: -passo(), behavior: 'smooth' }));
+    document.querySelector('.lanc-arr.r').addEventListener('click', () => rail.scrollBy({ left: passo(), behavior: 'smooth' }));
+    atualizar();
+  })();
 </script>
 </body>
 </html>
